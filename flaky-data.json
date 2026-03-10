@@ -1,10 +1,10 @@
 {
-  "lastRefresh": "2026-03-10T12:39:33.091Z",
+  "lastRefresh": "2026-03-10T16:49:01.827Z",
   "periodDays": 14,
-  "totalFailures": 22,
-  "totalPRs": 6,
-  "confirmedFlakyCount": 3,
-  "mergedDespiteFailureCount": 2,
+  "totalFailures": 20,
+  "totalPRs": 7,
+  "confirmedFlakyCount": 2,
+  "mergedDespiteFailureCount": 1,
   "failedTests": [
     {
       "name": "Verify nginx connectivity between pods",
@@ -388,60 +388,12 @@
           "prMerged": false
         }
       ]
-    },
-    {
-      "name": "Unseal File Secrets with CDH",
-      "file": "k8s-sealed-secret.bats",
-      "totalFailures": 2,
-      "flakyCount": 2,
-      "mergedCount": 2,
-      "isConfirmedFlaky": true,
-      "mergedDespiteFailure": true,
-      "uniquePRs": 1,
-      "uniqueDates": [
-        "2026-03-05"
-      ],
-      "affectedJobs": [
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 2
-        }
-      ],
-      "recentOccurrences": [
-        {
-          "date": "2026-03-05",
-          "prNumber": "12623",
-          "prTitle": "runtime-rs: Fix dragonball's flaky unit tests",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "jobId": "65933979239",
-          "runId": "22734030305",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-03-05",
-          "prNumber": "12623",
-          "prTitle": "runtime-rs: Fix dragonball's flaky unit tests",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "jobId": "65933979239",
-          "runId": "22734030305",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        }
-      ]
     }
   ],
   "summary": {
-    "totalFailedTests": 6,
-    "confirmedFlaky": 3,
-    "mergedDespiteFailure": 2,
+    "totalFailedTests": 5,
+    "confirmedFlaky": 2,
+    "mergedDespiteFailure": 1,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-k8s-tests-on-arm64 / run-k8s-tests-on-arm64 (qemu-runtime-rs, kubeadm)",
       "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-arm64 / run-k8s-tests-on-arm64 (qemu-runtime-rs, kubeadm)",
@@ -484,7 +436,7 @@
       },
       {
         "date": "2026-03-05",
-        "failures": 2
+        "failures": 0
       },
       {
         "date": "2026-03-06",
@@ -556,13 +508,6 @@
         "count": 2,
         "flakyCount": 0,
         "mergedCount": 0
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 2
       }
     ]
   }
