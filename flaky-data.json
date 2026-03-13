@@ -1,9 +1,9 @@
 {
-  "lastRefresh": "2026-03-13T16:34:47.716Z",
+  "lastRefresh": "2026-03-13T20:28:02.849Z",
   "periodDays": 14,
   "totalFailures": 134,
   "totalPRs": 8,
-  "confirmedFlakyCount": 10,
+  "confirmedFlakyCount": 9,
   "mergedDespiteFailureCount": 0,
   "failedTests": [
     {
@@ -1463,22 +1463,21 @@
     {
       "name": "CUDA Vector Addition Test",
       "file": "k8s-nvidia-cuda.bats",
-      "totalFailures": 8,
-      "flakyCount": 2,
+      "totalFailures": 6,
+      "flakyCount": 0,
       "mergedCount": 0,
-      "isConfirmedFlaky": true,
+      "isConfirmedFlaky": false,
       "mergedDespiteFailure": false,
-      "uniquePRs": 3,
+      "uniquePRs": 2,
       "uniqueDates": [
-        "2026-03-13",
-        "2026-03-12"
+        "2026-03-13"
       ],
       "affectedJobs": [
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "count": 8,
-          "flakyCount": 2,
+          "count": 6,
+          "flakyCount": 0,
           "mergedCount": 0
         }
       ],
@@ -1553,30 +1552,6 @@
           "runId": "23057726731",
           "runAttempt": 1,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-03-12",
-          "prNumber": "12660",
-          "prTitle": "ci: Don't run CI builds on doc PRs",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobId": "66945857321",
-          "runId": "23023217795",
-          "runAttempt": 2,
-          "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-03-12",
-          "prNumber": "12660",
-          "prTitle": "ci: Don't run CI builds on doc PRs",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobId": "66945857321",
-          "runId": "23023217795",
-          "runAttempt": 2,
-          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -2082,16 +2057,24 @@
     {
       "name": "configmap update works, and preserves symlinks",
       "file": "k8s-inotify.bats",
-      "totalFailures": 2,
+      "totalFailures": 4,
       "flakyCount": 0,
       "mergedCount": 0,
       "isConfirmedFlaky": false,
       "mergedDespiteFailure": false,
-      "uniquePRs": 1,
+      "uniquePRs": 2,
       "uniqueDates": [
+        "2026-03-13",
         "2026-03-12"
       ],
       "affectedJobs": [
+        {
+          "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
+          "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
+          "count": 2,
+          "flakyCount": 0,
+          "mergedCount": 0
+        },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
@@ -2101,6 +2084,30 @@
         }
       ],
       "recentOccurrences": [
+        {
+          "date": "2026-03-13",
+          "prNumber": "12567",
+          "prTitle": "kernel: Add debug kernel with eBPF configs to static tarball builds",
+          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
+          "jobId": "66981405224",
+          "runId": "23057726731",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-03-13",
+          "prNumber": "12567",
+          "prTitle": "kernel: Add debug kernel with eBPF configs to static tarball builds",
+          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
+          "jobId": "66981405224",
+          "runId": "23057726731",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
         {
           "date": "2026-03-12",
           "prNumber": "12637",
@@ -2178,7 +2185,7 @@
   ],
   "summary": {
     "totalFailedTests": 12,
-    "confirmedFlaky": 10,
+    "confirmedFlaky": 9,
     "mergedDespiteFailure": 0,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
@@ -2238,11 +2245,11 @@
       },
       {
         "date": "2026-03-12",
-        "failures": 30
+        "failures": 28
       },
       {
         "date": "2026-03-13",
-        "failures": 102
+        "failures": 104
       }
     ],
     "jobBreakdown": [
@@ -2282,13 +2289,6 @@
         "mergedCount": 0
       },
       {
-        "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-        "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-        "count": 8,
-        "flakyCount": 2,
-        "mergedCount": 0
-      },
-      {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev, erofs, default)",
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev, erofs, default)",
         "count": 6,
@@ -2312,6 +2312,13 @@
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (clh, active)",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (clh, active)",
+        "count": 6,
+        "flakyCount": 6,
+        "mergedCount": 0
+      },
+      {
+        "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu, lts)",
+        "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu, lts)",
         "count": 6,
         "flakyCount": 6,
         "mergedCount": 0
