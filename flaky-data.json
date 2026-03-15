@@ -1,9 +1,9 @@
 {
-  "lastRefresh": "2026-03-15T08:31:11.145Z",
+  "lastRefresh": "2026-03-15T12:36:28.416Z",
   "periodDays": 14,
   "totalFailures": 140,
   "totalPRs": 8,
-  "confirmedFlakyCount": 11,
+  "confirmedFlakyCount": 9,
   "mergedDespiteFailureCount": 1,
   "failedTests": [
     {
@@ -1439,9 +1439,9 @@
       "name": "CUDA Vector Addition Test",
       "file": "k8s-nvidia-cuda.bats",
       "totalFailures": 10,
-      "flakyCount": 4,
+      "flakyCount": 0,
       "mergedCount": 0,
-      "isConfirmedFlaky": true,
+      "isConfirmedFlaky": false,
       "mergedDespiteFailure": false,
       "uniquePRs": 3,
       "uniqueDates": [
@@ -1460,7 +1460,7 @@
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64",
           "count": 4,
-          "flakyCount": 4,
+          "flakyCount": 0,
           "mergedCount": 0
         }
       ],
@@ -1474,7 +1474,7 @@
           "jobId": "67079297177",
           "runId": "23091936839",
           "runAttempt": 1,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": false
         },
         {
@@ -1486,7 +1486,7 @@
           "jobId": "67079297177",
           "runId": "23091936839",
           "runAttempt": 1,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": false
         },
         {
@@ -1570,7 +1570,7 @@
           "jobId": "67033636131",
           "runId": "23074387744",
           "runAttempt": 1,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": false
         },
         {
@@ -1582,7 +1582,7 @@
           "jobId": "67033636131",
           "runId": "23074387744",
           "runAttempt": 1,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": false
         }
       ]
@@ -2089,9 +2089,9 @@
       "name": "setup_file failed",
       "file": "k8s-nvidia-cuda.bats",
       "totalFailures": 4,
-      "flakyCount": 4,
+      "flakyCount": 0,
       "mergedCount": 0,
-      "isConfirmedFlaky": true,
+      "isConfirmedFlaky": false,
       "mergedDespiteFailure": false,
       "uniquePRs": 1,
       "uniqueDates": [
@@ -2103,7 +2103,7 @@
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64",
           "count": 4,
-          "flakyCount": 4,
+          "flakyCount": 0,
           "mergedCount": 0
         }
       ],
@@ -2117,7 +2117,7 @@
           "jobId": "67079297177",
           "runId": "23091936839",
           "runAttempt": 1,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": false
         },
         {
@@ -2129,7 +2129,7 @@
           "jobId": "67079297177",
           "runId": "23091936839",
           "runAttempt": 1,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": false
         },
         {
@@ -2141,7 +2141,7 @@
           "jobId": "67033636131",
           "runId": "23074387744",
           "runAttempt": 1,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": false
         },
         {
@@ -2153,7 +2153,7 @@
           "jobId": "67033636131",
           "runId": "23074387744",
           "runAttempt": 1,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": false
         }
       ]
@@ -2289,7 +2289,7 @@
   ],
   "summary": {
     "totalFailedTests": 13,
-    "confirmedFlaky": 11,
+    "confirmedFlaky": 9,
     "mergedDespiteFailure": 1,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
@@ -2396,7 +2396,7 @@
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64",
         "count": 8,
-        "flakyCount": 8,
+        "flakyCount": 0,
         "mergedCount": 0
       },
       {
