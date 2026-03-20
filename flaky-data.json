@@ -1,5 +1,5 @@
 {
-  "lastRefresh": "2026-03-20T01:16:42.178Z",
+  "lastRefresh": "2026-03-20T05:18:09.886Z",
   "periodDays": 14,
   "totalFailures": 48,
   "totalPRs": 10,
@@ -10,7 +10,7 @@
       "name": "Verify nginx connectivity between pods",
       "file": "k8s-nginx-connectivity.bats",
       "totalFailures": 16,
-      "flakyCount": 4,
+      "flakyCount": 6,
       "mergedCount": 0,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": false,
@@ -31,7 +31,7 @@
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-arm64 / run-k8s-tests-on-arm64 (qemu, kubeadm)",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-arm64 / run-k8s-tests-on-arm64 (qemu, kubeadm)",
           "count": 8,
-          "flakyCount": 2,
+          "flakyCount": 4,
           "mergedCount": 0
         }
       ],
@@ -45,7 +45,7 @@
           "jobId": "67785947037",
           "runId": "23306383935",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -57,7 +57,7 @@
           "jobId": "67785947037",
           "runId": "23306383935",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -902,7 +902,7 @@
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-arm64 / run-k8s-tests-on-arm64 (qemu, kubeadm)",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-arm64 / run-k8s-tests-on-arm64 (qemu, kubeadm)",
         "count": 10,
-        "flakyCount": 2,
+        "flakyCount": 4,
         "mergedCount": 0
       },
       {
