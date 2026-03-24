@@ -1,9 +1,9 @@
 {
-  "lastRefresh": "2026-03-24T12:47:10.104Z",
+  "lastRefresh": "2026-03-24T16:55:04.250Z",
   "periodDays": 14,
-  "totalFailures": 6,
-  "totalPRs": 2,
-  "confirmedFlakyCount": 1,
+  "totalFailures": 8,
+  "totalPRs": 3,
+  "confirmedFlakyCount": 2,
   "mergedDespiteFailureCount": 0,
   "failedTests": [
     {
@@ -79,6 +79,54 @@
       ]
     },
     {
+      "name": "Get CDH resource",
+      "file": "k8s-confidential-attestation.bats",
+      "totalFailures": 2,
+      "flakyCount": 2,
+      "mergedCount": 0,
+      "isConfirmedFlaky": true,
+      "mergedDespiteFailure": false,
+      "uniquePRs": 1,
+      "uniqueDates": [
+        "2026-03-24"
+      ],
+      "affectedJobs": [
+        {
+          "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
+          "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
+          "count": 2,
+          "flakyCount": 2,
+          "mergedCount": 0
+        }
+      ],
+      "recentOccurrences": [
+        {
+          "date": "2026-03-24",
+          "prNumber": "12724",
+          "prTitle": "kata-deploy: nydus: clean containerd metadata before cleaning up the backend",
+          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
+          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
+          "jobId": "68389615052",
+          "runId": "23498501765",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-03-24",
+          "prNumber": "12724",
+          "prTitle": "kata-deploy: nydus: clean containerd metadata before cleaning up the backend",
+          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
+          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
+          "jobId": "68389615052",
+          "runId": "23498501765",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        }
+      ]
+    },
+    {
       "name": "Nested mount of a secret volume in a configmap volume for a pod",
       "file": "k8s-nested-configmap-secret.bats",
       "totalFailures": 2,
@@ -128,14 +176,14 @@
     }
   ],
   "summary": {
-    "totalFailedTests": 2,
-    "confirmedFlaky": 1,
+    "totalFailedTests": 3,
+    "confirmedFlaky": 2,
     "mergedDespiteFailure": 0,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
       "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-      "count": 4,
-      "flakyCount": 0,
+      "count": 6,
+      "flakyCount": 2,
       "mergedCount": 0
     },
     "trend": [
@@ -193,15 +241,15 @@
       },
       {
         "date": "2026-03-24",
-        "failures": 0
+        "failures": 2
       }
     ],
     "jobBreakdown": [
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-        "count": 4,
-        "flakyCount": 0,
+        "count": 6,
+        "flakyCount": 2,
         "mergedCount": 0
       },
       {
