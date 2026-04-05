@@ -49,6 +49,7 @@ try {
 }
 
 const allJobs = rawData.jobs || [];
+rawData = null; // free the parsed JSON tree; allJobs holds what we need
 
 // Pre-parsed test results cache (stores only parsed failures, NOT raw log content).
 // This avoids OOM: 71 failed-job logs can total 12GB+ of raw text;
@@ -968,22 +969,20 @@ const allJobsSection = {
       
       let dayStatus = 'none';
       let failureStep = null;
-      let failureDetails = null;
       
       if (dayJob) {
         if (dayJob.conclusion === 'success') {
           dayStatus = 'passed';
         } else if (dayJob.conclusion === 'failure') {
           dayStatus = 'failed';
-          // Get the failed step name
           const failedStep = dayJob.steps?.find(s => s.conclusion === 'failure');
           if (failedStep) {
             failureStep = failedStep.name;
           }
-          // Get failure details from pre-parsed cache
+          // For allJobsSection, only store failure step name (not full details)
+          // to keep memory bounded. Full details live in the configured sections.
           const parsed = parsedJobResults[dayJob.id.toString()];
           if (parsed && parsed.failures && parsed.failures.length > 0) {
-            failureDetails = parsed;
             failureStep = parsed.batsFiles?.join(', ') || failureStep;
           }
         }
@@ -992,12 +991,11 @@ const allJobsSection = {
       weatherHistory.push({
         date: date.toISOString(),
         status: dayStatus,
-        retried: dayRetried, // True if there were multiple attempts for this job
+        retried: dayRetried,
         runId: dayJob?.workflow_run_id || dayJob?.run_id?.toString() || null,
-        jobId: dayJob?.id?.toString() || null, // Links to FIRST attempt (the real result)
+        jobId: dayJob?.id?.toString() || null,
         duration: dayJob ? formatDuration(dayJob.started_at, dayJob.completed_at) : null,
-        failureStep: failureStep,
-        failureDetails: failureDetails
+        failureStep: failureStep
       });
     }
     
@@ -1042,6 +1040,11 @@ console.log(`  Flaky (failed then passed on retry): ${allJobsSection.tests.filte
 console.log(`  Required: ${allJobsSection.tests.filter(t => t.isRequired).length}`);
 console.log(`  TEE: ${allJobsSection.tests.filter(t => t.categories.includes('tee')).length}`);
 console.log(`  NVIDIA: ${allJobsSection.tests.filter(t => t.categories.includes('nvidia')).length}`);
+
+// Free allJobs steps data — no longer needed after section/allJobs processing
+for (const job of allJobs) {
+  delete job.steps;
+}
 
 // ============================================
 // Rename Detection
@@ -1224,6 +1227,7 @@ function mergeWeatherHistory(newHistory, oldHistory) {
 // Detect renames
 console.log('Detecting potential job renames...');
 const detectedRenames = detectRenames(allJobsSection, cachedData);
+cachedData = null; // free cached data — no longer needed
 
 if (detectedRenames.length > 0) {
   console.log(`Found ${detectedRenames.length} potential rename(s)`);
@@ -1359,7 +1363,6 @@ try {
           const dayJob = dayJobs[0] || null;
           let dayStatus = 'none';
           let failureStep = null;
-          let failureDetails = null;
           
           if (dayJob) {
             if (dayJob.conclusion === 'success') {
@@ -1368,12 +1371,6 @@ try {
               dayStatus = 'failed';
               const failedStep = dayJob.steps?.find(s => s.conclusion === 'failure');
               failureStep = failedStep?.name || 'Unknown step';
-              
-              // Parse test failures from logs if available
-              const testFailures = parseTestFailures(dayJob.id.toString());
-              if (testFailures && testFailures.failures.length > 0) {
-                failureDetails = testFailures;
-              }
             }
           }
           
@@ -1383,8 +1380,7 @@ try {
             runId: dayJob?.workflow_run_id || dayJob?.run_id?.toString() || null,
             jobId: dayJob?.id?.toString() || null,
             duration: dayJob ? formatDuration(dayJob.started_at, dayJob.completed_at) : null,
-            failureStep: failureStep,
-            failureDetails: failureDetails
+            failureStep: failureStep
           });
         }
         
@@ -1519,8 +1515,6 @@ try {
           let dayStatus = 'none';
           let failureStep = null;
           
-          let failureDetails = null;
-          
           if (dayJob) {
             if (dayJob.conclusion === 'success') {
               dayStatus = 'passed';
@@ -1528,12 +1522,6 @@ try {
               dayStatus = 'failed';
               const failedStep = dayJob.steps?.find(s => s.conclusion === 'failure');
               failureStep = failedStep?.name || 'Unknown step';
-              
-              // Parse test failures from logs if available
-              const testFailures = parseTestFailures(dayJob.id.toString());
-              if (testFailures && testFailures.failures.length > 0) {
-                failureDetails = testFailures;
-              }
             }
           }
           
@@ -1543,8 +1531,7 @@ try {
             runId: dayJob?.workflow_run_id || dayJob?.run_id?.toString() || null,
             jobId: dayJob?.id?.toString() || null,
             duration: dayJob ? formatDuration(dayJob.started_at, dayJob.completed_at) : null,
-            failureStep: failureStep,
-            failureDetails: failureDetails
+            failureStep: failureStep
           });
         }
         

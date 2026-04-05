@@ -48,6 +48,7 @@ try {
 }
 
 const allJobs = rawData.jobs || [];
+rawData = null; // free the parsed JSON tree; allJobs holds what we need
 
 // Pre-parsed test results cache (stores only parsed failures, NOT raw log content).
 // Avoids OOM: PR log files can total several GB; keeping them all as strings crashes Node.
