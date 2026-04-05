@@ -160,6 +160,8 @@ jobs:
           echo "Log files fetched: $(ls pr-job-logs/ 2>/dev/null | wc -l)"
       
       - name: Process flaky test data
+        env:
+          NODE_OPTIONS: "--max-old-space-size=6144"
         run: |
           node scripts/process-flaky-data.js
       

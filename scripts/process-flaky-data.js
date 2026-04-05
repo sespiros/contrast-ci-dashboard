@@ -49,25 +49,129 @@ try {
 
 const allJobs = rawData.jobs || [];
 
-// Load job logs for failed jobs
-const jobLogs = {};
+// Pre-parsed test results cache (stores only parsed failures, NOT raw log content).
+// Avoids OOM: PR log files can total several GB; keeping them all as strings crashes Node.
+const parsedJobResults = {};
+
+const MAX_SYNC_LOG_SIZE = 10 * 1024 * 1024; // 10MB - above this, use chunked reading to avoid GC pressure
+const CHUNK_SIZE = 8 * 1024 * 1024; // 8MB read chunks
+
+function processLogLine(line, state) {
+  const fileMatch = line.match(/Running\s+(\S+\.bats)/i) || line.match(/(\S+\.bats)/);
+  if (fileMatch) {
+    state.currentFile = fileMatch[1];
+  }
+
+  const notOkMatch = line.match(/(?:^\d{4}-\d{2}-\d{2}T[\d:\.]+Z\s+)?not ok (\d+)\s+(?:-\s+)?(.+?)(?:\s+in \d+ms)?(?:\s*#\s*(.*))?$/i);
+  if (notOkMatch) {
+    state.failedTests++;
+    state.totalTests++;
+    const testNumber = notOkMatch[1];
+    let testName = notOkMatch[2].trim().replace(/\s+in \d+ms$/, '');
+    const comment = notOkMatch[3] || '';
+    if (comment.toLowerCase().includes('skip') || comment.toLowerCase().includes('todo')) {
+      state.skippedTests++;
+      state.failedTests--;
+    } else {
+      state.failures.push({ number: parseInt(testNumber), name: testName, comment, file: state.currentFile });
+    }
+    return;
+  }
+
+  const okMatch = line.match(/(?:^\d{4}-\d{2}-\d{2}T[\d:\.]+Z\s+)?ok (\d+)\s+(?:-\s+)?(.+?)(?:\s+in \d+ms)?(?:\s*#\s*(.*))?$/i);
+  if (okMatch) {
+    state.passedTests++;
+    state.totalTests++;
+    return;
+  }
+
+  const batsFileMatch = line.match(/^\s*(\S+\.bats)\s*$/);
+  if (batsFileMatch) {
+    state.currentFile = batsFileMatch[1];
+  }
+}
+
+function newParseState() {
+  return { failures: [], totalTests: 0, passedTests: 0, failedTests: 0, skippedTests: 0, currentFile: null };
+}
+
+function stateToResult(state) {
+  if (state.failures.length === 0 && state.totalTests === 0) return null;
+  return {
+    failures: state.failures,
+    stats: { total: state.totalTests, passed: state.passedTests, failed: state.failedTests, skipped: state.skippedTests }
+  };
+}
+
+function parseLogFileChunked(filePath) {
+  const fd = fs.openSync(filePath, 'r');
+  const buffer = Buffer.alloc(CHUNK_SIZE);
+  let leftover = '';
+  const state = newParseState();
+  try {
+    let bytesRead;
+    while ((bytesRead = fs.readSync(fd, buffer, 0, CHUNK_SIZE)) > 0) {
+      const chunk = leftover + buffer.toString('utf8', 0, bytesRead);
+      const lines = chunk.split('\n');
+      leftover = lines.pop() || '';
+      for (const line of lines) {
+        processLogLine(line, state);
+      }
+    }
+    if (leftover.trim()) processLogLine(leftover, state);
+  } finally {
+    fs.closeSync(fd);
+  }
+  return stateToResult(state);
+}
+
+function parseLogFile(filePath) {
+  let fileSize;
+  try {
+    fileSize = fs.statSync(filePath).size;
+  } catch (e) {
+    return null;
+  }
+  if (fileSize < 100) return null;
+
+  if (fileSize > MAX_SYNC_LOG_SIZE) {
+    return parseLogFileChunked(filePath);
+  }
+
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const state = newParseState();
+    for (const line of content.split('\n')) {
+      processLogLine(line, state);
+    }
+    return stateToResult(state);
+  } catch (e) {
+    if (e.message.includes('Cannot create a string')) {
+      return parseLogFileChunked(filePath);
+    }
+    return null;
+  }
+}
+
+// Load and parse PR job logs
 const logsDir = 'pr-job-logs';
 if (fs.existsSync(logsDir)) {
   const logFiles = fs.readdirSync(logsDir).filter(f => f.endsWith('.log'));
   console.log(`Found ${logFiles.length} PR job log files`);
-  
+
   logFiles.forEach(file => {
     const jobId = file.replace('.log', '');
+    const filePath = path.join(logsDir, file);
     try {
-      const content = fs.readFileSync(path.join(logsDir, file), 'utf8');
-      jobLogs[jobId] = content;
-      
-      const notOkCount = (content.match(/not ok \d+/gi) || []).length;
-      if (notOkCount > 0) {
-        console.log(`  Log ${jobId}: ${content.length} bytes, ${notOkCount} "not ok" lines`);
+      const fileSize = fs.statSync(filePath).size;
+      const result = parseLogFile(filePath);
+      if (result) {
+        parsedJobResults[jobId] = result;
+        const notOkCount = result.failures.length;
+        console.log(`  Log ${jobId}: ${fileSize} bytes, ${notOkCount} "not ok" lines`);
       }
     } catch (e) {
-      console.warn(`Could not read log for job ${jobId}: ${e.message}`);
+      console.warn(`  Could not process log for job ${jobId}: ${e.message}`);
     }
   });
 } else {
@@ -75,81 +179,10 @@ if (fs.existsSync(logsDir)) {
 }
 
 /**
- * Parse job logs to extract test failure details from TAP output
+ * Look up pre-parsed test failure details for a job.
  */
 function parseTestFailures(jobId) {
-  const log = jobLogs[jobId];
-  if (!log) return null;
-  
-  const failures = [];
-  const lines = log.split('\n');
-  
-  let totalTests = 0;
-  let passedTests = 0;
-  let failedTests = 0;
-  let skippedTests = 0;
-  let currentFile = null;
-  
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    
-    // Try to detect filename from output
-    const fileMatch = line.match(/Running\s+(\S+\.bats)/i) || line.match(/(\S+\.bats)/);
-    if (fileMatch) {
-      currentFile = fileMatch[1];
-    }
-    
-    // Parse TAP output - handle various formats
-    const notOkMatch = line.match(/(?:^\d{4}-\d{2}-\d{2}T[\d:\.]+Z\s+)?not ok (\d+)\s+(?:-\s+)?(.+?)(?:\s+in \d+ms)?(?:\s*#\s*(.*))?$/i);
-    if (notOkMatch) {
-      failedTests++;
-      totalTests++;
-      const testNumber = notOkMatch[1];
-      let testName = notOkMatch[2].trim();
-      const comment = notOkMatch[3] || '';
-      
-      testName = testName.replace(/\s+in \d+ms$/, '');
-      
-      if (comment.toLowerCase().includes('skip') || comment.toLowerCase().includes('todo')) {
-        skippedTests++;
-        failedTests--;
-      } else {
-        failures.push({
-          number: parseInt(testNumber),
-          name: testName,
-          comment: comment,
-          file: currentFile
-        });
-      }
-      continue;
-    }
-    
-    const okMatch = line.match(/(?:^\d{4}-\d{2}-\d{2}T[\d:\.]+Z\s+)?ok (\d+)\s+(?:-\s+)?(.+?)(?:\s+in \d+ms)?(?:\s*#\s*(.*))?$/i);
-    if (okMatch) {
-      passedTests++;
-      totalTests++;
-      continue;
-    }
-    
-    const batsFileMatch = line.match(/^\s*(\S+\.bats)\s*$/);
-    if (batsFileMatch) {
-      currentFile = batsFileMatch[1];
-    }
-  }
-  
-  if (failures.length === 0 && totalTests === 0) {
-    return null;
-  }
-  
-  return {
-    failures: failures,
-    stats: {
-      total: totalTests,
-      passed: passedTests,
-      failed: failedTests,
-      skipped: skippedTests
-    }
-  };
+  return parsedJobResults[jobId] || null;
 }
 
 // Get job display name - for PR failures, use the raw job name (more technical)
