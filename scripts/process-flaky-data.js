@@ -53,7 +53,7 @@ const allJobs = rawData.jobs || [];
 // Avoids OOM: PR log files can total several GB; keeping them all as strings crashes Node.
 const parsedJobResults = {};
 
-const MAX_SYNC_LOG_SIZE = 400 * 1024 * 1024; // 400MB
+const MAX_SYNC_LOG_SIZE = 10 * 1024 * 1024; // 10MB - above this, use chunked reading to avoid GC pressure
 const CHUNK_SIZE = 8 * 1024 * 1024; // 8MB read chunks
 
 function processLogLine(line, state) {

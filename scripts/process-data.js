@@ -55,7 +55,7 @@ const allJobs = rawData.jobs || [];
 // keeping them all in memory as strings crashed Node with heap exhaustion.
 const parsedJobResults = {};
 
-const MAX_SYNC_LOG_SIZE = 400 * 1024 * 1024; // 400MB - above this, use chunked reading
+const MAX_SYNC_LOG_SIZE = 10 * 1024 * 1024; // 10MB - above this, use chunked reading to avoid GC pressure
 const CHUNK_SIZE = 8 * 1024 * 1024; // 8MB read chunks for streaming
 
 /**
@@ -239,15 +239,7 @@ loadAndParseLogs('coco-caa-logs', 'CAA ');
  * All logs are parsed during the loading phase above; this is just a cache lookup.
  */
 function parseTestFailures(jobId) {
-  const result = parsedJobResults[jobId];
-  if (!result) return null;
-
-  if (result.failures.length > 0) {
-    console.log(`Job ${jobId}: Found ${result.failures.length} failures (Total parsed: ${result.stats.total})`);
-    result.failures.forEach(f => console.log(`  - [${f.file || 'unknown'}] ${f.name}`));
-  }
-
-  return result;
+  return parsedJobResults[jobId] || null;
 }
 
 // Get the job names we care about from config
