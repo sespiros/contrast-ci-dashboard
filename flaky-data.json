@@ -1,31 +1,30 @@
 {
-  "lastRefresh": "2026-04-08T16:58:07.291Z",
+  "lastRefresh": "2026-04-08T20:40:59.146Z",
   "periodDays": 14,
-  "totalFailures": 102,
-  "totalPRs": 9,
-  "confirmedFlakyCount": 40,
-  "mergedDespiteFailureCount": 20,
+  "totalFailures": 98,
+  "totalPRs": 11,
+  "confirmedFlakyCount": 41,
+  "mergedDespiteFailureCount": 36,
   "failedTests": [
     {
       "name": "setup_file failed",
       "file": "k8s-nvidia-nim.bats",
-      "totalFailures": 10,
-      "flakyCount": 10,
+      "totalFailures": 8,
+      "flakyCount": 8,
       "mergedCount": 8,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 3,
       "uniqueDates": [
         "2026-04-08",
-        "2026-04-07",
-        "2026-04-06"
+        "2026-04-07"
       ],
       "affectedJobs": [
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "count": 8,
-          "flakyCount": 8,
+          "count": 6,
+          "flakyCount": 6,
           "mergedCount": 6
         },
         {
@@ -71,7 +70,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -83,7 +82,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -129,30 +128,6 @@
           "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
           "jobId": "70182380860",
           "runId": "24061447603",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-06",
-          "prNumber": "12760",
-          "prTitle": "Bump trustee and guest-components to add nvswitch / ppcie support ",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobId": "70127719889",
-          "runId": "24043253725",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-06",
-          "prNumber": "12760",
-          "prTitle": "Bump trustee and guest-components to add nvswitch / ppcie support ",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobId": "70127719889",
-          "runId": "24043253725",
           "runAttempt": 1,
           "isFlaky": true,
           "prMerged": true
@@ -162,24 +137,23 @@
     {
       "name": "NIMService llama-3.2-1b-instruct serves /v1/models",
       "file": "k8s-nvidia-nim-service.bats",
-      "totalFailures": 10,
-      "flakyCount": 8,
-      "mergedCount": 10,
+      "totalFailures": 8,
+      "flakyCount": 6,
+      "mergedCount": 8,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 3,
       "uniqueDates": [
         "2026-04-08",
-        "2026-04-07",
-        "2026-04-06"
+        "2026-04-07"
       ],
       "affectedJobs": [
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "count": 8,
-          "flakyCount": 6,
-          "mergedCount": 8
+          "count": 6,
+          "flakyCount": 4,
+          "mergedCount": 6
         },
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64",
@@ -285,54 +259,29 @@
           "runAttempt": 1,
           "isFlaky": true,
           "prMerged": true
-        },
-        {
-          "date": "2026-04-06",
-          "prNumber": "12760",
-          "prTitle": "Bump trustee and guest-components to add nvswitch / ppcie support ",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobId": "70127719889",
-          "runId": "24043253725",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-06",
-          "prNumber": "12760",
-          "prTitle": "Bump trustee and guest-components to add nvswitch / ppcie support ",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobId": "70127719889",
-          "runId": "24043253725",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
         }
       ]
     },
     {
       "name": "Get CDH resource",
       "file": "k8s-confidential-attestation.bats",
-      "totalFailures": 9,
-      "flakyCount": 9,
-      "mergedCount": 9,
+      "totalFailures": 7,
+      "flakyCount": 7,
+      "mergedCount": 7,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 3,
       "uniqueDates": [
         "2026-04-08",
-        "2026-04-07",
-        "2026-04-06"
+        "2026-04-07"
       ],
       "affectedJobs": [
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "count": 7,
-          "flakyCount": 7,
-          "mergedCount": 7
+          "count": 5,
+          "flakyCount": 5,
+          "mergedCount": 5
         },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
@@ -426,30 +375,54 @@
           "runAttempt": 1,
           "isFlaky": true,
           "prMerged": true
-        },
+        }
+      ]
+    },
+    {
+      "name": "Block Storage Support",
+      "file": "k8s-block-volume.bats",
+      "totalFailures": 2,
+      "flakyCount": 2,
+      "mergedCount": 0,
+      "isConfirmedFlaky": true,
+      "mergedDespiteFailure": false,
+      "uniquePRs": 1,
+      "uniqueDates": [
+        "2026-04-08"
+      ],
+      "affectedJobs": [
         {
-          "date": "2026-04-06",
-          "prNumber": "12760",
-          "prTitle": "Bump trustee and guest-components to add nvswitch / ppcie support ",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobId": "70127719889",
-          "runId": "24043253725",
+          "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
+          "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
+          "count": 2,
+          "flakyCount": 2,
+          "mergedCount": 0
+        }
+      ],
+      "recentOccurrences": [
+        {
+          "date": "2026-04-08",
+          "prNumber": "12784",
+          "prTitle": "Add sev-snp, qemu-snp CIs as required",
+          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
+          "jobId": "70471871614",
+          "runId": "24148517687",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": true
+          "prMerged": false
         },
         {
-          "date": "2026-04-06",
-          "prNumber": "12760",
-          "prTitle": "Bump trustee and guest-components to add nvswitch / ppcie support ",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-          "jobId": "70127719889",
-          "runId": "24043253725",
+          "date": "2026-04-08",
+          "prNumber": "12784",
+          "prTitle": "Add sev-snp, qemu-snp CIs as required",
+          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
+          "jobId": "70471871614",
+          "runId": "24148517687",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": true
+          "prMerged": false
         }
       ]
     },
@@ -602,9 +575,9 @@
       "file": "k8s-guest-pull-image-encrypted.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -615,7 +588,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -629,7 +602,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -641,7 +614,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -650,9 +623,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -663,7 +636,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -677,7 +650,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -689,7 +662,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -698,9 +671,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -711,7 +684,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -725,7 +698,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -737,7 +710,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -746,9 +719,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -759,7 +732,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -773,7 +746,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -785,7 +758,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -794,9 +767,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -807,7 +780,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -821,7 +794,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -833,7 +806,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -842,9 +815,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -855,7 +828,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -869,7 +842,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -881,7 +854,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -890,9 +863,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -903,7 +876,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -917,7 +890,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -929,7 +902,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -938,9 +911,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -951,7 +924,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -965,7 +938,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -977,7 +950,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -986,9 +959,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -999,7 +972,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -1013,7 +986,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -1025,7 +998,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -1034,9 +1007,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -1047,7 +1020,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -1061,7 +1034,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -1073,7 +1046,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -1082,9 +1055,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -1095,7 +1068,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -1109,7 +1082,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -1121,7 +1094,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -1130,9 +1103,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -1143,7 +1116,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -1157,7 +1130,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -1169,7 +1142,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -1178,9 +1151,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -1191,7 +1164,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -1205,7 +1178,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -1217,7 +1190,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -1226,9 +1199,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -1239,7 +1212,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -1253,7 +1226,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -1265,7 +1238,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -1274,9 +1247,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -1287,7 +1260,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -1301,7 +1274,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -1313,7 +1286,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -1322,9 +1295,9 @@
       "file": "k8s-policy-pod.bats",
       "totalFailures": 2,
       "flakyCount": 2,
-      "mergedCount": 0,
+      "mergedCount": 2,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-07"
@@ -1335,7 +1308,7 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -1349,7 +1322,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-07",
@@ -1361,7 +1334,7 @@
           "runId": "24089657028",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -2219,9 +2192,9 @@
     }
   ],
   "summary": {
-    "totalFailedTests": 40,
-    "confirmedFlaky": 40,
-    "mergedDespiteFailure": 20,
+    "totalFailedTests": 41,
+    "confirmedFlaky": 41,
+    "mergedDespiteFailure": 36,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
       "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
@@ -2276,7 +2249,7 @@
       },
       {
         "date": "2026-04-06",
-        "failures": 6
+        "failures": 0
       },
       {
         "date": "2026-04-07",
@@ -2284,7 +2257,7 @@
       },
       {
         "date": "2026-04-08",
-        "failures": 10
+        "failures": 12
       }
     ],
     "jobBreakdown": [
@@ -2300,14 +2273,14 @@
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
         "count": 30,
         "flakyCount": 30,
-        "mergedCount": 0
+        "mergedCount": 30
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
-        "count": 24,
-        "flakyCount": 22,
-        "mergedCount": 22
+        "count": 18,
+        "flakyCount": 16,
+        "mergedCount": 18
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64",
@@ -2324,11 +2297,18 @@
         "mergedCount": 0
       },
       {
+        "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
+        "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
+        "count": 2,
+        "flakyCount": 2,
+        "mergedCount": 0
+      },
+      {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
         "count": 2,
         "flakyCount": 2,
-        "mergedCount": 0
+        "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-arm64 / run-k8s-tests-on-arm64 (qemu, kubeadm)",
