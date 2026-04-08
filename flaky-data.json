@@ -1,9 +1,9 @@
 {
-  "lastRefresh": "2026-04-08T01:30:04.389Z",
+  "lastRefresh": "2026-04-08T05:50:28.726Z",
   "periodDays": 14,
-  "totalFailures": 114,
+  "totalFailures": 112,
   "totalPRs": 9,
-  "confirmedFlakyCount": 40,
+  "confirmedFlakyCount": 39,
   "mergedDespiteFailureCount": 19,
   "failedTests": [
     {
@@ -2301,59 +2301,11 @@
           "prMerged": true
         }
       ]
-    },
-    {
-      "name": "Validate Pod hostname",
-      "file": "k8s-hostname.bats",
-      "totalFailures": 2,
-      "flakyCount": 2,
-      "mergedCount": 0,
-      "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
-      "uniquePRs": 1,
-      "uniqueDates": [
-        "2026-04-03"
-      ],
-      "affectedJobs": [
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 0
-        }
-      ],
-      "recentOccurrences": [
-        {
-          "date": "2026-04-03",
-          "prNumber": "12771",
-          "prTitle": "runtime-rs: Refactor FC support",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
-          "jobId": "69873593088",
-          "runId": "23955016203",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-03",
-          "prNumber": "12771",
-          "prTitle": "runtime-rs: Refactor FC support",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
-          "jobId": "69873593088",
-          "runId": "23955016203",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        }
-      ]
     }
   ],
   "summary": {
-    "totalFailedTests": 40,
-    "confirmedFlaky": 40,
+    "totalFailedTests": 39,
+    "confirmedFlaky": 39,
     "mergedDespiteFailure": 19,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
@@ -2397,7 +2349,7 @@
       },
       {
         "date": "2026-04-03",
-        "failures": 14
+        "failures": 12
       },
       {
         "date": "2026-04-04",
@@ -2438,8 +2390,8 @@
       {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
-        "count": 32,
-        "flakyCount": 32,
+        "count": 30,
+        "flakyCount": 30,
         "mergedCount": 0
       },
       {
