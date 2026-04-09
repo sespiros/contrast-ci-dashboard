@@ -1,9 +1,9 @@
 {
-  "lastRefresh": "2026-04-09T09:08:37.816Z",
+  "lastRefresh": "2026-04-09T13:04:53.169Z",
   "periodDays": 14,
-  "totalFailures": 54,
+  "totalFailures": 52,
   "totalPRs": 8,
-  "confirmedFlakyCount": 26,
+  "confirmedFlakyCount": 25,
   "mergedDespiteFailureCount": 25,
   "failedTests": [
     {
@@ -1174,54 +1174,6 @@
       ]
     },
     {
-      "name": "Empty dir volume when FSGroup is specified with non-root container",
-      "file": "k8s-empty-dirs.bats",
-      "totalFailures": 2,
-      "flakyCount": 2,
-      "mergedCount": 0,
-      "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
-      "uniquePRs": 1,
-      "uniqueDates": [
-        "2026-04-07"
-      ],
-      "affectedJobs": [
-        {
-          "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 0
-        }
-      ],
-      "recentOccurrences": [
-        {
-          "date": "2026-04-07",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "jobId": "70233060887",
-          "runId": "24077264175",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-07",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "jobId": "70233060887",
-          "runId": "24077264175",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        }
-      ]
-    },
-    {
       "name": "Get CDH resource",
       "file": "k8s-confidential-attestation.bats",
       "totalFailures": 1,
@@ -1295,8 +1247,8 @@
     }
   ],
   "summary": {
-    "totalFailedTests": 26,
-    "confirmedFlaky": 26,
+    "totalFailedTests": 25,
+    "confirmedFlaky": 25,
     "mergedDespiteFailure": 25,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
@@ -1352,7 +1304,7 @@
       },
       {
         "date": "2026-04-07",
-        "failures": 42
+        "failures": 40
       },
       {
         "date": "2026-04-08",
@@ -1412,13 +1364,6 @@
         "count": 2,
         "flakyCount": 2,
         "mergedCount": 2
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-        "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 0
       }
     ]
   }
