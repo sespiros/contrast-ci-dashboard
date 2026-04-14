@@ -1,8 +1,8 @@
 {
-  "lastRefresh": "2026-04-14T13:11:07.606Z",
+  "lastRefresh": "2026-04-14T17:02:24.745Z",
   "periodDays": 14,
   "totalFailures": 888,
-  "totalPRs": 5,
+  "totalPRs": 4,
   "confirmedFlakyCount": 33,
   "mergedDespiteFailureCount": 42,
   "failedTests": [
