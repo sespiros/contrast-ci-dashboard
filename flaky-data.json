@@ -1,8 +1,8 @@
 {
-  "lastRefresh": "2026-04-15T20:45:51.069Z",
+  "lastRefresh": "2026-04-16T01:36:33.658Z",
   "periodDays": 14,
   "totalFailures": 6,
-  "totalPRs": 11,
+  "totalPRs": 12,
   "confirmedFlakyCount": 0,
   "mergedDespiteFailureCount": 0,
   "failedTests": [
@@ -34,9 +34,9 @@
           "prTitle": "ci: Refactor confidential TEE support",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobId": "71509886473",
+          "jobId": "71546994999",
           "runId": "24470013871",
-          "runAttempt": 1,
+          "runAttempt": 2,
           "isFlaky": false,
           "prMerged": false
         },
@@ -46,9 +46,9 @@
           "prTitle": "ci: Refactor confidential TEE support",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobId": "71509886473",
+          "jobId": "71546994999",
           "runId": "24470013871",
-          "runAttempt": 1,
+          "runAttempt": 2,
           "isFlaky": false,
           "prMerged": false
         },
@@ -140,10 +140,6 @@
     },
     "trend": [
       {
-        "date": "2026-04-02",
-        "failures": 0
-      },
-      {
         "date": "2026-04-03",
         "failures": 0
       },
@@ -194,6 +190,10 @@
       {
         "date": "2026-04-15",
         "failures": 6
+      },
+      {
+        "date": "2026-04-16",
+        "failures": 0
       }
     ],
     "jobBreakdown": [
