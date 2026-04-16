@@ -221,6 +221,12 @@ sections:
         maintainers:
           - "@AdithyaKrishnan"
           - "@hgowda-amd"
+
+      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp-runtime-rs)"
+        description: "AMD SEV-SNP with runtime-rs and nydus snapshotter"
+        maintainers:
+          - "@AdithyaKrishnan"
+          - "@hgowda-amd"
       
       - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)"
         description: "Intel TDX with nydus snapshotter"
