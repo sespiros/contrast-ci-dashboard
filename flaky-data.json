@@ -1,9 +1,9 @@
 {
-  "lastRefresh": "2026-04-17T06:03:55.410Z",
+  "lastRefresh": "2026-04-17T09:12:41.552Z",
   "periodDays": 14,
-  "totalFailures": 20,
+  "totalFailures": 18,
   "totalPRs": 9,
-  "confirmedFlakyCount": 7,
+  "confirmedFlakyCount": 6,
   "mergedDespiteFailureCount": 0,
   "failedTests": [
     {
@@ -413,59 +413,11 @@
           "prMerged": false
         }
       ]
-    },
-    {
-      "name": "Test cannot launch pod with measured boot enabled and incorrect hash",
-      "file": "k8s-measured-rootfs.bats",
-      "totalFailures": 2,
-      "flakyCount": 2,
-      "mergedCount": 0,
-      "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
-      "uniquePRs": 1,
-      "uniqueDates": [
-        "2026-04-15"
-      ],
-      "affectedJobs": [
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 0
-        }
-      ],
-      "recentOccurrences": [
-        {
-          "date": "2026-04-15",
-          "prNumber": "12812",
-          "prTitle": "ci: Refactor confidential TEE support",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobId": "71496357479",
-          "runId": "24465522454",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-15",
-          "prNumber": "12812",
-          "prTitle": "ci: Refactor confidential TEE support",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobId": "71496357479",
-          "runId": "24465522454",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        }
-      ]
     }
   ],
   "summary": {
-    "totalFailedTests": 9,
-    "confirmedFlaky": 7,
+    "totalFailedTests": 8,
+    "confirmedFlaky": 6,
     "mergedDespiteFailure": 0,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp-runtime-rs)",
@@ -521,7 +473,7 @@
       },
       {
         "date": "2026-04-15",
-        "failures": 2
+        "failures": 0
       },
       {
         "date": "2026-04-16",
@@ -545,13 +497,6 @@
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
         "count": 2,
         "flakyCount": 0,
-        "mergedCount": 0
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-        "count": 2,
-        "flakyCount": 2,
         "mergedCount": 0
       }
     ]
