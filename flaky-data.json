@@ -1,19 +1,19 @@
 {
-  "lastRefresh": "2026-04-20T01:37:29.158Z",
+  "lastRefresh": "2026-04-20T06:15:58.927Z",
   "periodDays": 14,
   "totalFailures": 112,
   "totalPRs": 9,
   "confirmedFlakyCount": 45,
-  "mergedDespiteFailureCount": 0,
+  "mergedDespiteFailureCount": 1,
   "failedTests": [
     {
       "name": "Kill all processes in container",
       "file": "k8s-kill-all-process-in-container.bats",
       "totalFailures": 12,
       "flakyCount": 12,
-      "mergedCount": 0,
+      "mergedCount": 12,
       "isConfirmedFlaky": true,
-      "mergedDespiteFailure": false,
+      "mergedDespiteFailure": true,
       "uniquePRs": 1,
       "uniqueDates": [
         "2026-04-19"
@@ -24,42 +24,42 @@
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
           "count": 2,
           "flakyCount": 2,
-          "mergedCount": 0
+          "mergedCount": 2
         }
       ],
       "recentOccurrences": [
@@ -73,7 +73,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -85,7 +85,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -97,7 +97,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -109,7 +109,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -121,7 +121,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -133,7 +133,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -145,7 +145,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -157,7 +157,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -169,7 +169,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -181,7 +181,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -193,7 +193,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-19",
@@ -205,7 +205,7 @@
           "runId": "24622668552",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         }
       ]
     },
@@ -2555,13 +2555,13 @@
   "summary": {
     "totalFailedTests": 48,
     "confirmedFlaky": 45,
-    "mergedDespiteFailure": 0,
+    "mergedDespiteFailure": 1,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
       "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
       "count": 36,
       "flakyCount": 36,
-      "mergedCount": 0
+      "mergedCount": 2
     },
     "trend": [
       {
@@ -2627,7 +2627,7 @@
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
         "count": 36,
         "flakyCount": 36,
-        "mergedCount": 0
+        "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)",
@@ -2648,7 +2648,7 @@
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
         "count": 8,
         "flakyCount": 8,
-        "mergedCount": 0
+        "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp-runtime-rs)",
@@ -2662,7 +2662,7 @@
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
         "count": 4,
         "flakyCount": 2,
-        "mergedCount": 0
+        "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev, erofs, default)",
@@ -2676,21 +2676,21 @@
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
         "count": 2,
         "flakyCount": 2,
-        "mergedCount": 0
+        "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
         "count": 2,
         "flakyCount": 2,
-        "mergedCount": 0
+        "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
         "count": 2,
         "flakyCount": 2,
-        "mergedCount": 0
+        "mergedCount": 2
       }
     ]
   }
