@@ -1,20 +1,20 @@
 {
-  "lastRefresh": "2026-04-21T13:05:57.291Z",
+  "lastRefresh": "2026-04-21T16:53:19.503Z",
   "periodDays": 14,
-  "totalFailures": 494,
-  "totalPRs": 11,
+  "totalFailures": 416,
+  "totalPRs": 12,
   "confirmedFlakyCount": 39,
   "mergedDespiteFailureCount": 38,
   "failedTests": [
     {
       "name": "Block Storage Support",
       "file": "k8s-block-volume.bats",
-      "totalFailures": 14,
+      "totalFailures": 12,
       "flakyCount": 6,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 6,
+      "uniquePRs": 5,
       "uniqueDates": [
         "2026-04-21",
         "2026-04-20"
@@ -23,9 +23,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         },
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
@@ -70,7 +70,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -82,18 +82,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -110,27 +98,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -203,218 +179,18 @@
           "runAttempt": 1,
           "isFlaky": true,
           "prMerged": false
-        }
-      ]
-    },
-    {
-      "name": "Kill all processes in container",
-      "file": "k8s-kill-all-process-in-container.bats",
-      "totalFailures": 14,
-      "flakyCount": 6,
-      "mergedCount": 4,
-      "isConfirmedFlaky": true,
-      "mergedDespiteFailure": true,
-      "uniquePRs": 6,
-      "uniqueDates": [
-        "2026-04-20",
-        "2026-04-19"
-      ],
-      "affectedJobs": [
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
-          "flakyCount": 4,
-          "mergedCount": 2
-        },
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 2
-        }
-      ],
-      "recentOccurrences": [
-        {
-          "date": "2026-04-20",
-          "prNumber": "12881",
-          "prTitle": "Bump web pki to 0.103.12",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72169269436",
-          "runId": "24677673715",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12881",
-          "prTitle": "Bump web pki to 0.103.12",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72169269436",
-          "runId": "24677673715",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72132802888",
-          "runId": "24666874732",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72132802888",
-          "runId": "24666874732",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72099110127",
-          "runId": "24657219265",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72099110127",
-          "runId": "24657219265",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12846",
-          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72105502272",
-          "runId": "24659391819",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12846",
-          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72105502272",
-          "runId": "24659391819",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "jobId": "71997720422",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "jobId": "71997720422",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
         }
       ]
     },
     {
       "name": "Kubectl exec rejected by policy",
       "file": "k8s-policy-hard-coded.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -422,9 +198,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -438,7 +214,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -450,18 +226,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -478,27 +242,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -577,12 +329,12 @@
     {
       "name": "AllowRequestsFailingPolicy := true",
       "file": "k8s-policy-hard-coded.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -590,9 +342,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -606,7 +358,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -618,18 +370,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -646,27 +386,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -745,12 +473,12 @@
     {
       "name": "Running with postStart and preStop handlers",
       "file": "k8s-attach-handlers.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -758,9 +486,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -774,7 +502,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -786,18 +514,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -814,27 +530,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -913,12 +617,12 @@
     {
       "name": "Check capabilities of pod",
       "file": "k8s-caps.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -926,9 +630,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -942,7 +646,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -954,18 +658,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -982,27 +674,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1081,12 +761,12 @@
     {
       "name": "ConfigMap for a pod",
       "file": "k8s-configmap.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -1094,9 +774,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -1110,7 +790,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1122,18 +802,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -1150,27 +818,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1249,12 +905,12 @@
     {
       "name": "ConfigMap propagation to volume-mounted pod",
       "file": "k8s-configmap.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -1262,9 +918,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -1278,7 +934,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1290,18 +946,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -1318,27 +962,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1417,12 +1049,12 @@
     {
       "name": "Copy file in a pod",
       "file": "k8s-copy-file.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -1430,9 +1062,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -1446,7 +1078,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1458,18 +1090,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -1486,27 +1106,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1585,12 +1193,12 @@
     {
       "name": "Copy from pod to host",
       "file": "k8s-copy-file.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -1598,9 +1206,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -1614,7 +1222,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1626,18 +1234,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -1654,27 +1250,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1753,12 +1337,12 @@
     {
       "name": "Credentials using secrets",
       "file": "k8s-credentials-secrets.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -1766,9 +1350,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -1782,7 +1366,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1794,18 +1378,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -1822,27 +1394,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1921,12 +1481,12 @@
     {
       "name": "Secret propagation to volume-mounted pod",
       "file": "k8s-credentials-secrets.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -1934,9 +1494,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -1950,7 +1510,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -1962,18 +1522,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -1990,27 +1538,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2089,12 +1625,12 @@
     {
       "name": "Empty dir volumes",
       "file": "k8s-empty-dirs.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -2102,9 +1638,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -2118,7 +1654,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2130,18 +1666,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -2158,27 +1682,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2257,12 +1769,12 @@
     {
       "name": "Empty dir volume when FSGroup is specified with non-root container",
       "file": "k8s-empty-dirs.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -2270,9 +1782,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -2286,7 +1798,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2298,18 +1810,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -2326,27 +1826,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2425,12 +1913,12 @@
     {
       "name": "Environment variables",
       "file": "k8s-env.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -2438,9 +1926,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -2454,7 +1942,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2466,18 +1954,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -2494,27 +1970,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2593,12 +2057,12 @@
     {
       "name": "Kubectl exec",
       "file": "k8s-exec.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -2606,9 +2070,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -2622,7 +2086,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2634,18 +2098,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -2662,27 +2114,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2761,12 +2201,12 @@
     {
       "name": "Test readonly volume for pods",
       "file": "k8s-file-volume.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -2774,9 +2214,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -2790,7 +2230,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2802,18 +2242,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -2830,27 +2258,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2929,12 +2345,12 @@
     {
       "name": "Validate Pod hostname",
       "file": "k8s-hostname.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -2942,9 +2358,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -2958,7 +2374,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -2970,18 +2386,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -2998,27 +2402,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3097,12 +2489,12 @@
     {
       "name": "/dev hostPath volume bind mounts the guest device and skips virtio-fs",
       "file": "k8s-hostpath-volume.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -3110,9 +2502,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -3126,7 +2518,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3138,18 +2530,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -3166,27 +2546,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3265,12 +2633,12 @@
     {
       "name": "configmap update works, and preserves symlinks",
       "file": "k8s-inotify.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -3278,9 +2646,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -3294,7 +2662,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3306,18 +2674,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -3334,27 +2690,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3433,12 +2777,12 @@
     {
       "name": "Pod that performs ip6tables setup",
       "file": "k8s-ip6tables.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -3446,9 +2790,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -3462,7 +2806,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3474,18 +2818,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -3502,27 +2834,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3601,12 +2921,12 @@
     {
       "name": "Run a job to completion",
       "file": "k8s-job.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -3614,9 +2934,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -3630,7 +2950,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3642,18 +2962,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -3670,27 +2978,159 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
+          "isFlaky": false,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72132802888",
+          "runId": "24666874732",
           "runAttempt": 1,
           "isFlaky": false,
           "prMerged": false
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
+          "jobId": "72132802888",
+          "runId": "24666874732",
           "runAttempt": 1,
           "isFlaky": false,
           "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72099110127",
+          "runId": "24657219265",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72099110127",
+          "runId": "24657219265",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12846",
+          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72105502272",
+          "runId": "24659391819",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12846",
+          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72105502272",
+          "runId": "24659391819",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        }
+      ]
+    },
+    {
+      "name": "Kill all processes in container",
+      "file": "k8s-kill-all-process-in-container.bats",
+      "totalFailures": 10,
+      "flakyCount": 4,
+      "mergedCount": 4,
+      "isConfirmedFlaky": true,
+      "mergedDespiteFailure": true,
+      "uniquePRs": 4,
+      "uniqueDates": [
+        "2026-04-20"
+      ],
+      "affectedJobs": [
+        {
+          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "count": 10,
+          "flakyCount": 4,
+          "mergedCount": 4
+        }
+      ],
+      "recentOccurrences": [
+        {
+          "date": "2026-04-20",
+          "prNumber": "12881",
+          "prTitle": "Bump web pki to 0.103.12",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72169269436",
+          "runId": "24677673715",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12881",
+          "prTitle": "Bump web pki to 0.103.12",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72169269436",
+          "runId": "24677673715",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
+          "isFlaky": false,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
+          "isFlaky": false,
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3769,12 +3209,12 @@
     {
       "name": "Limit range for storage",
       "file": "k8s-limit-range.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -3782,9 +3222,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -3798,7 +3238,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3810,18 +3250,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -3838,27 +3266,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3937,12 +3353,12 @@
     {
       "name": "Liveness probe",
       "file": "k8s-liveness-probes.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -3950,9 +3366,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -3966,7 +3382,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -3978,18 +3394,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -4006,27 +3410,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4105,12 +3497,12 @@
     {
       "name": "Liveness http probe",
       "file": "k8s-liveness-probes.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -4118,9 +3510,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -4134,7 +3526,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4146,18 +3538,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -4174,27 +3554,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4273,12 +3641,12 @@
     {
       "name": "Liveness tcp probe",
       "file": "k8s-liveness-probes.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -4286,9 +3654,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -4302,7 +3670,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4314,18 +3682,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -4342,27 +3698,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4441,12 +3785,12 @@
     {
       "name": "Running within memory constraints",
       "file": "k8s-memory.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -4454,9 +3798,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -4470,7 +3814,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4482,18 +3826,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -4510,27 +3842,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4609,12 +3929,12 @@
     {
       "name": "Nested mount of a secret volume in a configmap volume for a pod",
       "file": "k8s-nested-configmap-secret.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -4622,9 +3942,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -4638,7 +3958,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4650,18 +3970,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -4678,27 +3986,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4777,12 +4073,12 @@
     {
       "name": "Test OOM events for pods",
       "file": "k8s-oom.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -4790,9 +4086,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -4806,7 +4102,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4818,18 +4114,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -4846,27 +4130,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4945,12 +4217,12 @@
     {
       "name": "Pods establishing a VPN connection using openvpn",
       "file": "k8s-openvpn.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -4958,9 +4230,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -4974,7 +4246,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -4986,18 +4258,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -5014,27 +4274,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5113,12 +4361,12 @@
     {
       "name": "Termination log: successful exit with policy allowing GetDiagnosticDataRequest",
       "file": "k8s-termination-log.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -5126,9 +4374,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -5142,7 +4390,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5154,18 +4402,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -5182,27 +4418,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5281,12 +4505,12 @@
     {
       "name": "Termination log: failed exit with policy allowing GetDiagnosticDataRequest",
       "file": "k8s-termination-log.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -5294,9 +4518,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -5310,7 +4534,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5322,18 +4546,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -5350,27 +4562,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5449,12 +4649,12 @@
     {
       "name": "Optional and Empty ConfigMap Volume for a pod",
       "file": "k8s-optional-empty-configmap.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -5462,9 +4662,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -5478,7 +4678,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5490,18 +4690,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -5518,27 +4706,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5617,12 +4793,12 @@
     {
       "name": "Optional and Empty Secret Volume for a pod",
       "file": "k8s-optional-empty-secret.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -5630,9 +4806,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -5646,7 +4822,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5658,18 +4834,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -5686,27 +4850,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5785,12 +4937,12 @@
     {
       "name": "Check PID namespaces",
       "file": "k8s-pid-ns.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -5798,9 +4950,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -5814,7 +4966,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5826,18 +4978,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -5854,27 +4994,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5953,12 +5081,12 @@
     {
       "name": "Pod quota",
       "file": "k8s-pod-quota.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -5966,9 +5094,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -5982,7 +5110,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -5994,18 +5122,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -6022,27 +5138,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -6121,12 +5225,12 @@
     {
       "name": "Privileged pod runs and is able to execute privileged operations",
       "file": "k8s-privileged.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -6134,9 +5238,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -6150,7 +5254,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -6162,18 +5266,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -6190,27 +5282,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -6289,12 +5369,12 @@
     {
       "name": "Projected volume",
       "file": "k8s-projected-volume.bats",
-      "totalFailures": 12,
+      "totalFailures": 10,
       "flakyCount": 4,
-      "mergedCount": 2,
+      "mergedCount": 4,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 4,
       "uniqueDates": [
         "2026-04-20"
       ],
@@ -6302,9 +5382,9 @@
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
+          "count": 10,
           "flakyCount": 4,
-          "mergedCount": 2
+          "mergedCount": 4
         }
       ],
       "recentOccurrences": [
@@ -6318,7 +5398,7 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -6330,18 +5410,6 @@
           "runId": "24677673715",
           "runAttempt": 1,
           "isFlaky": true,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -6358,27 +5426,15 @@
         },
         {
           "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
           "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
           "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
+          "prMerged": true
         },
         {
           "date": "2026-04-20",
@@ -7278,9 +6334,9 @@
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
       "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-      "count": 456,
+      "count": 380,
       "flakyCount": 152,
-      "mergedCount": 76
+      "mergedCount": 152
     },
     "trend": [
       {
@@ -7329,11 +6385,11 @@
       },
       {
         "date": "2026-04-19",
-        "failures": 2
+        "failures": 0
       },
       {
         "date": "2026-04-20",
-        "failures": 490
+        "failures": 414
       },
       {
         "date": "2026-04-21",
@@ -7344,9 +6400,9 @@
       {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-        "count": 456,
+        "count": 380,
         "flakyCount": 152,
-        "mergedCount": 76
+        "mergedCount": 152
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-zvsi / run-k8s-tests (nydus, qemu-coco-dev, kubeadm)",
@@ -7361,13 +6417,6 @@
         "count": 2,
         "flakyCount": 2,
         "mergedCount": 0
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
