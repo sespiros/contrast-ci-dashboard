@@ -1,9 +1,9 @@
 {
-  "lastRefresh": "2026-04-21T06:04:23.110Z",
+  "lastRefresh": "2026-04-21T09:23:40.112Z",
   "periodDays": 14,
-  "totalFailures": 502,
-  "totalPRs": 11,
-  "confirmedFlakyCount": 2,
+  "totalFailures": 504,
+  "totalPRs": 10,
+  "confirmedFlakyCount": 3,
   "mergedDespiteFailureCount": 38,
   "failedTests": [
     {
@@ -362,6 +362,206 @@
       ]
     },
     {
+      "name": "Block Storage Support",
+      "file": "k8s-block-volume.bats",
+      "totalFailures": 14,
+      "flakyCount": 2,
+      "mergedCount": 2,
+      "isConfirmedFlaky": true,
+      "mergedDespiteFailure": true,
+      "uniquePRs": 6,
+      "uniqueDates": [
+        "2026-04-21",
+        "2026-04-20"
+      ],
+      "affectedJobs": [
+        {
+          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "count": 12,
+          "flakyCount": 0,
+          "mergedCount": 2
+        },
+        {
+          "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
+          "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
+          "count": 2,
+          "flakyCount": 2,
+          "mergedCount": 0
+        }
+      ],
+      "recentOccurrences": [
+        {
+          "date": "2026-04-21",
+          "prNumber": "12771",
+          "prTitle": "runtime-rs: Refactor FC support",
+          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
+          "jobId": "72278075505",
+          "runId": "24710751767",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-21",
+          "prNumber": "12771",
+          "prTitle": "runtime-rs: Refactor FC support",
+          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
+          "jobId": "72278075505",
+          "runId": "24710751767",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12881",
+          "prTitle": "Bump web pki to 0.103.12",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72169269436",
+          "runId": "24677673715",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12881",
+          "prTitle": "Bump web pki to 0.103.12",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72169269436",
+          "runId": "24677673715",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
+          "isFlaky": false,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
+          "isFlaky": false,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12876",
+          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72086451291",
+          "runId": "24653686729",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12876",
+          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72086451291",
+          "runId": "24653686729",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72132802888",
+          "runId": "24666874732",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72132802888",
+          "runId": "24666874732",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72099110127",
+          "runId": "24657219265",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72099110127",
+          "runId": "24657219265",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12846",
+          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72105502272",
+          "runId": "24659391819",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12846",
+          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72105502272",
+          "runId": "24659391819",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        }
+      ]
+    },
+    {
       "name": "Kubectl exec rejected by policy",
       "file": "k8s-policy-hard-coded.bats",
       "totalFailures": 12,
@@ -700,174 +900,6 @@
     {
       "name": "Running with postStart and preStop handlers",
       "file": "k8s-attach-handlers.bats",
-      "totalFailures": 12,
-      "flakyCount": 0,
-      "mergedCount": 2,
-      "isConfirmedFlaky": false,
-      "mergedDespiteFailure": true,
-      "uniquePRs": 5,
-      "uniqueDates": [
-        "2026-04-20"
-      ],
-      "affectedJobs": [
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
-          "flakyCount": 0,
-          "mergedCount": 2
-        }
-      ],
-      "recentOccurrences": [
-        {
-          "date": "2026-04-20",
-          "prNumber": "12881",
-          "prTitle": "Bump web pki to 0.103.12",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72169269436",
-          "runId": "24677673715",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12881",
-          "prTitle": "Bump web pki to 0.103.12",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72169269436",
-          "runId": "24677673715",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72132802888",
-          "runId": "24666874732",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72132802888",
-          "runId": "24666874732",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72099110127",
-          "runId": "24657219265",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72099110127",
-          "runId": "24657219265",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12846",
-          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72105502272",
-          "runId": "24659391819",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12846",
-          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72105502272",
-          "runId": "24659391819",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        }
-      ]
-    },
-    {
-      "name": "Block Storage Support",
-      "file": "k8s-block-volume.bats",
       "totalFailures": 12,
       "flakyCount": 0,
       "mergedCount": 2,
@@ -7396,7 +7428,7 @@
   ],
   "summary": {
     "totalFailedTests": 55,
-    "confirmedFlaky": 2,
+    "confirmedFlaky": 3,
     "mergedDespiteFailure": 38,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
@@ -7460,7 +7492,7 @@
       },
       {
         "date": "2026-04-21",
-        "failures": 0
+        "failures": 2
       }
     ],
     "jobBreakdown": [
@@ -7519,6 +7551,13 @@
         "count": 2,
         "flakyCount": 2,
         "mergedCount": 2
+      },
+      {
+        "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
+        "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
+        "count": 2,
+        "flakyCount": 2,
+        "mergedCount": 0
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
