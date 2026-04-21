@@ -1,371 +1,16 @@
 {
-  "lastRefresh": "2026-04-21T09:23:40.112Z",
+  "lastRefresh": "2026-04-21T13:05:57.291Z",
   "periodDays": 14,
-  "totalFailures": 504,
-  "totalPRs": 10,
-  "confirmedFlakyCount": 3,
+  "totalFailures": 494,
+  "totalPRs": 11,
+  "confirmedFlakyCount": 39,
   "mergedDespiteFailureCount": 38,
   "failedTests": [
-    {
-      "name": "Kill all processes in container",
-      "file": "k8s-kill-all-process-in-container.bats",
-      "totalFailures": 24,
-      "flakyCount": 12,
-      "mergedCount": 14,
-      "isConfirmedFlaky": true,
-      "mergedDespiteFailure": true,
-      "uniquePRs": 6,
-      "uniqueDates": [
-        "2026-04-20",
-        "2026-04-19"
-      ],
-      "affectedJobs": [
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "count": 12,
-          "flakyCount": 0,
-          "mergedCount": 2
-        },
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 2
-        },
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 2
-        },
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 2
-        },
-        {
-          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
-          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 2
-        },
-        {
-          "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
-          "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 2
-        },
-        {
-          "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "count": 2,
-          "flakyCount": 2,
-          "mergedCount": 2
-        }
-      ],
-      "recentOccurrences": [
-        {
-          "date": "2026-04-20",
-          "prNumber": "12881",
-          "prTitle": "Bump web pki to 0.103.12",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72169269436",
-          "runId": "24677673715",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12881",
-          "prTitle": "Bump web pki to 0.103.12",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72169269436",
-          "runId": "24677673715",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12879",
-          "prTitle": "Confidential tests fixes",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72116305090",
-          "runId": "24658880960",
-          "runAttempt": 2,
-          "isFlaky": false,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12876",
-          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72086451291",
-          "runId": "24653686729",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72132802888",
-          "runId": "24666874732",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72132802888",
-          "runId": "24666874732",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72099110127",
-          "runId": "24657219265",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12872",
-          "prTitle": "Bump rust to 1.93",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72099110127",
-          "runId": "24657219265",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12846",
-          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72105502272",
-          "runId": "24659391819",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-20",
-          "prNumber": "12846",
-          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
-          "jobId": "72105502272",
-          "runId": "24659391819",
-          "runAttempt": 1,
-          "isFlaky": false,
-          "prMerged": false
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "jobId": "71997720422",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-          "jobId": "71997720422",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "jobId": "71997853186",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-          "jobId": "71997853186",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobId": "71997853188",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-          "jobId": "71997853188",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
-          "jobId": "71997853193",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
-          "jobId": "71997853193",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
-          "jobId": "71997853205",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
-          "jobId": "71997853205",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "jobId": "71997853206",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        },
-        {
-          "date": "2026-04-19",
-          "prNumber": "12763",
-          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
-          "jobName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "jobDisplayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-          "jobId": "71997853206",
-          "runId": "24622668552",
-          "runAttempt": 1,
-          "isFlaky": true,
-          "prMerged": true
-        }
-      ]
-    },
     {
       "name": "Block Storage Support",
       "file": "k8s-block-volume.bats",
       "totalFailures": 14,
-      "flakyCount": 2,
+      "flakyCount": 6,
       "mergedCount": 2,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
@@ -379,7 +24,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         },
         {
@@ -424,7 +69,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -436,7 +81,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -544,7 +189,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -556,29 +201,37 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
     },
     {
-      "name": "Kubectl exec rejected by policy",
-      "file": "k8s-policy-hard-coded.bats",
-      "totalFailures": 12,
-      "flakyCount": 0,
-      "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "name": "Kill all processes in container",
+      "file": "k8s-kill-all-process-in-container.bats",
+      "totalFailures": 14,
+      "flakyCount": 6,
+      "mergedCount": 4,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
-      "uniquePRs": 5,
+      "uniquePRs": 6,
       "uniqueDates": [
-        "2026-04-20"
+        "2026-04-20",
+        "2026-04-19"
       ],
       "affectedJobs": [
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
+          "mergedCount": 2
+        },
+        {
+          "name": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
+          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
+          "count": 2,
+          "flakyCount": 2,
           "mergedCount": 2
         }
       ],
@@ -592,7 +245,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -604,7 +257,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -712,6 +365,186 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12846",
+          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72105502272",
+          "runId": "24659391819",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-19",
+          "prNumber": "12763",
+          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
+          "jobId": "71997720422",
+          "runId": "24622668552",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-19",
+          "prNumber": "12763",
+          "prTitle": "runtime-rs: support erofs snapshotter with Fsmerge enabled",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
+          "jobId": "71997720422",
+          "runId": "24622668552",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": true
+        }
+      ]
+    },
+    {
+      "name": "Kubectl exec rejected by policy",
+      "file": "k8s-policy-hard-coded.bats",
+      "totalFailures": 12,
+      "flakyCount": 4,
+      "mergedCount": 2,
+      "isConfirmedFlaky": true,
+      "mergedDespiteFailure": true,
+      "uniquePRs": 5,
+      "uniqueDates": [
+        "2026-04-20"
+      ],
+      "affectedJobs": [
+        {
+          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "count": 12,
+          "flakyCount": 4,
+          "mergedCount": 2
+        }
+      ],
+      "recentOccurrences": [
+        {
+          "date": "2026-04-20",
+          "prNumber": "12881",
+          "prTitle": "Bump web pki to 0.103.12",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72169269436",
+          "runId": "24677673715",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12881",
+          "prTitle": "Bump web pki to 0.103.12",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72169269436",
+          "runId": "24677673715",
+          "runAttempt": 1,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
+          "isFlaky": false,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12879",
+          "prTitle": "Confidential tests fixes",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72116305090",
+          "runId": "24658880960",
+          "runAttempt": 2,
+          "isFlaky": false,
+          "prMerged": true
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12876",
+          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72086451291",
+          "runId": "24653686729",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12876",
+          "prTitle": "runtime-rs: Support LUKS encryption for EROFS rwlayer via CDH",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72086451291",
+          "runId": "24653686729",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72132802888",
+          "runId": "24666874732",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72132802888",
+          "runId": "24666874732",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72099110127",
+          "runId": "24657219265",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12872",
+          "prTitle": "Bump rust to 1.93",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72099110127",
+          "runId": "24657219265",
+          "runAttempt": 1,
           "isFlaky": false,
           "prMerged": false
         },
@@ -724,7 +557,19 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-20",
+          "prNumber": "12846",
+          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
+          "jobId": "72105502272",
+          "runId": "24659391819",
+          "runAttempt": 1,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -733,9 +578,9 @@
       "name": "AllowRequestsFailingPolicy := true",
       "file": "k8s-policy-hard-coded.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -746,7 +591,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -760,7 +605,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -772,7 +617,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -880,7 +725,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -892,7 +737,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -901,9 +746,9 @@
       "name": "Running with postStart and preStop handlers",
       "file": "k8s-attach-handlers.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -914,7 +759,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -928,7 +773,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -940,7 +785,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1048,7 +893,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1060,7 +905,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -1069,9 +914,9 @@
       "name": "Check capabilities of pod",
       "file": "k8s-caps.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -1082,7 +927,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -1096,7 +941,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1108,7 +953,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1216,7 +1061,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1228,7 +1073,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -1237,9 +1082,9 @@
       "name": "ConfigMap for a pod",
       "file": "k8s-configmap.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -1250,7 +1095,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -1264,7 +1109,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1276,7 +1121,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1384,7 +1229,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1396,7 +1241,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -1405,9 +1250,9 @@
       "name": "ConfigMap propagation to volume-mounted pod",
       "file": "k8s-configmap.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -1418,7 +1263,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -1432,7 +1277,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1444,7 +1289,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1552,7 +1397,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1564,7 +1409,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -1573,9 +1418,9 @@
       "name": "Copy file in a pod",
       "file": "k8s-copy-file.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -1586,7 +1431,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -1600,7 +1445,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1612,7 +1457,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1720,7 +1565,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1732,7 +1577,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -1741,9 +1586,9 @@
       "name": "Copy from pod to host",
       "file": "k8s-copy-file.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -1754,7 +1599,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -1768,7 +1613,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1780,7 +1625,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1888,7 +1733,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1900,7 +1745,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -1909,9 +1754,9 @@
       "name": "Credentials using secrets",
       "file": "k8s-credentials-secrets.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -1922,7 +1767,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -1936,7 +1781,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -1948,7 +1793,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2056,7 +1901,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2068,7 +1913,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -2077,9 +1922,9 @@
       "name": "Secret propagation to volume-mounted pod",
       "file": "k8s-credentials-secrets.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -2090,7 +1935,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -2104,7 +1949,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2116,7 +1961,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2224,7 +2069,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2236,7 +2081,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -2245,9 +2090,9 @@
       "name": "Empty dir volumes",
       "file": "k8s-empty-dirs.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -2258,7 +2103,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -2272,7 +2117,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2284,7 +2129,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2392,7 +2237,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2404,7 +2249,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -2413,9 +2258,9 @@
       "name": "Empty dir volume when FSGroup is specified with non-root container",
       "file": "k8s-empty-dirs.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -2426,7 +2271,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -2440,7 +2285,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2452,7 +2297,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2560,7 +2405,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2572,7 +2417,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -2581,9 +2426,9 @@
       "name": "Environment variables",
       "file": "k8s-env.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -2594,7 +2439,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -2608,7 +2453,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2620,7 +2465,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2728,7 +2573,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2740,7 +2585,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -2749,9 +2594,9 @@
       "name": "Kubectl exec",
       "file": "k8s-exec.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -2762,7 +2607,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -2776,7 +2621,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2788,7 +2633,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2896,7 +2741,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2908,7 +2753,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -2917,9 +2762,9 @@
       "name": "Test readonly volume for pods",
       "file": "k8s-file-volume.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -2930,7 +2775,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -2944,7 +2789,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -2956,7 +2801,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3064,7 +2909,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3076,7 +2921,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -3085,9 +2930,9 @@
       "name": "Validate Pod hostname",
       "file": "k8s-hostname.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -3098,7 +2943,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -3112,7 +2957,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3124,7 +2969,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3232,7 +3077,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3244,7 +3089,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -3253,9 +3098,9 @@
       "name": "/dev hostPath volume bind mounts the guest device and skips virtio-fs",
       "file": "k8s-hostpath-volume.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -3266,7 +3111,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -3280,7 +3125,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3292,7 +3137,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3400,7 +3245,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3412,7 +3257,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -3421,9 +3266,9 @@
       "name": "configmap update works, and preserves symlinks",
       "file": "k8s-inotify.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -3434,7 +3279,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -3448,7 +3293,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3460,7 +3305,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3568,7 +3413,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3580,7 +3425,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -3589,9 +3434,9 @@
       "name": "Pod that performs ip6tables setup",
       "file": "k8s-ip6tables.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -3602,7 +3447,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -3616,7 +3461,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3628,7 +3473,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3736,7 +3581,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3748,7 +3593,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -3757,9 +3602,9 @@
       "name": "Run a job to completion",
       "file": "k8s-job.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -3770,7 +3615,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -3784,7 +3629,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3796,7 +3641,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3904,7 +3749,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3916,7 +3761,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -3925,9 +3770,9 @@
       "name": "Limit range for storage",
       "file": "k8s-limit-range.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -3938,7 +3783,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -3952,7 +3797,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -3964,7 +3809,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4072,7 +3917,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4084,7 +3929,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -4093,9 +3938,9 @@
       "name": "Liveness probe",
       "file": "k8s-liveness-probes.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -4106,7 +3951,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -4120,7 +3965,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4132,7 +3977,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4240,7 +4085,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4252,7 +4097,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -4261,9 +4106,9 @@
       "name": "Liveness http probe",
       "file": "k8s-liveness-probes.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -4274,7 +4119,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -4288,7 +4133,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4300,7 +4145,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4408,7 +4253,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4420,7 +4265,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -4429,9 +4274,9 @@
       "name": "Liveness tcp probe",
       "file": "k8s-liveness-probes.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -4442,7 +4287,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -4456,7 +4301,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4468,7 +4313,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4576,7 +4421,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4588,7 +4433,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -4597,9 +4442,9 @@
       "name": "Running within memory constraints",
       "file": "k8s-memory.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -4610,7 +4455,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -4624,7 +4469,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4636,7 +4481,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4744,7 +4589,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4756,7 +4601,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -4765,9 +4610,9 @@
       "name": "Nested mount of a secret volume in a configmap volume for a pod",
       "file": "k8s-nested-configmap-secret.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -4778,7 +4623,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -4792,7 +4637,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4804,7 +4649,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4912,7 +4757,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4924,7 +4769,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -4933,9 +4778,9 @@
       "name": "Test OOM events for pods",
       "file": "k8s-oom.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -4946,7 +4791,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -4960,7 +4805,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -4972,7 +4817,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5080,7 +4925,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5092,7 +4937,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -5101,9 +4946,9 @@
       "name": "Pods establishing a VPN connection using openvpn",
       "file": "k8s-openvpn.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -5114,7 +4959,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -5128,7 +4973,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5140,7 +4985,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5248,7 +5093,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5260,7 +5105,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -5269,9 +5114,9 @@
       "name": "Termination log: successful exit with policy allowing GetDiagnosticDataRequest",
       "file": "k8s-termination-log.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -5282,7 +5127,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -5296,7 +5141,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5308,7 +5153,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5416,7 +5261,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5428,7 +5273,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -5437,9 +5282,9 @@
       "name": "Termination log: failed exit with policy allowing GetDiagnosticDataRequest",
       "file": "k8s-termination-log.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -5450,7 +5295,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -5464,7 +5309,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5476,7 +5321,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5584,7 +5429,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5596,7 +5441,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -5605,9 +5450,9 @@
       "name": "Optional and Empty ConfigMap Volume for a pod",
       "file": "k8s-optional-empty-configmap.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -5618,7 +5463,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -5632,7 +5477,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5644,7 +5489,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5752,7 +5597,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5764,7 +5609,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -5773,9 +5618,9 @@
       "name": "Optional and Empty Secret Volume for a pod",
       "file": "k8s-optional-empty-secret.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -5786,7 +5631,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -5800,7 +5645,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5812,7 +5657,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5920,7 +5765,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5932,7 +5777,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -5941,9 +5786,9 @@
       "name": "Check PID namespaces",
       "file": "k8s-pid-ns.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -5954,7 +5799,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -5968,7 +5813,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -5980,7 +5825,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6088,7 +5933,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6100,7 +5945,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -6109,9 +5954,9 @@
       "name": "Pod quota",
       "file": "k8s-pod-quota.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -6122,7 +5967,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -6136,7 +5981,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6148,7 +5993,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6256,7 +6101,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6268,7 +6113,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -6277,9 +6122,9 @@
       "name": "Privileged pod runs and is able to execute privileged operations",
       "file": "k8s-privileged.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -6290,7 +6135,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -6304,7 +6149,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6316,7 +6161,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6424,7 +6269,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6436,7 +6281,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -6445,9 +6290,9 @@
       "name": "Projected volume",
       "file": "k8s-projected-volume.bats",
       "totalFailures": 12,
-      "flakyCount": 0,
+      "flakyCount": 4,
       "mergedCount": 2,
-      "isConfirmedFlaky": false,
+      "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
       "uniquePRs": 5,
       "uniqueDates": [
@@ -6458,7 +6303,7 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
           "count": 12,
-          "flakyCount": 0,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -6472,7 +6317,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6484,7 +6329,7 @@
           "jobId": "72169269436",
           "runId": "24677673715",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6592,7 +6437,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         },
         {
@@ -6604,7 +6449,7 @@
           "jobId": "72105502272",
           "runId": "24659391819",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": false
         }
       ]
@@ -7428,13 +7273,13 @@
   ],
   "summary": {
     "totalFailedTests": 55,
-    "confirmedFlaky": 3,
+    "confirmedFlaky": 39,
     "mergedDespiteFailure": 38,
     "mostAffectedJob": {
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
       "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
       "count": 456,
-      "flakyCount": 0,
+      "flakyCount": 152,
       "mergedCount": 76
     },
     "trend": [
@@ -7484,7 +7329,7 @@
       },
       {
         "date": "2026-04-19",
-        "failures": 12
+        "failures": 2
       },
       {
         "date": "2026-04-20",
@@ -7500,7 +7345,7 @@
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev-runtime-rs, erofs, default)",
         "count": 456,
-        "flakyCount": 0,
+        "flakyCount": 152,
         "mergedCount": 76
       },
       {
@@ -7511,53 +7356,18 @@
         "mergedCount": 0
       },
       {
-        "name": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 2
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 2
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 2
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
-        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 2
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
-        "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, oci-distribution)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 2
-      },
-      {
-        "name": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-        "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-aks / run-k8s-tests (cbl-mariner, clh, small, containerd)",
-        "count": 2,
-        "flakyCount": 2,
-        "mergedCount": 2
-      },
-      {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (cloud-hypervisor, lts)",
         "count": 2,
         "flakyCount": 2,
         "mergedCount": 0
+      },
+      {
+        "name": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
+        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests-on-arm64 / run-k8s-tests-coco-arm64-k8s (qemu-coco-dev-runtime-rs, kubeadm)",
+        "count": 2,
+        "flakyCount": 2,
+        "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64",
