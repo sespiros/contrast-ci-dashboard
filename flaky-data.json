@@ -1,8 +1,8 @@
 {
-  "lastRefresh": "2026-04-20T20:44:05.513Z",
+  "lastRefresh": "2026-04-21T01:33:49.970Z",
   "periodDays": 14,
   "totalFailures": 506,
-  "totalPRs": 11,
+  "totalPRs": 12,
   "confirmedFlakyCount": 2,
   "mergedDespiteFailureCount": 38,
   "failedTests": [
@@ -7487,10 +7487,6 @@
     },
     "trend": [
       {
-        "date": "2026-04-07",
-        "failures": 0
-      },
-      {
         "date": "2026-04-08",
         "failures": 0
       },
@@ -7541,6 +7537,10 @@
       {
         "date": "2026-04-20",
         "failures": 490
+      },
+      {
+        "date": "2026-04-21",
+        "failures": 0
       }
     ],
     "jobBreakdown": [
