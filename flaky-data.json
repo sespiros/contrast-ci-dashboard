@@ -1,16 +1,71 @@
 {
-  "lastRefresh": "2026-04-22T09:15:16.488Z",
+  "lastRefresh": "2026-04-22T13:06:25.271Z",
   "periodDays": 14,
-  "totalFailures": 0,
-  "totalPRs": 8,
+  "totalFailures": 2,
+  "totalPRs": 7,
   "confirmedFlakyCount": 0,
   "mergedDespiteFailureCount": 0,
-  "failedTests": [],
+  "failedTests": [
+    {
+      "name": "Test unencrypted confidential container launch success and verify that we are running in a secure enclave.",
+      "file": "k8s-confidential.bats",
+      "totalFailures": 2,
+      "flakyCount": 0,
+      "mergedCount": 0,
+      "isConfirmedFlaky": false,
+      "mergedDespiteFailure": false,
+      "uniquePRs": 1,
+      "uniqueDates": [
+        "2026-04-22"
+      ],
+      "affectedJobs": [
+        {
+          "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+          "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+          "count": 2,
+          "flakyCount": 0,
+          "mergedCount": 0
+        }
+      ],
+      "recentOccurrences": [
+        {
+          "date": "2026-04-22",
+          "prNumber": "12846",
+          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+          "jobId": "72474634997",
+          "runId": "24769081671",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        },
+        {
+          "date": "2026-04-22",
+          "prNumber": "12846",
+          "prTitle": "dragonball: Implement userspace IOAPIC to enable split irqchip",
+          "jobName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+          "jobDisplayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+          "jobId": "72474634997",
+          "runId": "24769081671",
+          "runAttempt": 1,
+          "isFlaky": false,
+          "prMerged": false
+        }
+      ]
+    }
+  ],
   "summary": {
-    "totalFailedTests": 0,
+    "totalFailedTests": 1,
     "confirmedFlaky": 0,
     "mergedDespiteFailure": 0,
-    "mostAffectedJob": null,
+    "mostAffectedJob": {
+      "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+      "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+      "count": 2,
+      "flakyCount": 0,
+      "mergedCount": 0
+    },
     "trend": [
       {
         "date": "2026-04-09",
@@ -66,9 +121,17 @@
       },
       {
         "date": "2026-04-22",
-        "failures": 0
+        "failures": 2
       }
     ],
-    "jobBreakdown": []
+    "jobBreakdown": [
+      {
+        "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+        "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)",
+        "count": 2,
+        "flakyCount": 0,
+        "mergedCount": 0
+      }
+    ]
   }
 }
