@@ -1,21 +1,24 @@
 /* ============================================
-   Kata CI Dashboard - Styles
+   Contrast CI Dashboard - Styles
+   Theme draws on edgeless.systems / Contrast brand:
+   deep near-black background, electric Contrast purple
+   accent (#7A49F6, sourced from the product icon).
    ============================================ */
 
 :root {
-  /* Color Palette - Dark theme with warm accents */
-  --bg-primary: #0d1117;
-  --bg-secondary: #161b22;
-  --bg-tertiary: #21262d;
-  --bg-hover: #30363d;
-  
-  --border-primary: #30363d;
-  --border-secondary: #21262d;
-  
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-muted: #6e7681;
-  
+  /* Color Palette */
+  --bg-primary: #0a0b14;
+  --bg-secondary: #12131e;
+  --bg-tertiary: #1a1c2b;
+  --bg-hover: #242639;
+
+  --border-primary: #2a2d42;
+  --border-secondary: #1c1e2d;
+
+  --text-primary: #e9eaf5;
+  --text-secondary: #9aa1c0;
+  --text-muted: #6e7497;
+
   /* Status Colors */
   --color-passed: #3fb950;
   --color-passed-bg: rgba(63, 185, 80, 0.15);
@@ -25,10 +28,11 @@
   --color-running-bg: rgba(88, 166, 255, 0.15);
   --color-pending: #d29922;
   --color-pending-bg: rgba(210, 153, 34, 0.15);
-  
-  /* Accent */
-  --color-accent: #f78166;
-  --color-accent-hover: #ffa28b;
+
+  /* Accent: Edgeless brand green */
+  --color-accent: #21d07a;
+  --color-accent-hover: #3ee08e;
+  --color-accent-bg: rgba(33, 208, 122, 0.15);
   
   /* Typography */
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -68,9 +72,9 @@ body {
   color: var(--text-primary);
   line-height: 1.5;
   min-height: 100vh;
-  background-image: 
-    radial-gradient(ellipse at top, rgba(248, 129, 102, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(88, 166, 255, 0.05) 0%, transparent 50%);
+  background-image:
+    radial-gradient(ellipse at top, rgba(122, 73, 246, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(33, 208, 122, 0.06) 0%, transparent 55%);
 }
 
 /* Dashboard Container */
@@ -355,6 +359,19 @@ body.flat-list-tier .col-retried,
 body.flat-list-tier .test-retried-col,
 body.flat-list-tier .section-weather,
 body.flat-list-tier .section-weather-icon { display: none !important; }
+
+/* Brand mark in the header. */
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo {
+  height: 36px; width: 36px;
+  filter: drop-shadow(0 0 12px rgba(33, 208, 122, 0.45));
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-name { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.02em; color: var(--text-primary); }
+.brand-sub { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.12em; }
+
+/* Subtle Contrast-purple glow on the active tab underline. */
+.tab.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
 
 /* Vendor logos in platform pills. */
 .vendor-logos { display: inline-flex; gap: 6px; align-items: center; justify-content: center; }
