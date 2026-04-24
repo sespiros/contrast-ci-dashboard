@@ -1,384 +1,167 @@
-# Kata Containers CI Dashboard Configuration
-# 
-# This file configures the CI dashboard at:
-# https://kata-containers.github.io/ci-dashboard/
-#
-# To add a new section or modify settings, submit a PR to this file.
+# Contrast CI Dashboard Configuration (local experiment)
+# Derived from Kata's schema; see config.yaml.kata-backup for the original.
 
 settings:
   weather_days: 10
   refresh_interval: 60
-  source_repo: "kata-containers/kata-containers"
+  source_repo: "edgelesssys/contrast"
 
-# Job categories for filtering
-# Each job can belong to multiple categories
 job_categories:
-  # TEE (Trusted Execution Environment) - Hardware and Development tests
-  tee:
-    name: "TEE"
-    description: "HW / Dev"
+  snp:
+    name: "SNP"
+    description: "AMD SEV-SNP"
     icon: "🔐"
-    # Job name patterns to match
     patterns:
-      - "tdx"
-      - "snp"
-      - "sev"
-      - "zvsi"
-      - "coco"
-      - "cc-se"
-      - "cc-vfio-ap"
-  
-  # NVIDIA GPU tests
-  nvidia:
-    name: "NVIDIA"
-    description: "GPU & CC"
+      - "Metal-QEMU-SNP"
+
+  tdx:
+    name: "TDX"
+    description: "Intel TDX"
+    icon: "🔐"
+    patterns:
+      - "Metal-QEMU-TDX"
+
+  gpu:
+    name: "GPU"
+    description: "Confidential GPU (H100)"
     icon: "🎮"
     patterns:
-      - "nvidia"
-      - "gpu"
+      - "-GPU /"
+      - " gpu"
 
-  # IBM s390x tests (zVSI, Secure Execution, VFIO-AP)
-  ibm:
-    name: "IBM"
-    description: "s390x"
-    icon: "🖥️"
-    patterns:
-      - "s390x"
-      - "zvsi"
-      - "vfio-ap"
-      - "cc-se"
+required_jobs: []
 
-  # Nightly-only: extensive matrix with AUTO_GENERATE_POLICY (ci-nightly.yaml)
-  autogen_policy:
-    name: "Auto-gen policy"
-    description: "Nightly extensive matrix"
-    icon: "🌙"
-    patterns:
-      - "extensive-matrix"
+external_repos: {}
 
-# External repositories to monitor
-external_repos:
-  coco-charts:
-    repo: "confidential-containers/charts"
-    workflow: "e2e-tests.yaml"
-    name: "CoCo Charts"
-    description: "Helm E2E"
-    icon: "⎈"
-    # Only monitor scheduled (nightly) runs
-    event_filter: "schedule"
-
-# Required jobs (jobs that must pass for PRs to merge)
-required_jobs:
-  - "kata-containers-ci-on-push / run-k8s-tests-on-aks"
-  - "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)"
-  - "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)"
-  - "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)"
-
-# Slack notifications (disabled for now - enable when Slack app is set up)
 notifications:
   slack:
     enabled: false
-    # Uncomment and configure when ready:
-    # workspaces:
-    #   kata-containers:
-    #     name: "Kata Containers"
-    #     token_secret: "SLACK_BOT_TOKEN"
-    # daily_summary:
-    #   enabled: true
-    #   time: "08:00"
-    #   global_channel: "#kata-ci"
-    # maintainer_alerts:
-    #   enabled: true
 
-# Maintainer directory
-# To add yourself: submit a PR with your GitHub handle and Slack ID
-# Find your Slack ID: Profile > ⋮ > Copy member ID
-#
-# Source: https://github.com/kata-containers/kata-containers.github.io/blob/main/maintainers.yml
-maintainers_directory:
-  # NVIDIA GPU and experimental-force-guest-pull maintainer
-  "@fidencio":
-    name: "Fabiano Fidêncio"
-    email: "fabiano@fidencio.org"
-    github: "fidencio"
-    slack:
-      kata-containers: "UU8N67ZN1"
-      url: "https://katacontainers.slack.com/team/UU8N67ZN1"
+maintainers_directory: {}
 
-  # CoCo non-TEE maintainers
-  "@stevenhorsman":
-    name: "Steven Horsman"
-    email: "steven@uk.ibm.com"
-    github: "stevenhorsman"
-    slack:
-      kata-containers: "U020KLK70TA"
-      url: "https://katacontainers.slack.com/team/U020KLK70TA"
-
-  "@wainersm":
-    name: "Wainer dos Santos Moschetta"
-    email: "wmoschet@redhat.com"
-    github: "wainersm"
-    slack:
-      kata-containers: "U012NV99LPL"
-      url: "https://katacontainers.slack.com/team/U012NV99LPL"
-
-  # AMD SEV-SNP maintainers
-  "@AdithyaKrishnan":
-    name: "Adithya Krishnan Kannan"
-    email: "AdithyaKrishnan.Kannan@amd.com"
-    github: "AdithyaKrishnan"
-    slack:
-      cloud-native: "U05TX2URB16"
-      url: "https://cloud-native.slack.com/team/U05TX2URB16"
-
-  "@hgowda-amd":
-    name: "Harshitha Gowda"
-    email: "hgowda@amd.com"
-    github: "hgowda-amd"
-    slack:
-      kata-containers: "U09T6DG96TW"
-      url: "https://katacontainers.slack.com/team/U09T6DG96TW"
-
-  # Intel TDX maintainer
-  "@mythi":
-    name: "Mikko Ylinen"
-    email: "mikko.ylinen@intel.com"
-    github: "mythi"
-    slack:
-      kata-containers: "U02HEDZ6QCR"
-      url: "https://katacontainers.slack.com/team/U02HEDZ6QCR"
-
-  # IBM zVSI (s390x) maintainer
-  "@BbolroC":
-    name: "Hyounggyu Choi"
-    email: "Hyounggyu.Choi@ibm.com"
-    github: "BbolroC"
-    slack:
-      kata-containers: "U0369UMM69M"
-      url: "https://katacontainers.slack.com/team/U0369UMM69M"
-
-  # runtime-rs maintainers
-  "@pmores":
-    name: "Pavel Mores"
-    email: "pmores@redhat.com"
-    github: "pmores"
-    slack:
-      kata-containers: "U03CCR6KGBC"
-      url: "https://katacontainers.slack.com/team/U03CCR6KGBC"
-
-  "@lifupan":
-    name: "Fupan Li"
-    email: "lifupan@gmail.com"
-    github: "lifupan"
-    slack:
-      kata-containers: "U059Y60DZPW"
-      url: "https://katacontainers.slack.com/team/U059Y60DZPW"
-
-# Test sections
 sections:
-  # ===========================================
-  # GPU Section - NVIDIA GPU tests
-  # ===========================================
-  - id: nvidia-gpu
-    name: "NVIDIA GPU"
-    description: "NVIDIA GPU passthrough and Confidential Computing tests"
-    slack:
-      workspace: "kata-containers"
-      channel: "#kata-ci"
-    
-    # Jobs to monitor (exact names from GitHub Actions)
+  - id: metal-snp
+    name: "Metal-QEMU-SNP"
+    description: "Bare-metal SEV-SNP nightly matrix"
     jobs:
-      - name: "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-tests-on-amd64"
-        description: "NVIDIA GPU on A100"
-        maintainers:
-          - "@fidencio"
-      
-      - name: "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64"
-        description: "NVIDIA CC GPU + AMD SNP on H100"
-        maintainers:
-          - "@fidencio"
+      - name: "Metal-QEMU-SNP / atls"
+        description: "aTLS"
+      - name: "Metal-QEMU-SNP / attestation"
+        description: "Attestation"
+      - name: "Metal-QEMU-SNP / containerd-11644-reproducer"
+        description: "containerd#11644 reproducer"
+      - name: "Metal-QEMU-SNP / coordinator"
+        description: "Coordinator"
+      - name: "Metal-QEMU-SNP / genpolicy-unsupported"
+        description: "genpolicy unsupported features"
+      - name: "Metal-QEMU-SNP / imagepuller-auth"
+        description: "Image puller auth"
+      - name: "Metal-QEMU-SNP / imagestore"
+        description: "Image store"
+      - name: "Metal-QEMU-SNP / kds-pcs-downtime"
+        description: "KDS/PCS downtime"
+      - name: "Metal-QEMU-SNP / memdump"
+        description: "Memory dump"
+      - name: "Metal-QEMU-SNP / multi-runtime-class"
+        description: "Multi RuntimeClass"
+      - name: "Metal-QEMU-SNP / openssl"
+        description: "OpenSSL"
+      - name: "Metal-QEMU-SNP / peerrecovery"
+        description: "Peer recovery"
+      - name: "Metal-QEMU-SNP / policy"
+        description: "Policy"
+      - name: "Metal-QEMU-SNP / proxy"
+        description: "Proxy"
+      - name: "Metal-QEMU-SNP / regression"
+        description: "Regression"
+      - name: "Metal-QEMU-SNP / servicemesh"
+        description: "Service mesh"
+      - name: "Metal-QEMU-SNP / vault"
+        description: "Vault"
+      - name: "Metal-QEMU-SNP / volumestatefulset"
+        description: "Volume StatefulSet"
+      - name: "Metal-QEMU-SNP / workloadsecret"
+        description: "Workload secret"
+      - name: "Metal-QEMU-SNP / badaml-sandbox (with debug shell)"
+        description: "badaml sandbox (debug-only)"
+      - name: "Metal-QEMU-SNP / badaml-vuln (with debug shell)"
+        description: "badaml vuln (debug-only)"
 
-  # ===========================================
-  # TEE Section - Confidential Computing tests
-  # ===========================================
-  - id: tee
-    name: "TEE"
-    description: "Trusted Execution Environment and Confidential Computing tests"
-    slack:
-      workspace: "kata-containers"
-      channel: "#kata-ci"
-    
-    # Jobs to monitor (exact names from GitHub Actions)
+  - id: metal-tdx
+    name: "Metal-QEMU-TDX"
+    description: "Bare-metal Intel TDX nightly matrix"
     jobs:
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)"
-        description: "non-TEE with nydus snapshotter"
-        maintainers:
-          - "@stevenhorsman"
-          - "@wainersm"
-      
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp)"
-        description: "AMD SEV-SNP with nydus snapshotter"
-        maintainers:
-          - "@AdithyaKrishnan"
-          - "@hgowda-amd"
+      - name: "Metal-QEMU-TDX / atls"
+      - name: "Metal-QEMU-TDX / attestation"
+      - name: "Metal-QEMU-TDX / containerd-11644-reproducer"
+      - name: "Metal-QEMU-TDX / coordinator"
+      - name: "Metal-QEMU-TDX / genpolicy-unsupported"
+      - name: "Metal-QEMU-TDX / imagepuller-auth"
+      - name: "Metal-QEMU-TDX / imagestore"
+      - name: "Metal-QEMU-TDX / kds-pcs-downtime"
+      - name: "Metal-QEMU-TDX / memdump"
+      - name: "Metal-QEMU-TDX / multi-runtime-class"
+      - name: "Metal-QEMU-TDX / openssl"
+      - name: "Metal-QEMU-TDX / peerrecovery"
+      - name: "Metal-QEMU-TDX / policy"
+      - name: "Metal-QEMU-TDX / proxy"
+      - name: "Metal-QEMU-TDX / regression"
+      - name: "Metal-QEMU-TDX / servicemesh"
+      - name: "Metal-QEMU-TDX / vault"
+      - name: "Metal-QEMU-TDX / volumestatefulset"
+      - name: "Metal-QEMU-TDX / workloadsecret"
+      - name: "Metal-QEMU-TDX / badaml-sandbox (with debug shell)"
+      - name: "Metal-QEMU-TDX / badaml-vuln (with debug shell)"
 
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (sev-snp, qemu-snp-runtime-rs)"
-        description: "AMD SEV-SNP with runtime-rs and nydus snapshotter"
-        maintainers:
-          - "@AdithyaKrishnan"
-          - "@hgowda-amd"
-      
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-on-tee (tdx, qemu-tdx)"
-        description: "Intel TDX with nydus snapshotter"
-        maintainers:
-          - "@mythi"
-      
-      - name: "kata-containers-ci-on-push / run-k8s-tests-on-zvsi / run-k8s-tests (nydus, qemu-coco-dev, kubeadm)"
-        description: "IBM zVSI with nydus snapshotter"
-        maintainers:
-          - "@BbolroC"
-      
-      - name: "kata-containers-ci-on-push / run-k8s-tests-on-nvidia-gpu / run-nvidia-gpu-snp-tests-on-amd64"
-        description: "NVIDIA CC GPU + AMD SNP on H100"
-        maintainers:
-          - "@fidencio"
-      
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)"
-        description: "non-TEE with force guest pull"
-        maintainers:
-          - "@fidencio"
-      
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)"
-        description: "non-TEE with runtime-rs and nydus snapshotter"
-        maintainers:
-          - "@pmores"
-          - "@lifupan"
-      
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-with-erofs-snapshotter (qemu-coco-dev, erofs, default)"
-        description: "non-TEE with erofs snapshotter"
-        maintainers:
-          - "@stevenhorsman"
-          - "@wainersm"
-      
-      # s390x CC tests (also in IBM section)
-      - name: "check-internal-test-result (cc-vfio-ap-e2e-tests)"
-        description: "CC VFIO-AP E2E tests (s390x)"
-        maintainers:
-          - "@BbolroC"
-      
-      - name: "check-internal-test-result (cc-se-e2e-tests-go)"
-        description: "CC Secure Execution E2E tests - Go (s390x)"
-        maintainers:
-          - "@BbolroC"
-      
-      - name: "check-internal-test-result (cc-se-e2e-tests-rs)"
-        description: "CC Secure Execution E2E tests - Rust (s390x)"
-        maintainers:
-          - "@BbolroC"
-
-  # ===========================================
-  # Nightly autogenerated policy — extensive matrix only (ci-nightly.yaml)
-  # ===========================================
-  - id: nightly-autogen-policy
-    name: "Nightly auto-generated policy"
-    description: "CoCo non-TEE extensive matrix (k0s/k3s/rke2/microk8s × qemu-coco-dev / runtime-rs / force guest pull); runs only on schedule"
-    slack:
-      workspace: "kata-containers"
-      channel: "#kata-ci"
+  - id: metal-snp-gpu
+    name: "Metal-QEMU-SNP-GPU"
+    description: "Bare-metal SEV-SNP + H100 (discovery)"
     jobs:
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (k0s, qemu-coco-dev, nydus, guest-pull)"
-        description: "k0s · qemu-coco-dev · nydus · guest-pull"
-        maintainers:
-          - "@stevenhorsman"
-          - "@wainersm"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (k0s, qemu-coco-dev, experimental-force-guest-pull)"
-        description: "k0s · qemu-coco-dev · experimental force guest pull"
-        maintainers:
-          - "@fidencio"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (k0s, qemu-coco-dev-runtime-rs, nydus, guest-pull)"
-        description: "k0s · runtime-rs · nydus · guest-pull"
-        maintainers:
-          - "@pmores"
-          - "@lifupan"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (k3s, qemu-coco-dev, nydus, guest-pull)"
-        description: "k3s · qemu-coco-dev · nydus · guest-pull"
-        maintainers:
-          - "@stevenhorsman"
-          - "@wainersm"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (k3s, qemu-coco-dev, experimental-force-guest-pull)"
-        description: "k3s · qemu-coco-dev · experimental force guest pull"
-        maintainers:
-          - "@fidencio"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (k3s, qemu-coco-dev-runtime-rs, nydus, guest-pull)"
-        description: "k3s · runtime-rs · nydus · guest-pull"
-        maintainers:
-          - "@pmores"
-          - "@lifupan"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (rke2, qemu-coco-dev, nydus, guest-pull)"
-        description: "rke2 · qemu-coco-dev · nydus · guest-pull"
-        maintainers:
-          - "@stevenhorsman"
-          - "@wainersm"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (rke2, qemu-coco-dev, experimental-force-guest-pull)"
-        description: "rke2 · qemu-coco-dev · experimental force guest pull"
-        maintainers:
-          - "@fidencio"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (rke2, qemu-coco-dev-runtime-rs, nydus, guest-pull)"
-        description: "rke2 · runtime-rs · nydus · guest-pull"
-        maintainers:
-          - "@pmores"
-          - "@lifupan"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (microk8s, qemu-coco-dev, nydus, guest-pull)"
-        description: "microk8s · qemu-coco-dev · nydus · guest-pull"
-        maintainers:
-          - "@stevenhorsman"
-          - "@wainersm"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (microk8s, qemu-coco-dev, experimental-force-guest-pull)"
-        description: "microk8s · qemu-coco-dev · experimental force guest pull"
-        maintainers:
-          - "@fidencio"
-      - name: "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee-extensive-matrix (microk8s, qemu-coco-dev-runtime-rs, nydus, guest-pull)"
-        description: "microk8s · runtime-rs · nydus · guest-pull"
-        maintainers:
-          - "@pmores"
-          - "@lifupan"
+      - name: "Metal-QEMU-SNP-GPU / atls"
+      - name: "Metal-QEMU-SNP-GPU / attestation"
+      - name: "Metal-QEMU-SNP-GPU / containerd-11644-reproducer"
+      - name: "Metal-QEMU-SNP-GPU / coordinator"
+      - name: "Metal-QEMU-SNP-GPU / genpolicy-unsupported"
+      - name: "Metal-QEMU-SNP-GPU / gpu"
+      - name: "Metal-QEMU-SNP-GPU / imagepuller-auth"
+      - name: "Metal-QEMU-SNP-GPU / imagestore"
+      - name: "Metal-QEMU-SNP-GPU / kds-pcs-downtime"
+      - name: "Metal-QEMU-SNP-GPU / memdump"
+      - name: "Metal-QEMU-SNP-GPU / multi-runtime-class"
+      - name: "Metal-QEMU-SNP-GPU / openssl"
+      - name: "Metal-QEMU-SNP-GPU / peerrecovery"
+      - name: "Metal-QEMU-SNP-GPU / policy"
+      - name: "Metal-QEMU-SNP-GPU / proxy"
+      - name: "Metal-QEMU-SNP-GPU / regression"
+      - name: "Metal-QEMU-SNP-GPU / servicemesh"
+      - name: "Metal-QEMU-SNP-GPU / vault"
+      - name: "Metal-QEMU-SNP-GPU / volumestatefulset"
+      - name: "Metal-QEMU-SNP-GPU / workloadsecret"
 
-  # ===========================================
-  # IBM Section - s390x tests (zVSI, SE, VFIO-AP)
-  # ===========================================
-  - id: ibm
-    name: "IBM"
-    description: "IBM s390x tests including Secure Execution and VFIO-AP"
-    slack:
-      workspace: "kata-containers"
-      channel: "#kata-ci"
-    
-    # Jobs to monitor (exact names from GitHub Actions)
+  - id: metal-tdx-gpu
+    name: "Metal-QEMU-TDX-GPU"
+    description: "Bare-metal Intel TDX + B200 (DGX)"
     jobs:
-      # From ci-nightly-s390x.yaml workflow
-      - name: "check-internal-test-result (kata-vfio-ap-e2e-tests)"
-        description: "Kata VFIO-AP E2E tests"
-        maintainers:
-          - "@BbolroC"
-      
-      - name: "check-internal-test-result (cc-vfio-ap-e2e-tests)"
-        description: "CC VFIO-AP E2E tests"
-        maintainers:
-          - "@BbolroC"
-      
-      - name: "check-internal-test-result (cc-se-e2e-tests-go)"
-        description: "CC Secure Execution E2E tests (Go)"
-        maintainers:
-          - "@BbolroC"
-      
-      - name: "check-internal-test-result (cc-se-e2e-tests-rs)"
-        description: "CC Secure Execution E2E tests (Rust)"
-        maintainers:
-          - "@BbolroC"
+      - name: "Metal-QEMU-TDX-GPU / atls"
+      - name: "Metal-QEMU-TDX-GPU / attestation"
+      - name: "Metal-QEMU-TDX-GPU / containerd-11644-reproducer"
+      - name: "Metal-QEMU-TDX-GPU / coordinator"
+      - name: "Metal-QEMU-TDX-GPU / genpolicy-unsupported"
+      - name: "Metal-QEMU-TDX-GPU / gpu"
+      - name: "Metal-QEMU-TDX-GPU / imagepuller-auth"
+      - name: "Metal-QEMU-TDX-GPU / imagestore"
+      - name: "Metal-QEMU-TDX-GPU / kds-pcs-downtime"
+      - name: "Metal-QEMU-TDX-GPU / memdump"
+      - name: "Metal-QEMU-TDX-GPU / multi-runtime-class"
+      - name: "Metal-QEMU-TDX-GPU / openssl"
+      - name: "Metal-QEMU-TDX-GPU / peerrecovery"
+      - name: "Metal-QEMU-TDX-GPU / policy"
+      - name: "Metal-QEMU-TDX-GPU / proxy"
+      - name: "Metal-QEMU-TDX-GPU / regression"
+      - name: "Metal-QEMU-TDX-GPU / servicemesh"
+      - name: "Metal-QEMU-TDX-GPU / vault"
+      - name: "Metal-QEMU-TDX-GPU / volumestatefulset"
+      - name: "Metal-QEMU-TDX-GPU / workloadsecret"
 
-# Test step identification
-# Only failures in these steps count as real test failures
-# Failures in any other step = "not run" (infrastructure issue)
 fatal_steps:
-  - pattern: "Run tests.*"
-  - pattern: "Fetch a test result.*"
+  - pattern: "E2E Test.*"

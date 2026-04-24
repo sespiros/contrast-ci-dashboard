@@ -14,4 +14,22 @@ raw-pr-runs.json
 run-jobs.json
 job-logs/
 pr-job-logs/
+.env.local
 
+# Contrast scraper artefacts (per-tier scrape + processed outputs)
+all-jobs-*.json
+raw-runs-*.json
+runs-*.yml.json
+data-*.json
+job-logs-*/
+required-tests.json
+# Inputs scripts/process-data.js still expects but contrast does not populate
+data.json
+flaky-data.json
+required-tests.yaml
+coco-caa-jobs.json
+coco-caa-runs.json
+coco-charts-jobs.json
+coco-charts-runs.json
+s390x-jobs.json
+s390x-runs.json
