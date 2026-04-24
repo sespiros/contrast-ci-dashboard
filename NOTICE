@@ -1,0 +1,13 @@
+Contrast CI Dashboard
+=====================
+
+This project is a fork of the Kata Containers CI Dashboard
+(https://github.com/kata-containers/ci-dashboard), licensed under the
+Apache License, Version 2.0.
+
+The fork has been substantially modified to target the Contrast project
+(https://github.com/edgelesssys/contrast) instead of Kata Containers.
+See the git history for the list of modifications.
+
+Original work: Copyright the Kata Containers contributors.
+Modifications: Copyright Edgeless Systems GmbH.

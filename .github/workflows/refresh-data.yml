@@ -1,0 +1,55 @@
+name: Refresh dashboard data
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install processor deps
+        run: npm install --no-audit --no-fund
+
+      - name: Scrape + process all tiers
+        env:
+          # Default workflow token. Scopes are local to this repo, but it
+          # still authenticates as a regular GitHub App installation against
+          # the public REST endpoints we hit on edgelesssys/contrast (5000
+          # req/hr quota, no SAML constraint for public-repo reads).
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./contrast-local.sh fetch
+
+      - name: Snapshot data files (90-day retention)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dashboard-data-${{ github.run_id }}
+          path: data-*.json
+          retention-days: 90
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
