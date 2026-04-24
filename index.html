@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kata CI Dashboard</title>
+  <title>Contrast CI Dashboard</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,13 +16,8 @@
     <header class="header">
       <div class="header-left">
         <div class="project-selector">
-          <button class="project-btn active" data-project="kata">
-            <img src="kata-icon.svg" alt="Kata Containers" class="project-logo kata-icon">
-            <span class="project-name">Kata Containers</span>
-          </button>
-          <button class="project-btn" data-project="coco">
-            <img src="coco-logo.svg" alt="Confidential Containers" class="project-logo coco-logo">
-            <span class="project-name">Confidential Containers</span>
+          <button class="project-btn active" data-project="contrast">
+            <span class="project-name">Contrast CI</span>
           </button>
         </div>
       </div>
@@ -31,18 +26,25 @@
       </div>
     </header>
 
-    <!-- Kata Containers Content -->
-    <div class="project-content active" id="kata-content">
+    <!-- Contrast Content -->
+    <div class="project-content active" id="contrast-content">
       <!-- Tabs -->
       <nav class="tabs">
         <button class="tab active" data-tab="nightly">
           <span class="tab-icon">🌙</span>
-          Nightly CI
+          Nightly
         </button>
-        <button class="tab" data-tab="prfailures">
+        <button class="tab" data-tab="nightlyfailures">
           <span class="tab-icon">🔴</span>
-          PR Failures
-          <span class="tab-badge" id="flaky-count-badge" style="display: none;">0</span>
+          Nightly Failures
+        </button>
+        <button class="tab" data-tab="scheduled">
+          <span class="tab-icon">📅</span>
+          Scheduled
+        </button>
+        <button class="tab" data-tab="release">
+          <span class="tab-icon">📦</span>
+          Release
         </button>
       </nav>
 
@@ -80,13 +82,13 @@
         <div class="filter-buttons">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="failed">
-            <span class="dot dot-failed"></span> Failed (<span id="filter-failed-count">8</span>)
+            <span class="dot dot-failed"></span> Failed (<span id="filter-failed-count">0</span>)
           </button>
           <button class="filter-btn" data-filter="not_run">
-            <span class="dot dot-not-run"></span> Not Run (<span id="filter-not-run-count">5</span>)
+            <span class="dot dot-not-run"></span> Not Run (<span id="filter-not-run-count">0</span>)
           </button>
           <button class="filter-btn" data-filter="passed">
-            <span class="dot dot-passed"></span> Passed (<span id="filter-passed-count">114</span>)
+            <span class="dot dot-passed"></span> Passed (<span id="filter-passed-count">0</span>)
           </button>
         </div>
         <div class="sort-control">
@@ -101,32 +103,37 @@
         </div>
       </div>
 
-      <!-- Job Category Filters -->
+      <!-- Platform filter pills: All on the left, platforms on the right. -->
       <div class="category-filters">
         <div class="category-toggle">
           <button class="category-btn active" data-category="all">All</button>
-          <button class="category-btn" data-category="required">Required</button>
         </div>
         <div class="category-quick-filters">
-          <button class="quick-filter-btn" data-category="tee">
-            <span class="quick-filter-icon">🔐</span>
-            <span class="quick-filter-label">TEE</span>
-            <span class="quick-filter-desc">HW / Dev</span>
+          <button class="quick-filter-btn" data-category="snp">
+            <span class="vendor-logos"><img src="logos/amd.svg" alt="AMD" class="vendor-logo"></span>
+            <span class="quick-filter-label">SNP</span>
+            <span class="quick-filter-desc">SEV-SNP (palutena)</span>
           </button>
-          <button class="quick-filter-btn" data-category="nvidia">
-            <span class="quick-filter-icon nvidia-icon"></span>
-            <span class="quick-filter-label">NVIDIA</span>
-            <span class="quick-filter-desc">GPU & CC</span>
+          <button class="quick-filter-btn" data-category="tdx">
+            <span class="vendor-logos"><img src="logos/intel.svg" alt="Intel" class="vendor-logo"></span>
+            <span class="quick-filter-label">TDX</span>
+            <span class="quick-filter-desc">TDX (olimar)</span>
           </button>
-          <button class="quick-filter-btn" data-category="ibm">
-            <img src="ibm-logo.svg" alt="IBM" class="quick-filter-icon ibm-icon">
-            <span class="quick-filter-label">IBM</span>
-            <span class="quick-filter-desc">s390x</span>
+          <button class="quick-filter-btn" data-category="snp-gpu">
+            <span class="vendor-logos">
+              <img src="logos/amd.svg" alt="AMD" class="vendor-logo">
+              <img src="logos/nvidia.svg" alt="NVIDIA" class="vendor-logo">
+            </span>
+            <span class="quick-filter-label">SNP+GPU</span>
+            <span class="quick-filter-desc">SEV-SNP + H100 (discovery)</span>
           </button>
-          <button class="quick-filter-btn" data-category="autogen-policy">
-            <span class="quick-filter-icon">🌙</span>
-            <span class="quick-filter-label">Auto-gen policy</span>
-            <span class="quick-filter-desc">Nightly only</span>
+          <button class="quick-filter-btn" data-category="tdx-gpu">
+            <span class="vendor-logos">
+              <img src="logos/intel.svg" alt="Intel" class="vendor-logo">
+              <img src="logos/nvidia.svg" alt="NVIDIA" class="vendor-logo">
+            </span>
+            <span class="quick-filter-label">TDX+GPU</span>
+            <span class="quick-filter-desc">TDX + B200 (dgx-007)</span>
           </button>
         </div>
       </div>
@@ -147,56 +154,36 @@
       </div>
     </main>
 
-    <!-- Main Content - PR Failures Tab -->
-    <main class="content tab-content" id="prfailures-content">
-      <!-- PR Failures Stats -->
+    <!-- Nightly Failures Tab (aggregated from data-nightly.json) -->
+    <main class="content tab-content" id="nightlyfailures-content">
       <div class="quick-stats">
         <div class="stat stat-failed">
-          <span class="stat-value" id="prfailures-flaky">0</span>
-          <span class="stat-label">🔄 Flaky Tests</span>
+          <span class="stat-value" id="nf-tests">0</span>
+          <span class="stat-label">Sub-tests with failures</span>
         </div>
         <div class="stat">
-          <span class="stat-value" id="prfailures-total">0</span>
-          <span class="stat-label">Total Failures</span>
+          <span class="stat-value" id="nf-occurrences">0</span>
+          <span class="stat-label">Failure-days</span>
         </div>
         <div class="stat stat-passed">
-          <span class="stat-value" id="prfailures-prs">0</span>
-          <span class="stat-label">PRs Analyzed</span>
+          <span class="stat-value" id="nf-jobs">0</span>
+          <span class="stat-label">Jobs affected</span>
         </div>
       </div>
-
-      <!-- Filters (same position as Nightly) -->
       <div class="filters">
         <div class="search-box">
           <span class="search-icon">🔍</span>
-          <input type="text" id="search-flaky" placeholder="Search tests or jobs...">
-        </div>
-        <div class="sub-tabs-inline">
-          <button class="sub-tab active" data-subtab="by-test">🔥 By Test</button>
-          <button class="sub-tab" data-subtab="by-job">📊 By Job</button>
+          <input type="text" id="search-nightly-failures" placeholder="Search tests, files, or platforms...">
         </div>
       </div>
-
-      <!-- By Test View -->
-      <div class="sub-tab-content active" id="by-test-content">
-        <p class="section-subtitle">Click a test to see failed runs for debugging</p>
-        <div id="flaky-by-test-list">
-          <!-- Rendered by JS -->
-        </div>
-      </div>
-
-      <!-- By Job View -->
-      <div class="sub-tab-content" id="by-job-content">
-        <p class="section-subtitle">Click a job to see its flaky tests and failed runs</p>
-        <div id="flaky-by-job-list">
-          <!-- Rendered by JS -->
-        </div>
-      </div>
+      <p class="section-subtitle">One row per failing nightly job (platform breakdown shown inline). Search by job name, platform, or sub-test.</p>
+      <div id="nightly-failures-list"></div>
     </main>
-    </div><!-- End Kata Containers Content -->
 
-    <!-- Confidential Containers Content -->
-    <div class="project-content" id="coco-content">
+    </div><!-- End Contrast Content -->
+
+    <!-- Confidential Containers content removed for contrast fork -->
+    <div class="project-content" id="coco-content" style="display:none">
       <!-- CoCo Sub-project Tabs -->
       <nav class="tabs">
         <button class="tab active" data-tab="coco-charts">

@@ -335,8 +335,39 @@ body {
 }
 
 .stat-failed .stat-value { color: var(--color-failed); }
-.stat-not-run .stat-value { color: var(--color-pending); }
+.stat-not-run .stat-value { color: var(--text-muted); }
+.stat-flaky .stat-value { color: #f0883e; }
 .stat-passed .stat-value { color: var(--color-passed); }
+.dot-flaky { background: #f0883e; }
+.filter-btn[data-filter="flaky"].active { border-color: #f0883e; color: #f0883e; }
+/* Flat-list tiers (Scheduled, Release): hide weather columns */
+/* Drop maintainers column globally; new layout has 6 cols. */
+.test-table-header,
+.test-row { grid-template-columns: 2fr 120px 120px 120px 140px 80px !important; }
+.test-maintainers-col { display: none !important; }
+
+/* Scheduled / Release: hide weather + retried, collapse to 4 cols. */
+body.flat-list-tier .test-table-header,
+body.flat-list-tier .test-row { grid-template-columns: 2fr 120px 120px 120px !important; }
+body.flat-list-tier .test-weather-col,
+body.flat-list-tier .weather-header,
+body.flat-list-tier .col-retried,
+body.flat-list-tier .test-retried-col,
+body.flat-list-tier .section-weather,
+body.flat-list-tier .section-weather-icon { display: none !important; }
+
+/* Vendor logos in platform pills. */
+.vendor-logos { display: inline-flex; gap: 6px; align-items: center; justify-content: center; }
+.vendor-logo { height: 18px; width: auto; }
+/* AMD wordmark uses currentColor → inherit a contrasty white when inactive. */
+.quick-filter-btn .vendor-logo[alt="AMD"] { color: #fff; }
+.quick-filter-btn.active .vendor-logo[alt="AMD"] { color: #fff; }
+/* Flat-list rows are clickable for the history modal. */
+body.flat-list-tier .test-row { cursor: pointer; }
+body.flat-list-tier .test-row:hover { background: var(--bg-tertiary); }
+
+/* Nightly Failures: collapsible rows. */
+.flaky-item:not(.expanded) .flaky-item-body { display: none; }
 
 /* ============================================
    Filters

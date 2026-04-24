@@ -40,35 +40,40 @@ async function loadData() {
   state.loading = true;
   state.error = null;
   renderLoading();
-  
+
+  const tiers = ['nightly', 'pr', 'scheduled', 'manual', 'release'];
+  state.tiersData = {};
+
   try {
-    // Load nightly data
-    const response = await fetch('data.json?t=' + Date.now());
-    if (!response.ok) {
-      throw new Error('Data not available yet');
+    const results = await Promise.all(tiers.map(async t => {
+      try {
+        const r = await fetch(`data-${t}.json?x=` + Date.now());
+        if (!r.ok) return [t, null];
+        return [t, await r.json()];
+      } catch (e) {
+        return [t, null];
+      }
+    }));
+    for (const [t, d] of results) state.tiersData[t] = d;
+
+    if (!state.tiersData.nightly) {
+      throw new Error('data-nightly.json not available; run ./contrast-local.sh fetch');
     }
-    state.data = await response.json();
-    
-    // Auto-expand sections with failures
-  state.data.sections.forEach(section => {
-      const hasFailures = section.tests.some(t => t.status === 'failed');
-      if (hasFailures) {
+
+    state.data = state.tiersData[state.activeTab] || state.tiersData.nightly;
+    // Auto-expand every section AND every status group across every tier.
+    Object.values(state.tiersData).forEach(tierData => {
+      const allSections = [
+        ...(tierData?.sections || []),
+        ...(tierData?.allJobsSection ? [tierData.allJobsSection] : []),
+      ];
+      allSections.forEach(section => {
+        if (!section?.id) return;
         state.expandedSections.add(section.id);
-        state.expandedGroups.add(`${section.id}-failed`);
-      }
+        ['failed', 'not-run', 'passed'].forEach(g => state.expandedGroups.add(`${section.id}-${g}`));
+      });
     });
-    
-    // Load flaky data (don't fail if not available)
-    try {
-      const flakyResponse = await fetch('flaky-data.json?t=' + Date.now());
-      if (flakyResponse.ok) {
-        state.flakyData = await flakyResponse.json();
-        updateFlakyBadge();
-      }
-    } catch (e) {
-      console.log('Flaky data not available yet');
-    }
-    
+
     state.loading = false;
     render();
   } catch (error) {
@@ -148,23 +153,11 @@ function getTotalStats() {
   // Get tests from the appropriate source based on view mode
   let testsToCount = [];
   
-  if (state.viewMode === 'tee') {
-    const section = state.data.sections?.find(s => s.id === 'tee');
-    testsToCount = section?.tests || [];
-  } else if (state.viewMode === 'nvidia') {
-    const section = state.data.sections?.find(s => s.id === 'nvidia-gpu');
-    testsToCount = section?.tests || [];
-  } else if (state.viewMode === 'ibm') {
-    const section = state.data.sections?.find(s => s.id === 'ibm');
-    testsToCount = section?.tests || [];
-  } else if (state.viewMode === 'autogen-policy') {
-    const section = state.data.sections?.find(s => s.id === 'nightly-autogen-policy');
-    testsToCount = section?.tests || [];
-  } else if (state.viewMode === 'coco-charts') {
-    testsToCount = state.data.cocoChartsSection?.tests || [];
-  } else {
-    // For 'all' and 'required' views, use allJobsSection
-    testsToCount = state.data.allJobsSection?.tests || state.data.sections?.flatMap(s => s.tests) || [];
+  // Start from all jobs; contrast categories are pattern-based, applied below.
+  testsToCount = state.data.allJobsSection?.tests || state.data.sections?.flatMap(s => s.tests) || [];
+  const contrastCategories = new Set(['snp', 'tdx', 'snp-gpu', 'tdx-gpu']);
+  if (contrastCategories.has(state.viewMode)) {
+    testsToCount = testsToCount.filter(t => matchesCategory(t, state.viewMode));
   }
   
   // Apply required filter if enabled (not applicable for coco-charts)
@@ -197,15 +190,17 @@ function matchesCategory(test, category) {
   
   const jobName = test.jobName || test.fullName || test.name || '';
   
-  // For 'tee', 'nvidia', 'ibm', and 'autogen-policy', use the configured sections (exact match)
-  if (category === 'tee' || category === 'nvidia' || category === 'ibm' || category === 'autogen-policy') {
-    // Check if this job is in the configured section
-    const sectionId = category === 'tee' ? 'tee' : (category === 'nvidia' ? 'nvidia-gpu' : (category === 'ibm' ? 'ibm' : 'nightly-autogen-policy'));
-    const section = state.data?.sections?.find(s => s.id === sectionId);
-    if (section) {
-      return section.tests.some(t => t.fullName === jobName || t.jobName === jobName);
-    }
-    return false;
+  // Contrast platform pills: exact match on the leading "<Platform> / ..." prefix.
+  const name = jobName;
+  switch (category) {
+    case 'snp':
+      return name.startsWith('Metal-QEMU-SNP /');
+    case 'tdx':
+      return name.startsWith('Metal-QEMU-TDX /');
+    case 'snp-gpu':
+      return name.startsWith('Metal-QEMU-SNP-GPU /');
+    case 'tdx-gpu':
+      return name.startsWith('Metal-QEMU-TDX-GPU /');
   }
   
   // Check required jobs
@@ -226,13 +221,19 @@ function matchesCategory(test, category) {
 
 function filterTests(tests) {
   let filtered = tests;
-  
+
+  // Contrast platform pills narrow the job list to one platform.
+  const contrastCategories = new Set(['snp', 'tdx', 'snp-gpu', 'tdx-gpu']);
+  if (contrastCategories.has(state.viewMode)) {
+    filtered = filtered.filter(t => matchesCategory(t, state.viewMode));
+  }
+
   // Filter by required (applies to all view modes)
   if (state.showRequiredOnly) {
     filtered = filtered.filter(t => matchesCategory(t, 'required'));
   }
   
-  // Filter by status
+  // Filter by status (simple match on current status).
   if (state.filter !== 'all') {
     filtered = filtered.filter(t => t.status === state.filter);
   }
@@ -792,12 +793,11 @@ function renderTestGroup(section, tests, groupId, label, statusClass, isExpanded
         <div class="test-group-content">
             <div class="test-table-header">
               <span>Test Name</span>
-              <span>Maintainers</span>
               <span>Run</span>
               <span>Last Failure</span>
               <span>Last Success</span>
-          <span class="weather-header">Weather <span class="weather-range">(oldest ← 10 days → newest)</span></span>
-              <span>Retried</span>
+              <span class="weather-header">Weather <span class="weather-range">(oldest ← 10 days → newest)</span></span>
+              <span class="col-retried">Retried</span>
             </div>
         ${tests.map(t => renderTestRow(section.id, t)).join('')}
         </div>
@@ -857,9 +857,6 @@ function renderTestRow(sectionId, test) {
         ` : ''}
         </div>
       </div>
-      <div class="test-maintainers-col">
-        ${maintainersHtml}
-      </div>
       <div class="test-run-col">
         <span class="test-run-status ${test.status}">${statusDisplay[test.status] || test.status}</span>
         <span class="test-run-duration">${test.duration || 'N/A'}</span>
@@ -887,41 +884,25 @@ function renderTestRow(sectionId, test) {
 }
 
 function updateStats() {
-  const stats = getTotalStats();
-  document.getElementById('total-tests').textContent = stats.total;
-  document.getElementById('failed-tests').textContent = stats.failed;
-  document.getElementById('not-run-tests').textContent = stats.notRun;
-  document.getElementById('passed-tests').textContent = stats.passed;
-  
-  // Get tests based on current view mode for filter counts
-  let viewTests = [];
-  if (state.viewMode === 'tee') {
-    const section = state.data?.sections?.find(s => s.id === 'tee');
-    viewTests = section?.tests || [];
-  } else if (state.viewMode === 'nvidia') {
-    const section = state.data?.sections?.find(s => s.id === 'nvidia-gpu');
-    viewTests = section?.tests || [];
-  } else if (state.viewMode === 'ibm') {
-    const section = state.data?.sections?.find(s => s.id === 'ibm');
-    viewTests = section?.tests || [];
-  } else if (state.viewMode === 'autogen-policy') {
-    const section = state.data?.sections?.find(s => s.id === 'nightly-autogen-policy');
-    viewTests = section?.tests || [];
-  } else if (state.viewMode === 'coco-charts') {
-    viewTests = state.data?.cocoChartsSection?.tests || [];
-  } else {
-    // For 'all' and 'required' views, use allJobsSection
-    viewTests = state.data?.allJobsSection?.tests || state.data?.sections?.flatMap(s => s.tests) || [];
+  // Scope every counter to the current platform pill + current tier.
+  let viewTests = state.data?.allJobsSection?.tests || state.data?.sections?.flatMap(s => s.tests) || [];
+  const contrastCategories = new Set(['snp', 'tdx', 'snp-gpu', 'tdx-gpu']);
+  if (contrastCategories.has(state.viewMode)) {
+    viewTests = viewTests.filter(t => matchesCategory(t, state.viewMode));
   }
-  
-  // Apply required filter if enabled (not applicable for coco-charts)
-  if (state.showRequiredOnly && state.viewMode !== 'coco-charts') {
-    viewTests = viewTests.filter(t => matchesCategory(t, 'required'));
-  }
-  
-  document.getElementById('filter-failed-count').textContent = viewTests.filter(t => t.status === 'failed').length;
-  document.getElementById('filter-not-run-count').textContent = viewTests.filter(t => t.status === 'not_run').length;
-  document.getElementById('filter-passed-count').textContent = viewTests.filter(t => t.status === 'passed').length;
+
+  const failedCount = viewTests.filter(t => t.status === 'failed').length;
+  const passedCount = viewTests.filter(t => t.status === 'passed').length;
+  const notRunCount = viewTests.filter(t => t.status === 'not_run').length;
+
+  document.getElementById('total-tests').textContent = viewTests.length;
+  document.getElementById('failed-tests').textContent = failedCount;
+  document.getElementById('not-run-tests').textContent = notRunCount;
+  document.getElementById('passed-tests').textContent = passedCount;
+
+  document.getElementById('filter-failed-count').textContent = failedCount;
+  document.getElementById('filter-not-run-count').textContent = notRunCount;
+  document.getElementById('filter-passed-count').textContent = passedCount;
 }
 
 // ============================================
@@ -982,16 +963,17 @@ function setFilter(filter) {
 
 function setViewMode(mode) {
   state.viewMode = mode;
-  
-  // Update quick filter buttons (TEE/NVIDIA)
+
   document.querySelectorAll('.quick-filter-btn').forEach(btn => {
-    const btnMode = btn.dataset.category;
-    btn.classList.toggle('active', btnMode === mode);
+    btn.classList.toggle('active', btn.dataset.category === mode);
   });
-  
-  // When switching to TEE/NVIDIA, the All button should still show the current required state
-  updateAllRequiredButtons();
-  
+  // "All platforms" is a category-btn that is active only when viewMode === 'all'.
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    if (btn.dataset.category === 'all') {
+      btn.classList.toggle('active', mode === 'all');
+    }
+  });
+
   updateStats();
   renderSections();
   updateJobCount();
@@ -1067,7 +1049,7 @@ function showWeatherModal(sectionId, testId) {
   const test = section?.tests.find(t => t.id === testId);
   
   // Determine the GitHub repo for links
-  const sourceRepo = test?.sourceRepo || 'kata-containers/kata-containers';
+  const sourceRepo = test?.sourceRepo || 'edgelesssys/contrast';
   
   if (!test || !test.weatherHistory) {
     showToast('No weather history available', 'error');
@@ -1083,7 +1065,8 @@ function showWeatherModal(sectionId, testId) {
   const passedCount = weather.filter(w => w === 'passed').length;
   const failedCount = weather.filter(w => w === 'failed').length;
   
-  title.textContent = `${test.name} — 10 Day History`;
+  const flatTier = document.body.classList.contains('flat-list-tier');
+  title.textContent = flatTier ? `${test.name} — Recent Runs` : `${test.name} — 10 Day History`;
   
   // Build maintainers section
   const maintainersSection = test.maintainers && test.maintainers.length > 0
@@ -1093,7 +1076,8 @@ function showWeatherModal(sectionId, testId) {
        </div>`
     : '';
   
-  const daysHtml = [...test.weatherHistory].reverse().map((day, index) => {
+  const historySrc = flatTier ? test.weatherHistory.filter(d => d.runId) : test.weatherHistory;
+  const daysHtml = [...historySrc].reverse().map((day, index) => {
     const date = new Date(day.date);
     const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
     const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -1286,14 +1270,14 @@ function showWeatherModal(sectionId, testId) {
   }
   
   body.innerHTML = `
-    <div class="weather-detail-header">
+    ${flatTier ? '' : `<div class="weather-detail-header">
       <span class="weather-detail-icon">${weatherEmoji}</span>
       <div class="weather-detail-stats">
         <h4>${passedCount}/${weather.length} days passed</h4>
         <p>${getWeatherPercentage(test.weatherHistory)}% success rate over the last 10 days</p>
         ${maintainersSection}
-          </div>
-          </div>
+      </div>
+    </div>`}
           
     <div class="weather-days-list">
       ${daysHtml}
@@ -1313,7 +1297,7 @@ function showWeatherModal(sectionId, testId) {
               <div class="failed-day-item">
                 <span class="failed-day-date">${date.toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric'})}</span>
                 ${day.failureStep ? `<span class="failed-day-step">${day.failureStep}</span>` : '<span class="failed-day-step">(No details available)</span>'}
-                ${day.runId ? `<a href="https://github.com/kata-containers/kata-containers/actions/runs/${day.runId}${day.jobId ? '/job/' + day.jobId : ''}" target="_blank" class="failed-day-link">View Run</a>` : ''}
+                ${day.runId ? `<a href="https://github.com/edgelesssys/contrast/actions/runs/${day.runId}${day.jobId ? '/job/' + day.jobId : ''}" target="_blank" class="failed-day-link">View Run</a>` : ''}
                 ${hasDetails ? `<span class="failed-day-note">(${day.failureDetails.failures.length} test${day.failureDetails.failures.length > 1 ? 's' : ''} failed - logs parsed)</span>` : ''}
       </div>
             `;
@@ -1440,7 +1424,7 @@ function showErrorModal(sectionId, testId) {
   }
   
   // Determine the GitHub repo for links
-  const sourceRepo = test?.sourceRepo || 'kata-containers/kata-containers';
+  const sourceRepo = test?.sourceRepo || 'edgelesssys/contrast';
   
   const modal = document.getElementById('error-modal');
   const title = document.getElementById('modal-title');
@@ -1541,25 +1525,139 @@ function copyError() {
 
 function switchTab(tabName) {
   state.activeTab = tabName;
-  
-  // Update tab buttons (only within Kata content)
-  document.querySelectorAll('#kata-content .tab').forEach(tab => {
+
+  document.querySelectorAll('#contrast-content .tab').forEach(tab => {
     tab.classList.toggle('active', tab.dataset.tab === tabName);
   });
-  
-  // Update tab content (only within Kata content)
-  document.querySelectorAll('#kata-content .tab-content').forEach(content => {
-    content.classList.toggle('active', content.id === `${tabName}-content`);
-  });
-  
-  // Render appropriate content
-  if (tabName === 'nightly') {
-    renderSections();
-    updateStats();
-    updateJobCount();
-  } else if (tabName === 'prfailures') {
-    renderPRFailures();
+
+  // Toggle visibility of the two content panels (grid view vs nightly-failures).
+  const grid = document.getElementById('nightly-content');
+  const nf   = document.getElementById('nightlyfailures-content');
+  if (grid) grid.classList.toggle('active', tabName !== 'nightlyfailures');
+  if (nf)   nf.classList.toggle('active', tabName === 'nightlyfailures');
+
+  if (tabName === 'nightlyfailures') {
+    renderNightlyFailures();
+    return;
   }
+
+  // Platform pills only make sense on the Nightly tab.
+  const pillsRow = document.querySelector('.category-filters');
+  if (pillsRow) pillsRow.style.display = (tabName === 'nightly') ? '' : 'none';
+  if (tabName !== 'nightly') setViewMode('all');
+
+  // Hide weather columns on sparse-run tiers.
+  document.body.classList.toggle('flat-list-tier', tabName === 'scheduled' || tabName === 'release');
+
+  if (state.tiersData && state.tiersData[tabName]) {
+    state.data = state.tiersData[tabName];
+  } else if (state.tiersData && state.tiersData.nightly) {
+    state.data = state.tiersData.nightly;
+  }
+
+  renderSections();
+  updateStats();
+  updateJobCount();
+}
+
+// ============================================
+// Nightly Failures (aggregate sub-test failures across the nightly window)
+// ============================================
+function renderNightlyFailures() {
+  const list = document.getElementById('nightly-failures-list');
+  if (!list) return;
+  const data = state.tiersData?.nightly;
+  if (!data) {
+    list.innerHTML = '<p class="empty-message">No nightly data available.</p>';
+    return;
+  }
+  const tests = data.allJobsSection?.tests || data.sections?.flatMap(s => s.tests) || [];
+
+  // Group by job test-name (the part after the platform), so e.g.
+  // "Metal-QEMU-SNP / badaml-vuln (with debug shell)" → key "badaml-vuln (with debug shell)".
+  const byJob = new Map();
+  tests.forEach(job => {
+    const fullName = job.jobName || job.fullName || job.name || '';
+    const parts = fullName.split(' / ');
+    const platform = parts[0] || 'unknown';
+    const testName = parts.slice(1).join(' / ') || fullName;
+
+    const failureDates = new Set();
+    (job.weatherHistory || []).forEach(d => {
+      if (d.status === 'failed') failureDates.add((d.date || '').split('T')[0]);
+    });
+    if (failureDates.size === 0 && (job.failedTestsInWeather || []).length === 0) return;
+
+    let entry = byJob.get(testName);
+    if (!entry) {
+      entry = { testName, platforms: new Map(), subtests: new Set(), totalFailureDays: 0 };
+      byJob.set(testName, entry);
+    }
+    const plat = entry.platforms.get(platform) || { dates: new Set(), subtests: new Map() };
+    failureDates.forEach(d => plat.dates.add(d));
+    (job.failedTestsInWeather || []).forEach(ft => {
+      entry.subtests.add(ft.name);
+      const cur = plat.subtests.get(ft.name) || { count: 0, dates: new Set() };
+      cur.count += ft.count || 1;
+      (ft.dates || []).forEach(d => cur.dates.add(d));
+      plat.subtests.set(ft.name, cur);
+    });
+    entry.platforms.set(platform, plat);
+  });
+
+  const rows = Array.from(byJob.values()).map(e => {
+    const platforms = Array.from(e.platforms.entries()).map(([p, v]) => ({
+      platform: p,
+      dates: Array.from(v.dates).sort().reverse(),
+      subtests: Array.from(v.subtests.entries()).map(([n, s]) => ({
+        name: n, count: s.count, dates: Array.from(s.dates).sort().reverse(),
+      })).sort((a, b) => b.count - a.count),
+    })).sort((a, b) => b.dates.length - a.dates.length);
+    const totalFailureDays = platforms.reduce((s, p) => s + p.dates.length, 0);
+    return { testName: e.testName, subtests: Array.from(e.subtests), platforms, totalFailureDays };
+  }).sort((a, b) => b.totalFailureDays - a.totalFailureDays);
+
+  document.getElementById('nf-tests').textContent = rows.length;
+  document.getElementById('nf-occurrences').textContent = rows.reduce((s, r) => s + r.totalFailureDays, 0);
+  document.getElementById('nf-jobs').textContent = rows.reduce((s, r) => s + r.platforms.length, 0);
+
+  if (rows.length === 0) {
+    list.innerHTML = '<p class="empty-message">No nightly failures in the window. 🎉</p>';
+    return;
+  }
+
+  const q = (state.nightlyFailureQuery || '').toLowerCase();
+  const matches = r => !q
+    || r.testName.toLowerCase().includes(q)
+    || r.platforms.some(p => p.platform.toLowerCase().includes(q))
+    || r.subtests.some(n => n.toLowerCase().includes(q));
+  const visible = rows.filter(matches);
+
+  list.innerHTML = visible.map(r => `
+    <div class="flaky-item" data-toggle-expand>
+      <div class="flaky-item-header">
+        <div class="flaky-item-info">
+          <div class="flaky-item-name">${escapeHtml(r.testName)}</div>
+          <div class="flaky-item-file">${r.platforms.length} platform${r.platforms.length > 1 ? 's' : ''} affected</div>
+        </div>
+        <span class="flaky-item-badge">${r.totalFailureDays} failure-day${r.totalFailureDays > 1 ? 's' : ''}</span>
+      </div>
+      <div class="flaky-item-body" style="padding: 0 16px 12px 16px;">
+        ${r.platforms.map(p => `
+          <div style="padding: 6px 0; border-top: 1px solid var(--border-subtle, #21262d);">
+            <div style="display:flex; gap:10px; align-items:center; font-size:13px;">
+              <span class="required-badge" style="background:#30363d; color:#c9d1d9;">${escapeHtml(p.platform)}</span>
+              <span style="color:var(--text-muted);">${p.dates.length} failed day${p.dates.length > 1 ? 's' : ''}</span>
+              <span style="color:var(--text-muted); font-family: var(--font-mono); font-size:11px;">${p.dates.slice(0, 4).join(', ')}</span>
+            </div>
+            ${p.subtests.length ? `<div style="margin: 4px 0 0 8px; font-size:12px; color:var(--text-muted);">
+              ${p.subtests.slice(0, 6).map(s => `<div>• ${escapeHtml(s.name)} (${s.count}×)</div>`).join('')}
+            </div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
 }
 
 // ============================================
@@ -1678,7 +1776,7 @@ function renderPRFailures() {
                   ${flakyOccs.map(occ => {
                     const date = new Date(occ.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                     return `
-                      <a href="https://github.com/kata-containers/kata-containers/actions/runs/${occ.runId}/job/${occ.jobId}" 
+                      <a href="https://github.com/edgelesssys/contrast/actions/runs/${occ.runId}/job/${occ.jobId}" 
                          target="_blank" class="flaky-run-link">
                         <span class="run-date">${date}</span>
                         <span class="run-pr">PR #${occ.prNumber}</span>
@@ -1726,7 +1824,7 @@ function renderPRFailures() {
                     ${test.occurrences.slice(0, 3).map(occ => {
                       const date = new Date(occ.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                       return `
-                        <a href="https://github.com/kata-containers/kata-containers/actions/runs/${occ.runId}/job/${occ.jobId}" 
+                        <a href="https://github.com/edgelesssys/contrast/actions/runs/${occ.runId}/job/${occ.jobId}" 
                            target="_blank" class="mini-run-link">
                           ${date} · PR #${occ.prNumber} →
                         </a>
@@ -1859,9 +1957,9 @@ function renderFlakyTestRow(test) {
                 return `
                   <div class="occurrence">
                     <span class="occ-date">${date}</span>
-                    <a href="https://github.com/kata-containers/kata-containers/pull/${occ.prNumber}" target="_blank" class="occ-pr">PR #${occ.prNumber}</a>
+                    <a href="https://github.com/edgelesssys/contrast/pull/${occ.prNumber}" target="_blank" class="occ-pr">PR #${occ.prNumber}</a>
                     <span class="occ-job" title="${occ.jobDisplayName}">${simplifyJobName(occ.jobDisplayName)}</span>
-                    <a href="https://github.com/kata-containers/kata-containers/actions/runs/${occ.runId}/job/${occ.jobId}" target="_blank" class="occ-link">View</a>
+                    <a href="https://github.com/edgelesssys/contrast/actions/runs/${occ.runId}/job/${occ.jobId}" target="_blank" class="occ-link">View</a>
                   </div>
                 `;
               }).join('')}
@@ -1948,7 +2046,7 @@ function renderFailedTestCard(test) {
       <div class="flaky-occurrence ${occFlaky ? 'is-flaky' : ''} ${occMerged ? 'is-merged' : ''}">
         <span class="occurrence-date">${formatted}</span>
         <span class="occurrence-pr">
-          <a href="https://github.com/kata-containers/kata-containers/pull/${occ.prNumber}" target="_blank" class="pr-link">
+          <a href="https://github.com/edgelesssys/contrast/pull/${occ.prNumber}" target="_blank" class="pr-link">
             PR #${occ.prNumber}${prTitle}
           </a>
           ${isRerun ? `<span class="rerun-badge">(re-run #${occ.runAttempt})</span>` : ''}
@@ -1956,7 +2054,7 @@ function renderFailedTestCard(test) {
           ${occMerged ? `<span class="occurrence-badge merged" title="PR was merged despite this failure">✓ Merged</span>` : ''}
         </span>
         <span class="occurrence-job">${occ.jobDisplayName}</span>
-        <a href="https://github.com/kata-containers/kata-containers/actions/runs/${occ.runId}/job/${occ.jobId}" 
+        <a href="https://github.com/edgelesssys/contrast/actions/runs/${occ.runId}/job/${occ.jobId}" 
            target="_blank" 
            class="occurrence-link">
           View Run
@@ -1996,7 +2094,7 @@ function renderFailedTestCard(test) {
           <span class="flaky-count">${test.totalFailures}x</span>
           <span class="flaky-prs">${test.uniquePRs} PR${test.uniquePRs > 1 ? 's' : ''}</span>
         </div>
-        <a href="https://github.com/kata-containers/kata-containers/actions/runs/${test.recentOccurrences[0]?.runId}/job/${test.recentOccurrences[0]?.jobId}" 
+        <a href="https://github.com/edgelesssys/contrast/actions/runs/${test.recentOccurrences[0]?.runId}/job/${test.recentOccurrences[0]?.jobId}" 
            target="_blank" 
            class="btn btn-small"
            onclick="event.stopPropagation()">
@@ -2064,7 +2162,7 @@ function init() {
   });
   
   // Tab switching (within Kata project)
-  document.querySelectorAll('#kata-content .tab').forEach(tab => {
+  document.querySelectorAll('#contrast-content .tab').forEach(tab => {
     tab.addEventListener('click', () => switchTab(tab.dataset.tab));
   });
   
@@ -2083,20 +2181,10 @@ function init() {
     btn.addEventListener('click', () => setCocoFilter(btn.dataset.filter));
   });
   
-  // Category filter buttons (All/Required toggle)
-  // Category toggle buttons (All/Required) - these toggle the required filter
+  // "All platforms" button resets the view mode.
   document.querySelectorAll('.category-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const category = btn.dataset.category;
-      if (category === 'required') {
-        state.showRequiredOnly = true;
-      } else {
-        state.showRequiredOnly = false;
-      }
-      updateAllRequiredButtons();
-      updateStats();
-      renderSections();
-      updateJobCount();
+      if (btn.dataset.category === 'all') setViewMode('all');
     });
   });
   
@@ -2118,6 +2206,27 @@ function init() {
     state.searchQuery = e.target.value;
     renderSections();
     updateJobCount();
+  });
+  const nfSearch = document.getElementById('search-nightly-failures');
+  if (nfSearch) nfSearch.addEventListener('input', (e) => {
+    state.nightlyFailureQuery = e.target.value;
+    renderNightlyFailures();
+  });
+  // Nightly Failures rows: toggle expanded on header click.
+  document.addEventListener('click', (e) => {
+    const header = e.target.closest('#nightly-failures-list .flaky-item-header');
+    if (!header) return;
+    header.parentElement.classList.toggle('expanded');
+  });
+  // In flat-list-tier mode (Scheduled/Release) the weather column is hidden,
+  // so make the row's test-name a click target for the history modal.
+  document.addEventListener('click', (e) => {
+    if (!document.body.classList.contains('flat-list-tier')) return;
+    const row = e.target.closest('.test-row');
+    if (!row) return;
+    const weatherCol = row.querySelector('.test-weather-col[data-test-id]');
+    if (!weatherCol) return;
+    showWeatherModal(weatherCol.dataset.sectionId, weatherCol.dataset.testId);
   });
   
   // Sort dropdown - Kata
