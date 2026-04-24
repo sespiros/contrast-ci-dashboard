@@ -44,7 +44,8 @@ chmod 600 .env.local
 ## Deployment
 
 Lives on GitHub Pages, refreshed every 3 hours by `.github/workflows/refresh-data.yml`.
-The workflow reads `secrets.CONTRAST_RO_PAT` (a fine-grained or classic PAT with `Actions: Read` on `edgelesssys/contrast`, SSO-authorized for the org), runs the same scraper used locally, commits any updated `data-*.json` back to the active branch, and publishes the static site via the Pages deploy action.
+The workflow uses the default `secrets.GITHUB_TOKEN` (no PAT required): the scraper only hits public endpoints on `edgelesssys/contrast`, which authenticated installation tokens can read regardless of org SAML enforcement.
+It runs the same scraper used locally, commits any updated `data-*.json` back to the active branch, and publishes the static site via the Pages deploy action.
 
 Pages source must be set to **GitHub Actions** in repo settings.
 
