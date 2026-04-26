@@ -1,5 +1,5 @@
 {
-  "lastRefresh": "2026-04-26T16:42:26.491Z",
+  "lastRefresh": "2026-04-26T20:40:14.459Z",
   "periodDays": 14,
   "totalFailures": 132,
   "totalPRs": 15,
@@ -1161,7 +1161,7 @@
       "name": "Policy failure: unexpected UID = 0",
       "file": "k8s-policy-deployment.bats",
       "totalFailures": 18,
-      "flakyCount": 6,
+      "flakyCount": 12,
       "mergedCount": 6,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
@@ -1174,21 +1174,21 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
           "count": 6,
-          "flakyCount": 2,
+          "flakyCount": 4,
           "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
           "count": 6,
-          "flakyCount": 2,
+          "flakyCount": 4,
           "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "count": 6,
-          "flakyCount": 2,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -1274,7 +1274,7 @@
           "jobId": "72946242287",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1286,7 +1286,7 @@
           "jobId": "72946242287",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1298,7 +1298,7 @@
           "jobId": "72946242297",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1310,7 +1310,7 @@
           "jobId": "72946242297",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1322,7 +1322,7 @@
           "jobId": "72946242332",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1334,7 +1334,7 @@
           "jobId": "72946242332",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1415,7 +1415,7 @@
       "name": "Policy failure: unexpected GID = 0 for layered securityContext deployment",
       "file": "k8s-policy-deployment-sc.bats",
       "totalFailures": 18,
-      "flakyCount": 6,
+      "flakyCount": 12,
       "mergedCount": 6,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
@@ -1428,21 +1428,21 @@
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
           "count": 6,
-          "flakyCount": 2,
+          "flakyCount": 4,
           "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
           "count": 6,
-          "flakyCount": 2,
+          "flakyCount": 4,
           "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
           "count": 6,
-          "flakyCount": 2,
+          "flakyCount": 4,
           "mergedCount": 2
         }
       ],
@@ -1528,7 +1528,7 @@
           "jobId": "72946242287",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1540,7 +1540,7 @@
           "jobId": "72946242287",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1552,7 +1552,7 @@
           "jobId": "72946242297",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1564,7 +1564,7 @@
           "jobId": "72946242297",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1576,7 +1576,7 @@
           "jobId": "72946242332",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1588,7 +1588,7 @@
           "jobId": "72946242332",
           "runId": "24907221968",
           "runAttempt": 1,
-          "isFlaky": false,
+          "isFlaky": true,
           "prMerged": true
         },
         {
@@ -1945,7 +1945,7 @@
       "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
       "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
       "count": 18,
-      "flakyCount": 8,
+      "flakyCount": 12,
       "mergedCount": 4
     },
     "trend": [
@@ -2011,21 +2011,21 @@
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev-runtime-rs, nydus, guest-pull)",
         "count": 18,
-        "flakyCount": 8,
+        "flakyCount": 12,
         "mergedCount": 4
       },
       {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, experimental-force-guest-pull)",
         "count": 16,
-        "flakyCount": 6,
+        "flakyCount": 10,
         "mergedCount": 4
       },
       {
         "name": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
         "displayName": "kata-containers-ci-on-push / run-kata-coco-tests / run-k8s-tests-coco-nontee (qemu-coco-dev, nydus, guest-pull)",
         "count": 16,
-        "flakyCount": 6,
+        "flakyCount": 10,
         "mergedCount": 4
       },
       {
