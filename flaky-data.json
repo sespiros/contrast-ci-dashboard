@@ -1,5 +1,5 @@
 {
-  "lastRefresh": "2026-04-27T02:00:21.814Z",
+  "lastRefresh": "2026-04-27T06:34:40.331Z",
   "periodDays": 14,
   "totalFailures": 132,
   "totalPRs": 15,
@@ -10,7 +10,7 @@
       "name": "SMB volume mount with xattr support",
       "file": "k8s-smb-volume.bats",
       "totalFailures": 84,
-      "flakyCount": 48,
+      "flakyCount": 44,
       "mergedCount": 14,
       "isConfirmedFlaky": true,
       "mergedDespiteFailure": true,
@@ -37,14 +37,14 @@
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
           "count": 6,
-          "flakyCount": 4,
+          "flakyCount": 2,
           "mergedCount": 2
         },
         {
           "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (clh, active)",
           "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (clh, active)",
           "count": 6,
-          "flakyCount": 4,
+          "flakyCount": 2,
           "mergedCount": 2
         },
         {
@@ -588,7 +588,7 @@
           "jobId": "72994521489",
           "runId": "24904203950",
           "runAttempt": 2,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -600,7 +600,7 @@
           "jobId": "72994521489",
           "runId": "24904203950",
           "runAttempt": 2,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -612,7 +612,7 @@
           "jobId": "72994521493",
           "runId": "24904203950",
           "runAttempt": 2,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -624,7 +624,7 @@
           "jobId": "72994521493",
           "runId": "24904203950",
           "runAttempt": 2,
-          "isFlaky": true,
+          "isFlaky": false,
           "prMerged": true
         },
         {
@@ -2053,14 +2053,14 @@
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (qemu-runtime-rs, active)",
         "count": 6,
-        "flakyCount": 4,
+        "flakyCount": 2,
         "mergedCount": 2
       },
       {
         "name": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (clh, active)",
         "displayName": "kata-containers-ci-on-push / run-k8s-tests-on-free-runner / run-k8s-tests (clh, active)",
         "count": 6,
-        "flakyCount": 4,
+        "flakyCount": 2,
         "mergedCount": 2
       },
       {
