@@ -3,6 +3,8 @@
 A static dashboard for monitoring the [Contrast](https://github.com/edgelesssys/contrast) CI health.
 Forked from [kata-containers/ci-dashboard](https://github.com/kata-containers/ci-dashboard) (Apache-2.0).
 
+Live: <https://sespiros.github.io/contrast-ci-dashboard/>
+
 ## Tabs
 
 | Tab | Source workflow(s) | What it shows |
