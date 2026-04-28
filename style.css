@@ -339,7 +339,12 @@ body {
 }
 
 .stat-failed .stat-value { color: var(--color-failed); }
-.stat-not-run .stat-value { color: var(--text-muted); }
+.stat-not-run .stat-value,
+.stat-missing .stat-value { color: #d9a826; }
+.stat-running .stat-value {
+  color: var(--color-running);
+  animation: pulse 1.5s ease-in-out infinite;
+}
 .stat-flaky .stat-value { color: #f0883e; }
 .stat-passed .stat-value { color: var(--color-passed); }
 .dot-flaky { background: #f0883e; }
@@ -1099,6 +1104,22 @@ body.flat-list-tier .test-row:hover { background: var(--bg-tertiary); }
 
 .weather-dot.none {
   background: var(--bg-tertiary);
+}
+
+.weather-dot.not_run {
+  background: #d9a826;
+  border-color: #d9a826;
+}
+
+.weather-dot.running {
+  background: var(--color-running);
+  border-color: var(--color-running);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.dot-running,
+.section-status.has-running {
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
 .weather-summary {
@@ -2103,22 +2124,28 @@ body.flat-list-tier .test-row:hover { background: var(--bg-tertiary); }
   color: var(--color-accent);
 }
 
-/* Not Run Status */
+/* Missing Status (job not created, cancelled, skipped) — yellow */
+.section-status.has-missing,
 .section-status.has-not-run {
-  background: rgba(107, 114, 128, 0.15);
-  color: var(--text-muted);
+  background: rgba(217, 168, 38, 0.15);
+  color: #d9a826;
 }
 
+.dot-missing,
 .dot-not-run {
-  background: var(--text-muted);
+  background: #d9a826;
 }
 
 .test-row.not_run {
-  opacity: 0.7;
+  opacity: 0.85;
+}
+
+.test-status-dot.not_run {
+  background: #d9a826 !important;
 }
 
 .test-run-status.not_run {
-  color: var(--text-muted);
+  color: #d9a826;
 }
 
 /* Weather failed count in summary */

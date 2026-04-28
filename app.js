@@ -70,7 +70,7 @@ async function loadData() {
       allSections.forEach(section => {
         if (!section?.id) return;
         state.expandedSections.add(section.id);
-        ['failed', 'not-run', 'passed'].forEach(g => state.expandedGroups.add(`${section.id}-${g}`));
+        ['failed', 'missing', 'running'].forEach(g => state.expandedGroups.add(`${section.id}-${g}`));
       });
     });
 
@@ -131,7 +131,8 @@ function getWeatherPercentage(weatherHistory) {
 function getSectionStats(tests) {
   const failed = tests.filter(t => t.status === 'failed').length;
   const passed = tests.filter(t => t.status === 'passed').length;
-  const notRun = tests.filter(t => t.status === 'not_run' || t.status === 'running').length;
+  const missing = tests.filter(t => t.status === 'not_run').length;
+  const running = tests.filter(t => t.status === 'running').length;
   
   // Count total failure days across all tests in section
   const totalFailureDays = tests.reduce((sum, t) => {
@@ -144,7 +145,7 @@ function getSectionStats(tests) {
   const weatherPercent = getWeatherPercentage(allWeather);
   const weatherEmoji = getWeatherEmoji(allWeather);
   
-  return { failed, passed, notRun, total: tests.length, totalFailureDays, weatherPercent, weatherEmoji };
+  return { failed, passed, missing, running, notRun: missing, total: tests.length, totalFailureDays, weatherPercent, weatherEmoji };
 }
 
 function getTotalStats() {
@@ -667,8 +668,11 @@ function renderSections() {
     if (stats.failed > 0) {
       statusBadges.push(`<span class="section-status has-failed">(${stats.failed} failed)</span>`);
     }
-    if (stats.notRun > 0) {
-      statusBadges.push(`<span class="section-status has-not-run">(${stats.notRun} not run)</span>`);
+    if (stats.missing > 0) {
+      statusBadges.push(`<span class="section-status has-missing">(${stats.missing} missing)</span>`);
+    }
+    if (stats.running > 0) {
+      statusBadges.push(`<span class="section-status has-running">(${stats.running} running)</span>`);
     }
     if (statusBadges.length === 0 && stats.passed === stats.total) {
       statusBadges.push(`<span class="section-status all-green">All Green</span>`);
@@ -751,26 +755,34 @@ function renderSections() {
 
 function renderTestGroups(section, tests) {
   const failed = tests.filter(t => t.status === 'failed');
-  const notRun = tests.filter(t => t.status === 'not_run');
+  const missing = tests.filter(t => t.status === 'not_run');
+  const running = tests.filter(t => t.status === 'running');
   const passed = tests.filter(t => t.status === 'passed');
-  
+
   let html = '';
-  
-  // Failed tests
+
+  // Failed
   if (failed.length > 0) {
     const groupId = `${section.id}-failed`;
     const isExpanded = state.expandedGroups.has(groupId) || state.filter === 'failed';
     html += renderTestGroup(section, failed, groupId, 'FAILED', 'failed', isExpanded);
   }
-  
-  // Not run tests
-  if (notRun.length > 0) {
-    const groupId = `${section.id}-not-run`;
+
+  // Missing (no job created / cancelled / skipped)
+  if (missing.length > 0) {
+    const groupId = `${section.id}-missing`;
     const isExpanded = state.expandedGroups.has(groupId) || state.filter === 'not_run';
-    html += renderTestGroup(section, notRun, groupId, 'NOT RUN', 'not-run', isExpanded);
+    html += renderTestGroup(section, missing, groupId, 'MISSING', 'missing', isExpanded);
   }
-  
-  // Passed tests
+
+  // Running (in-progress / queued)
+  if (running.length > 0) {
+    const groupId = `${section.id}-running`;
+    const isExpanded = state.expandedGroups.has(groupId) || state.filter === 'running';
+    html += renderTestGroup(section, running, groupId, 'RUNNING', 'running', isExpanded);
+  }
+
+  // Passed
   if (passed.length > 0) {
     const groupId = `${section.id}-passed`;
     const isExpanded = state.expandedGroups.has(groupId) || state.filter === 'passed';
@@ -815,7 +827,7 @@ function getPlatformLabel(test) {
 
 function renderTestRow(sectionId, test) {
   const weather = getWeatherFromHistory(test.weatherHistory);
-  const weatherDots = weather.length > 0 
+  const weatherDots = weather.length > 0
     ? weather.map(w => `<span class="weather-dot ${w}"></span>`).join('')
     : '<span class="weather-dot none"></span>'.repeat(10);
   
@@ -826,7 +838,7 @@ function renderTestRow(sectionId, test) {
   const statusDisplay = {
     'passed': '● Passed',
     'failed': '○ Failed',
-    'not_run': '⊘ Not Run',
+    'not_run': '⊘ Missing',
     'running': '◌ Running'
   };
   
@@ -905,14 +917,17 @@ function updateStats() {
   const failedCount = viewTests.filter(t => t.status === 'failed').length;
   const passedCount = viewTests.filter(t => t.status === 'passed').length;
   const notRunCount = viewTests.filter(t => t.status === 'not_run').length;
+  const runningCount = viewTests.filter(t => t.status === 'running').length;
 
   document.getElementById('total-tests').textContent = viewTests.length;
   document.getElementById('failed-tests').textContent = failedCount;
   document.getElementById('not-run-tests').textContent = notRunCount;
+  document.getElementById('running-tests').textContent = runningCount;
   document.getElementById('passed-tests').textContent = passedCount;
 
   document.getElementById('filter-failed-count').textContent = failedCount;
   document.getElementById('filter-not-run-count').textContent = notRunCount;
+  document.getElementById('filter-running-count').textContent = runningCount;
   document.getElementById('filter-passed-count').textContent = passedCount;
 }
 
@@ -2555,7 +2570,7 @@ function renderCocoTestRow(test, sectionId, sourceRepo) {
   const statusDisplay = {
     'passed': '● Passed',
     'failed': '○ Failed',
-    'not_run': '⊘ Not Run',
+    'not_run': '⊘ Missing',
     'running': '◌ Running'
   };
   

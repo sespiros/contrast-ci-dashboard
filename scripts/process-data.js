@@ -485,7 +485,7 @@ const sections = (config.sections || []).map(sectionConfig => {
       if (!job) return 'not_run';
       
       if (job.status === 'in_progress' || job.status === 'queued') {
-        return 'not_run'; // Treat running/queued as not run yet
+        return 'running';
       }
       
       if (job.conclusion === 'success') {
@@ -617,8 +617,13 @@ const sections = (config.sections || []).map(sectionConfig => {
           }
         } else if (dayRawStatus === 'not_run_setup_failed') {
            // It failed, but not in a fatal step. Treat as not run/setup failed.
-           // Maybe we want a visual distinction? For now, 'none' or 'not_run'
-           dayStatus = 'not_run'; // Or 'setup_failed' if we add UI support
+           dayStatus = 'not_run';
+        } else if (dayRawStatus === 'running') {
+           dayStatus = 'running';
+        } else if (dayRawStatus === 'not_run') {
+           // cancelled / skipped / no-job: surface as 'not_run' (yellow) so it's
+           // distinguishable from days where the test didn't exist yet ('none').
+           dayStatus = 'not_run';
         }
       } else if (cachedWeather) {
         // No fresh data for this day, use cache if available

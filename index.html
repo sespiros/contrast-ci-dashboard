@@ -65,9 +65,13 @@
           <span class="stat-value" id="failed-tests">0</span>
           <span class="stat-label">Failed</span>
         </div>
-        <div class="stat stat-not-run">
+        <div class="stat stat-missing">
           <span class="stat-value" id="not-run-tests">0</span>
-          <span class="stat-label">Not Run</span>
+          <span class="stat-label">Missing</span>
+        </div>
+        <div class="stat stat-running">
+          <span class="stat-value" id="running-tests">0</span>
+          <span class="stat-label">Running</span>
         </div>
         <div class="stat stat-passed">
           <span class="stat-value" id="passed-tests">0</span>
@@ -87,7 +91,10 @@
             <span class="dot dot-failed"></span> Failed (<span id="filter-failed-count">0</span>)
           </button>
           <button class="filter-btn" data-filter="not_run">
-            <span class="dot dot-not-run"></span> Not Run (<span id="filter-not-run-count">0</span>)
+            <span class="dot dot-missing"></span> Missing (<span id="filter-not-run-count">0</span>)
+          </button>
+          <button class="filter-btn" data-filter="running">
+            <span class="dot dot-running"></span> Running (<span id="filter-running-count">0</span>)
           </button>
           <button class="filter-btn" data-filter="passed">
             <span class="dot dot-passed"></span> Passed (<span id="filter-passed-count">0</span>)
