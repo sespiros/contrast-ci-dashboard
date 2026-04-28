@@ -2164,12 +2164,39 @@ function toggleFlakyTest(testName) {
 // Initialization
 // ============================================
 
+function applyTheme(mode) {
+  // mode: 'light' | 'dark' | 'auto' (auto = follow OS via prefers-color-scheme)
+  const root = document.documentElement;
+  if (mode === 'auto') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', mode);
+  try { localStorage.setItem('theme', mode); } catch (e) {}
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    const icon = btn.querySelector('[data-theme-icon]');
+    if (icon) icon.textContent = mode === 'dark' ? '🌙' : mode === 'light' ? '☀️' : '🌓';
+    btn.title = `Theme: ${mode} (click to cycle)`;
+  }
+}
+
+function initTheme() {
+  let saved;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  applyTheme(saved === 'light' || saved === 'dark' ? saved : 'auto');
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') || 'auto';
+    const next = cur === 'auto' ? 'dark' : cur === 'dark' ? 'light' : 'auto';
+    applyTheme(next);
+  });
+}
+
 function init() {
+  initTheme();
+
   // Set current date
   document.getElementById('current-date').textContent = formatDate();
   const cocoDateEl = document.getElementById('coco-current-date');
   if (cocoDateEl) cocoDateEl.textContent = formatDate();
-  
+
   // Load data
   loadData();
   

@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    // Apply persisted theme synchronously to avoid a flash of the wrong palette.
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <div class="dashboard">
@@ -25,6 +32,9 @@
       </div>
       <div class="header-right">
         <span class="last-refresh">Last updated: <strong id="last-refresh-time">—</strong></span>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Theme: auto">
+          <span class="theme-icon" data-theme-icon>🌓</span>
+        </button>
       </div>
     </header>
 
@@ -119,27 +129,27 @@
         </div>
         <div class="category-quick-filters">
           <button class="quick-filter-btn" data-category="snp">
-            <span class="vendor-logos"><img src="logos/amd.svg" alt="AMD" class="vendor-logo"></span>
+            <span class="vendor-logos"><span class="vendor-logo logo-amd" aria-label="AMD"></span></span>
             <span class="quick-filter-label">SNP</span>
             <span class="quick-filter-desc">SEV-SNP (palutena)</span>
           </button>
           <button class="quick-filter-btn" data-category="tdx">
-            <span class="vendor-logos"><img src="logos/intel.svg" alt="Intel" class="vendor-logo"></span>
+            <span class="vendor-logos"><span class="vendor-logo logo-intel" aria-label="Intel"></span></span>
             <span class="quick-filter-label">TDX</span>
             <span class="quick-filter-desc">TDX (olimar)</span>
           </button>
           <button class="quick-filter-btn" data-category="snp-gpu">
             <span class="vendor-logos">
-              <img src="logos/amd.svg" alt="AMD" class="vendor-logo">
-              <img src="logos/nvidia.svg" alt="NVIDIA" class="vendor-logo">
+              <span class="vendor-logo logo-amd" aria-label="AMD"></span>
+              <span class="vendor-logo logo-nvidia" aria-label="NVIDIA"></span>
             </span>
             <span class="quick-filter-label">SNP+GPU</span>
             <span class="quick-filter-desc">SEV-SNP + H100 (discovery)</span>
           </button>
           <button class="quick-filter-btn" data-category="tdx-gpu">
             <span class="vendor-logos">
-              <img src="logos/intel.svg" alt="Intel" class="vendor-logo">
-              <img src="logos/nvidia.svg" alt="NVIDIA" class="vendor-logo">
+              <span class="vendor-logo logo-intel" aria-label="Intel"></span>
+              <span class="vendor-logo logo-nvidia" aria-label="NVIDIA"></span>
             </span>
             <span class="quick-filter-label">TDX+GPU</span>
             <span class="quick-filter-desc">TDX + B200 (dgx-007)</span>

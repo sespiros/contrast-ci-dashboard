@@ -55,6 +55,74 @@
   --transition-normal: 250ms ease;
 }
 
+/* Light theme: clean GitHub-flavoured neutrals that mirror the dark theme's
+   structure. Accent stays in the same blue family as :root for consistency,
+   just shifted darker for contrast against pale surfaces. Applied either via
+   [data-theme="light"] (user override) or, when no override is set, when the
+   OS prefers light. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg-primary: #f6f8fa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #eaeef2;
+    --bg-hover: #dde3ea;
+
+    --border-primary: #d0d7de;
+    --border-secondary: #e2e7ec;
+
+    --text-primary: #1f2328;
+    --text-secondary: #4d5460;
+    --text-muted: #6e7781;
+
+    --color-accent: #a855f7;
+    --color-accent-hover: #9333ea;
+    --color-accent-bg: rgba(168, 85, 247, 0.12);
+
+    --color-passed-bg: rgba(63, 185, 80, 0.12);
+    --color-failed-bg: rgba(248, 81, 73, 0.10);
+    --color-running-bg: rgba(88, 166, 255, 0.12);
+  }
+}
+:root[data-theme="light"] {
+  --bg-primary: #f6f8fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #eaeef2;
+  --bg-hover: #dde3ea;
+
+  --border-primary: #d0d7de;
+  --border-secondary: #e2e7ec;
+
+  --text-primary: #1f2328;
+  --text-secondary: #4d5460;
+  --text-muted: #6e7781;
+
+  --color-accent: #7a49f6;
+  --color-accent-hover: #5a2bd8;
+  --color-accent-bg: rgba(122, 73, 246, 0.12);
+
+  --color-passed-bg: rgba(63, 185, 80, 0.12);
+  --color-failed-bg: rgba(248, 81, 73, 0.10);
+  --color-running-bg: rgba(88, 166, 255, 0.12);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  margin-left: var(--space-sm);
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.theme-toggle:hover {
+  background: var(--bg-hover);
+  border-color: var(--color-accent);
+}
+
 /* Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -75,6 +143,28 @@ body {
   background-image:
     radial-gradient(ellipse at top, rgba(122, 73, 246, 0.10) 0%, transparent 55%),
     radial-gradient(ellipse at bottom right, rgba(33, 208, 122, 0.06) 0%, transparent 55%);
+}
+
+/* Light-mode body gradient: swap the dark theme's purple top-glow for green.
+   Order matters: this MUST come after the base body rule above, otherwise
+   ties on specificity make the unmediated rule win. */
+@media (prefers-color-scheme: light) {
+  body {
+    background-image:
+      radial-gradient(ellipse at top, rgba(33, 208, 122, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(33, 208, 122, 0.08) 0%, transparent 55%);
+  }
+  /* OS prefers light but user explicitly picked dark — keep dark's gradient. */
+  :root[data-theme="dark"] body {
+    background-image:
+      radial-gradient(ellipse at top, rgba(122, 73, 246, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom right, rgba(33, 208, 122, 0.06) 0%, transparent 55%);
+  }
+}
+:root[data-theme="light"] body {
+  background-image:
+    radial-gradient(ellipse at top, rgba(33, 208, 122, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(33, 208, 122, 0.08) 0%, transparent 55%);
 }
 
 /* Dashboard Container */
@@ -386,10 +476,53 @@ body.flat-list-tier .section-weather-icon { display: none !important; }
 
 /* Vendor logos in platform pills. */
 .vendor-logos { display: inline-flex; gap: 6px; align-items: center; justify-content: center; }
-.vendor-logo { height: 18px; width: auto; }
-/* AMD wordmark uses currentColor → inherit a contrasty white when inactive. */
-.quick-filter-btn .vendor-logo[alt="AMD"] { color: #fff; }
-.quick-filter-btn.active .vendor-logo[alt="AMD"] { color: #fff; }
+
+/* Vendor logos are rendered as CSS masks so we can drive their fill via
+   currentColor. (When SVGs are referenced via <img>, currentColor doesn't
+   inherit from the host page — the SVG renders as its own document. Using
+   mask-image with background-color: currentColor flips that around.) */
+.vendor-logo {
+  display: inline-block;
+  height: 18px;
+  background-color: currentColor;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+.logo-amd    { width: 42px; -webkit-mask-image: url('logos/amd.svg');    mask-image: url('logos/amd.svg'); }
+.logo-intel  { width: 32px; -webkit-mask-image: url('logos/intel.svg');  mask-image: url('logos/intel.svg'); }
+.logo-nvidia { width: 22px; -webkit-mask-image: url('logos/nvidia.svg'); mask-image: url('logos/nvidia.svg'); }
+
+/* Per-pill colour rules:
+   - AMD wordmark + pill text follow the same colour
+     (dark: white inactive, black active; light: black inactive, white active)
+   - Intel stays blue regardless of state (brighter on dark for contrast)
+   - NVIDIA stays its native olive-green regardless of state */
+.quick-filter-btn .logo-amd { color: #fff; }
+.quick-filter-btn.active { color: #fff; }
+.quick-filter-btn.active .logo-amd { color: #fff; }
+.quick-filter-btn .logo-intel,
+.quick-filter-btn.active .logo-intel { color: #58a6ff; }
+.quick-filter-btn .logo-nvidia,
+.quick-filter-btn.active .logo-nvidia { color: #76b900; }
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .quick-filter-btn { color: #1f2328; }
+  :root:not([data-theme]) .quick-filter-btn .logo-amd { color: #1f2328; }
+  :root:not([data-theme]) .quick-filter-btn.active { color: #fff; }
+  :root:not([data-theme]) .quick-filter-btn.active .logo-amd { color: #fff; }
+  :root:not([data-theme]) .quick-filter-btn .logo-intel,
+  :root:not([data-theme]) .quick-filter-btn.active .logo-intel { color: #0071c5; }
+}
+:root[data-theme="light"] .quick-filter-btn { color: #1f2328; }
+:root[data-theme="light"] .quick-filter-btn .logo-amd { color: #1f2328; }
+:root[data-theme="light"] .quick-filter-btn.active { color: #fff; }
+:root[data-theme="light"] .quick-filter-btn.active .logo-amd { color: #fff; }
+:root[data-theme="light"] .quick-filter-btn .logo-intel,
+:root[data-theme="light"] .quick-filter-btn.active .logo-intel { color: #0071c5; }
 /* Flat-list rows are clickable for the history modal. */
 body.flat-list-tier .test-row { cursor: pointer; }
 body.flat-list-tier .test-row:hover { background: var(--bg-tertiary); }
