@@ -765,6 +765,15 @@ const sections = (config.sections || []).map(sectionConfig => {
       }
     }
     
+    // Today's weather slot is built from the day-job alone, so when a matrix
+    // leg never created a job ('missing'), today's dot stays 'none' (gray)
+    // even though the test row is rendered as missing/running. Propagate the
+    // overall status onto today's slot so the dot colour matches the row.
+    const todaySlot = weatherHistory[weatherHistory.length - 1];
+    if (todaySlot && todaySlot.status === 'none' && (status === 'not_run' || status === 'running')) {
+      todaySlot.status = status;
+    }
+
     return {
       id: testId,
       name: displayName,
@@ -1027,7 +1036,7 @@ const allJobsSection = {
     // Find last failure and success (from first attempts only)
     const lastFailureJob = matchingJobs.find(j => j.conclusion === 'failure' && (j.run_attempt || 1) === 1);
     const lastSuccessJob = matchingJobs.find(j => j.conclusion === 'success' && (j.run_attempt || 1) === 1);
-    
+
     // Get error details if failed
     let errorDetails = null;
     if (status === 'failed' && latestJob) {
@@ -1036,7 +1045,15 @@ const allJobsSection = {
         step: failedStep?.name || 'Unknown step'
       };
     }
-    
+
+    // Propagate today's overall status onto the latest weather slot when no
+    // job exists for today (so a missing/running matrix leg paints yellow/blue
+    // on today's dot instead of staying gray).
+    const todaySlot = weatherHistory[weatherHistory.length - 1];
+    if (todaySlot && todaySlot.status === 'none' && (status === 'not_run' || status === 'running')) {
+      todaySlot.status = status;
+    }
+
     return {
       id: testId,
       name: displayName,
