@@ -792,6 +792,7 @@ function renderTestGroup(section, tests, groupId, label, statusClass, isExpanded
         </div>
         <div class="test-group-content">
             <div class="test-table-header">
+              <span>Platform</span>
               <span>Test Name</span>
               <span>Run</span>
               <span>Last Failure</span>
@@ -803,6 +804,13 @@ function renderTestGroup(section, tests, groupId, label, statusClass, isExpanded
         </div>
       </div>
     `;
+}
+
+function getPlatformLabel(test) {
+  const fn = test.fullName || test.jobName || test.name || '';
+  const head = fn.split(' / ')[0];
+  if (/^Metal-QEMU-/.test(head)) return head.replace(/^Metal-QEMU-/, '');
+  return '';
 }
 
 function renderTestRow(sectionId, test) {
@@ -845,6 +853,9 @@ function renderTestRow(sectionId, test) {
   
   return `
     <div class="test-row ${test.status}">
+      <div class="test-platform-col">
+        ${(() => { const p = getPlatformLabel(test); return p ? p : '<span class="platform-empty">—</span>'; })()}
+      </div>
       <div class="test-name-col">
         <div class="test-name">
           <span class="test-status-dot ${test.status}"></span>
@@ -2553,6 +2564,9 @@ function renderCocoTestRow(test, sectionId, sourceRepo) {
   // Match Kata's layout exactly
   return `
     <div class="test-row ${test.status}">
+      <div class="test-platform-col">
+        ${(() => { const p = getPlatformLabel(test); return p ? p : '<span class="platform-empty">—</span>'; })()}
+      </div>
       <div class="test-name-col">
         <div class="test-name">
           <span class="test-status-dot ${test.status}"></span>
