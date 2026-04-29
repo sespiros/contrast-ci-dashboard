@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Local scraper + processor for the contrast CI dashboard.
-# Produces per-tier data files so the dashboard can render 5 tabs:
-#   nightly / pr / scheduled / manual / release
+# Produces per-tier data files for the dashboard tabs:
+#   nightly / scheduled / release
 # Each tier aggregates jobs from one or more workflows.
 
 set -euo pipefail
@@ -29,12 +29,10 @@ MAX_LOGS_PER_TIER=40
 # tier => space-separated workflow filenames
 declare -A TIER_WORKFLOWS=(
     [nightly]="e2e_nightly.yml"
-    [pr]="e2e_on_pull_request.yml e2e_badaml.yml e2e_attestation.yml e2e_service_mesh.yml imagepuller-benchmark.yml"
     [scheduled]="k3s_compatibility.yml rim_updates.yml e2e_runtime-reproducibility.yml"
-    [manual]="e2e_manual.yml release.yml"
     [release]="release_publish.yml pr_release_artifacts.yml"
 )
-TIERS=(nightly pr scheduled manual release)
+TIERS=(nightly scheduled release)
 
 if date -v-1d +%Y-%m-%d >/dev/null 2>&1; then
     SINCE=$(date -v-${DAYS}d +%Y-%m-%d)
@@ -210,7 +208,7 @@ process_all() {
 
     # Legacy data.json for backward compat (mirror nightly)
     cp data-nightly.json data.json
-    echo ">> produced data-{nightly,pr,scheduled,manual,release}.json"
+    echo ">> produced data-{nightly,scheduled,release}.json"
 }
 
 serve() {
@@ -226,7 +224,7 @@ case "${1:-both}" in
     serve) serve ;;
     both) fetch_all; process_all; serve ;;
     tier)
-        t=${2:?Usage: $0 tier <nightly|pr|scheduled|manual|release>}
+        t=${2:?Usage: $0 tier <nightly|scheduled|release>}
         fetch_tier "$t"
         process_tier "$t"
         ;;

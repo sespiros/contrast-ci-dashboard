@@ -41,7 +41,7 @@ async function loadData() {
   state.error = null;
   renderLoading();
 
-  const tiers = ['nightly', 'pr', 'scheduled', 'manual', 'release'];
+  const tiers = ['nightly', 'scheduled', 'release'];
   state.tiersData = {};
 
   try {
