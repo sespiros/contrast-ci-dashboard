@@ -23,7 +23,7 @@ export GH_TOKEN
 
 REPO="edgelesssys/contrast"
 DAYS=14
-MAX_RUNS_PER_WORKFLOW=8
+MAX_RUNS_PER_WORKFLOW=15
 MAX_LOGS_PER_TIER=40
 
 # tier => space-separated workflow filenames
