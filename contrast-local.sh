@@ -130,6 +130,9 @@ fetch_tier() {
                 echo "     failed to fetch jobs for run $run_id; aborting to avoid publishing partial data" >&2
                 return 1
             fi
+            if [ "$tier" = "release-nightly" ]; then
+                synthesize_nightly_aggregate < run-jobs.json > run-jobs.tmp && mv run-jobs.tmp run-jobs.json
+            fi
             jq -s 'add' "all-jobs-${tier}.json" run-jobs.json > temp-jobs.json
             mv temp-jobs.json "all-jobs-${tier}.json"
         done
@@ -146,13 +149,10 @@ fetch_tier() {
         echo "  filter applied ($after jobs retained, was $before)"
     fi
 
-    # Drop matrix-template ghost rows: when a matrix job is skipped GitHub
-    # never interpolates it and emits a single job whose name still contains
-    # the literal "${{ ... }}". They are not real jobs and only ever render as
-    # a misleading "missing" row, so filter them out across every tier.
-    jq '[ .[] | select((.name | contains("${{")) | not) ]' \
-       "all-jobs-${tier}.json" > "all-jobs-${tier}.tmp" && \
-        mv "all-jobs-${tier}.tmp" "all-jobs-${tier}.json"
+    # Matrix-template placeholder rows (a skipped matrix job whose name still
+    # holds the literal "${{ ... }}") are kept: process-data.js fans them out
+    # onto the concrete job names and renders them as blocked, see
+    # expandPlaceholderJobs there.
 
     echo '{"jobs":' > "raw-runs-${tier}.json"
     cat "all-jobs-${tier}.json" >> "raw-runs-${tier}.json"
@@ -162,7 +162,7 @@ fetch_tier() {
     # logs for failed jobs (capped)
     mkdir -p "job-logs-${tier}"
     local count=0
-    for job_id in $(jq -r '.jobs[] | select(.conclusion == "failure") | .id' "raw-runs-${tier}.json"); do
+    for job_id in $(jq -r '.jobs[] | select(.conclusion == "failure" and .synthetic != true) | .id' "raw-runs-${tier}.json"); do
         count=$((count+1))
         [ $count -gt $MAX_LOGS_PER_TIER ] && break
         local out="job-logs-${tier}/${job_id}.log"
@@ -198,6 +198,57 @@ fetch_workflow_runs() {
     fi
 
     cat "$cache_file"
+}
+
+# The "nightly" job in release_nightly.yml calls the e2e_nightly reusable
+# workflow, and its result alone decides whether the e2e release matrix runs.
+# GitHub's jobs API lists only the leaf jobs inside a reusable workflow, never
+# the caller, so that gate has no row of its own. Synthesize one per run
+# attempt from the leaves, mirroring how GitHub derives a called workflow's
+# conclusion: any failure -> failure, else any cancelled -> cancelled, else
+# success (skipped leaves don't fail the caller); in progress while any leaf
+# is still running. The row carries synthetic=true and a string id so log
+# fetching and job links skip it (the link goes to the run instead), and
+# one pseudo step per red leaf so the dashboard's "failed step" names the
+# jobs that actually blocked the release.
+NIGHTLY_AGGREGATE_NAME="release-requirement: e2e nightly"
+synthesize_nightly_aggregate() {
+    jq --arg name "$NIGHTLY_AGGREGATE_NAME" --arg repo "$REPO" '
+      (map(select(.name | startswith($name + " / ")))) as $leaves
+      | if ($leaves | length) == 0 then . else
+        $leaves[0] as $j
+        | (if any($leaves[]; .status != "completed") then "in_progress" else "completed" end) as $status
+        | (if $status != "completed" then null
+           elif any($leaves[]; .conclusion == "failure" or .conclusion == "timed_out") then "failure"
+           elif any($leaves[]; .conclusion == "cancelled") then "cancelled"
+           else "success" end) as $conclusion
+        | . + [{
+            id: ("synthetic-nightly-" + ($j.run_id | tostring) + "-" + (($j.run_attempt // 1) | tostring)),
+            synthetic: true,
+            name: $name,
+            status: $status,
+            conclusion: $conclusion,
+            run_id: $j.run_id,
+            run_attempt: $j.run_attempt,
+            run_url: $j.run_url,
+            workflow_name: $j.workflow_name,
+            head_branch: $j.head_branch,
+            head_sha: $j.head_sha,
+            html_url: ("https://github.com/" + $repo + "/actions/runs/" + ($j.run_id | tostring)),
+            created_at: ([$leaves[].created_at] | min),
+            started_at: ([$leaves[].started_at | select(. != null)] | min),
+            completed_at: (if $status == "completed" then ([$leaves[].completed_at | select(. != null)] | max) else null end),
+            steps: ([$leaves[] | select(.conclusion == "failure" or .conclusion == "timed_out" or .conclusion == "cancelled")
+                     | {name: (.name | ltrimstr($name + " / ") | split(" / ")
+                               | if (length >= 2 and .[-1] == .[-2]) then .[:-1] else . end | join(" / ")),
+                        status: "completed", conclusion: "failure"}]
+                    | unique_by(.name)),
+            labels: [],
+            workflow_run_id: $j.workflow_run_id,
+            source_workflow: $j.source_workflow,
+            tier: $j.tier
+          }]
+      end'
 }
 
 fetch_run_jobs() {

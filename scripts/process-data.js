@@ -72,7 +72,83 @@ try {
   process.exit(1);
 }
 
-const allJobs = rawData.jobs || [];
+/**
+ * Fan placeholder jobs out onto the concrete jobs they stand for.
+ *
+ * GitHub emits two kinds of placeholder when a job never starts because a
+ * dependency failed or the run was cancelled: a matrix job that was never
+ * expanded shows up once with the literal "${{ ... }}" template still in
+ * its name, and a skipped reusable-workflow call shows up once under the
+ * caller's name ("X") instead of its leaves ("X / y"). Neither matches a
+ * dashboard row, so the affected rows rendered as "none", which reads as
+ * "no data" when the truth is "blocked upstream". Replace each placeholder
+ * with one copy per concrete name it covers, flagged blocked=true, so the
+ * rows carry the right state. Concrete names come from the rest of the
+ * dataset, falling back to config.matrix_placeholders when no expanded
+ * run is inside the window. Placeholders that can't be resolved are
+ * dropped, as before.
+ */
+function expandPlaceholderJobs(jobs) {
+  const knownNames = [...new Set(jobs.filter(j => j.name && !j.name.includes('${{')).map(j => j.name))];
+  const configured = (config.matrix_placeholders || []).map(m => ({
+    prefix: (m.prefix || '').trim(),
+    jobs: m.jobs || []
+  }));
+  const out = [];
+  let expanded = 0;
+  let dropped = 0;
+  for (const job of jobs) {
+    const name = job.name || '';
+    let prefix = null;
+    if (job.synthetic) {
+      // Aggregate rows built at fetch time are named like a caller ("X")
+      // on purpose; never fan them out onto their own leaves.
+      out.push(job);
+      continue;
+    }
+    if (name.includes('${{')) {
+      prefix = name.slice(0, name.indexOf('${{'));
+    } else if ((job.conclusion === 'skipped' || job.conclusion === 'cancelled') &&
+               knownNames.some(n => n.startsWith(name + ' / '))) {
+      prefix = name + ' / ';
+    }
+    if (prefix === null) {
+      out.push(job);
+      continue;
+    }
+    let targets = knownNames.filter(n => n.startsWith(prefix));
+    if (targets.length === 0) {
+      targets = configured.find(m => m.prefix === prefix.trim())?.jobs || [];
+    }
+    if (targets.length === 0) {
+      dropped++;
+      continue;
+    }
+    expanded++;
+    // A placeholder's own created_at is when GitHub decided to skip or cancel
+    // it, which for a run cancelled by the next night's concurrency group is
+    // a day late. Bucket it with the run it belongs to instead.
+    const runStart = jobs
+      .filter(j => j.run_id === job.run_id && (j.run_attempt || 1) === (job.run_attempt || 1) && j.created_at)
+      .map(j => j.created_at)
+      .sort()[0] || job.created_at;
+    for (const target of targets) {
+      out.push({ ...job, name: target, blocked: true, placeholderName: name, created_at: runStart });
+    }
+  }
+  if (expanded || dropped) {
+    console.log(`Placeholder jobs: ${expanded} expanded onto concrete names, ${dropped} dropped (no known expansion)`);
+  }
+  return out;
+}
+
+/** Job id for GitHub links; synthetic rows have no job page, link the run. */
+function linkJobId(job) {
+  if (!job || job.synthetic) return null;
+  return job.id?.toString() || null;
+}
+
+const allJobs = expandPlaceholderJobs(rawData.jobs || []);
 rawData = null; // free the parsed JSON tree; allJobs holds what we need
 
 // Pre-parsed test results cache (stores only parsed failures, NOT raw log content).
@@ -405,7 +481,7 @@ function getJobCategories(jobName) {
 function getAllUniqueJobNames() {
   const jobNames = new Set();
   allJobs.forEach(job => {
-    if (job.name && job.conclusion !== 'skipped') {
+    if (job.name && (job.conclusion !== 'skipped' || job.blocked)) {
       jobNames.add(job.name);
     }
   });
@@ -482,8 +558,11 @@ function jobSortTime(job) {
   return new Date(job?.started_at || job?.created_at || 0).getTime();
 }
 
+// Row-level status. 'blocked' folds into 'not_run' so the counters and
+// groupings keep working; the row keeps a `blocked` flag and the weather
+// slots keep the distinct 'blocked' state for rendering.
 function displayStatus(rawStatus) {
-  return rawStatus === 'not_run_setup_failed' ? 'not_run' : rawStatus;
+  return (rawStatus === 'not_run_setup_failed' || rawStatus === 'blocked') ? 'not_run' : rawStatus;
 }
 
 function runAnchorTime(job) {
@@ -583,6 +662,10 @@ function getRunRecords(jobsByRun) {
 
 function determineJobStatus(job) {
   if (!job) return 'not_run';
+
+  // Placeholder copy (see expandPlaceholderJobs): the job never started
+  // because a dependency failed or the run was cancelled first.
+  if (job.blocked) return 'blocked';
 
   if (job.status === 'in_progress' || job.status === 'queued') {
     return 'running';
@@ -748,6 +831,8 @@ const sections = (config.sections || []).map(sectionConfig => {
            // cancelled / skipped / no-job: surface as 'not_run' (yellow) so it's
            // distinguishable from days where the test didn't exist yet ('none').
            dayStatus = 'not_run';
+        } else if (dayRawStatus === 'blocked') {
+           dayStatus = 'blocked';
         }
       } else if (cachedWeather) {
         // No fresh data for this day, use cache if available
@@ -776,13 +861,14 @@ const sections = (config.sections || []).map(sectionConfig => {
         retriedAndPassed: dayRun?.retriedAndPassed || false,
         retriedSetupAndPassed: dayRun?.retriedSetupAndPassed || false,
         runId: dayJob?.workflow_run_id || dayJob?.run_id?.toString() || null,
-        jobId: dayJob?.id?.toString() || null,
-        firstAttemptJobId: dayFirstAttemptJob?.id?.toString() || null,
+        jobId: linkJobId(dayJob),
+        firstAttemptJobId: linkJobId(dayFirstAttemptJob),
+        blockedReason: dayStatus === 'blocked' ? (dayJob?.conclusion || 'skipped') : null,
         attempts: dayRun?.attempts?.map(attempt => ({
           attempt: attempt.run_attempt || 1,
           status: displayStatus(determineJobStatus(attempt)),
           runId: attempt.workflow_run_id || attempt.run_id?.toString() || null,
-          jobId: attempt.id?.toString() || null,
+          jobId: linkJobId(attempt),
           duration: formatDuration(attempt.started_at, attempt.completed_at),
           failureStep: determineJobStatus(attempt) === 'failed' ? getFailedStep(attempt) : null
         })) || [],
@@ -916,6 +1002,7 @@ const sections = (config.sections || []).map(sectionConfig => {
       jobName: jobName,
       fullName: jobName,
       status: status,
+      blocked: rawStatus === 'blocked',
       categories: categories,
       isRequired: isRequired,
       duration: latestJob ? formatDuration(latestJob.started_at, latestJob.completed_at) : 'N/A',
@@ -927,11 +1014,11 @@ const sections = (config.sections || []).map(sectionConfig => {
       retried: retryCount,
       retriedAndPassed: retriedAndPassed,
       retriedSetupAndPassed: latestRun?.retriedSetupAndPassed || false,
-      latestAttemptJobId: latestAttemptJob?.id?.toString() || null,
-      firstAttemptJobId: firstAttemptJob?.id?.toString() || null,
+      latestAttemptJobId: linkJobId(latestAttemptJob),
+      firstAttemptJobId: linkJobId(firstAttemptJob),
       setupRetry: false,
       runId: latestJob?.workflow_run_id || latestJob?.run_id?.toString() || null,
-      jobId: latestJob?.id?.toString() || null,
+      jobId: linkJobId(latestJob),
       error: errorDetails,
       maintainers: jobMaintainers
     };
@@ -1025,7 +1112,7 @@ const allJobsSection = {
     }
     
     // Find jobs matching this name
-    const matchingJobs = allJobs.filter(job => job.name === jobName && job.conclusion !== 'skipped')
+    const matchingJobs = allJobs.filter(job => job.name === jobName && (job.conclusion !== 'skipped' || job.blocked))
       .sort((a, b) => new Date(b.started_at || b.created_at) - new Date(a.started_at || a.created_at));
     
     const jobsByRun = groupJobsByRun(matchingJobs);
@@ -1038,6 +1125,7 @@ const allJobsSection = {
     const retriedAndPassed = latestRun?.retriedAndPassed || false;
     
     let status = 'not_run';
+    let blocked = false;
     
     if (latestJob) {
       const rawStatus = determineJobStatus(latestJob);
@@ -1049,6 +1137,7 @@ const allJobsSection = {
         status = 'running';
       } else {
         status = 'not_run';
+        blocked = rawStatus === 'blocked';
       }
     }
     
@@ -1074,6 +1163,8 @@ const allJobsSection = {
         const dayRawStatus = determineJobStatus(dayJob);
         if (dayRawStatus === 'passed') {
           dayStatus = 'passed';
+        } else if (dayRawStatus === 'blocked') {
+          dayStatus = 'blocked';
         } else if (dayRawStatus === 'failed') {
           dayStatus = 'failed';
           const failedStep = dayJob.steps?.find(s => s.conclusion === 'failure');
@@ -1096,13 +1187,14 @@ const allJobsSection = {
         retriedAndPassed: dayRun?.retriedAndPassed || false,
         retriedSetupAndPassed: dayRun?.retriedSetupAndPassed || false,
         runId: dayJob?.workflow_run_id || dayJob?.run_id?.toString() || null,
-        jobId: dayJob?.id?.toString() || null,
-        firstAttemptJobId: dayFirstAttemptJob?.id?.toString() || null,
+        jobId: linkJobId(dayJob),
+        firstAttemptJobId: linkJobId(dayFirstAttemptJob),
+        blockedReason: dayStatus === 'blocked' ? (dayJob?.conclusion || 'skipped') : null,
         attempts: dayRun?.attempts?.map(attempt => ({
           attempt: attempt.run_attempt || 1,
           status: displayStatus(determineJobStatus(attempt)),
           runId: attempt.workflow_run_id || attempt.run_id?.toString() || null,
-          jobId: attempt.id?.toString() || null,
+          jobId: linkJobId(attempt),
           duration: formatDuration(attempt.started_at, attempt.completed_at),
           failureStep: determineJobStatus(attempt) === 'failed' ? getFailedStep(attempt) : null
         })) || [],
@@ -1139,6 +1231,7 @@ const allJobsSection = {
       jobName: jobName, // Full job name for filtering
       fullName: jobName,
       status: status,
+      blocked: blocked,
       categories: categories,
       isRequired: categories.includes('required'),
       duration: latestJob ? formatDuration(latestJob.started_at, latestJob.completed_at) : 'N/A',
@@ -1149,10 +1242,10 @@ const allJobsSection = {
       retried: retryCount,
       retriedAndPassed: retriedAndPassed, // True if first attempt failed but retry passed (FLAKY!)
       retriedSetupAndPassed: latestRun?.retriedSetupAndPassed || false,
-      latestAttemptJobId: latestAttemptJob?.id?.toString() || null,
-      firstAttemptJobId: firstAttemptJob?.id?.toString() || null,
+      latestAttemptJobId: linkJobId(latestAttemptJob),
+      firstAttemptJobId: linkJobId(firstAttemptJob),
       runId: latestJob?.workflow_run_id || latestJob?.run_id?.toString() || null,
-      jobId: latestJob?.id?.toString() || null,
+      jobId: linkJobId(latestJob),
       error: errorDetails,
       maintainers: maintainers
     };
@@ -1503,7 +1596,7 @@ try {
             date: date.toISOString(),
             status: dayStatus,
             runId: dayJob?.workflow_run_id || dayJob?.run_id?.toString() || null,
-            jobId: dayJob?.id?.toString() || null,
+            jobId: linkJobId(dayJob),
             duration: dayJob ? formatDuration(dayJob.started_at, dayJob.completed_at) : null,
             failureStep: failureStep
           });
@@ -1561,7 +1654,7 @@ try {
           failureCount: weatherHistory.filter(w => w.status === 'failed').length,
           retried: latestJob?.run_attempt > 1 ? latestJob.run_attempt - 1 : 0,
           runId: latestJob?.workflow_run_id || latestJob?.run_id?.toString() || null,
-          jobId: latestJob?.id?.toString() || null,
+          jobId: linkJobId(latestJob),
           sourceRepo: 'confidential-containers/charts',
           maintainers: [],
           error: errorDetails
@@ -1655,7 +1748,7 @@ try {
             date: date.toISOString(),
             status: dayStatus,
             runId: dayJob?.workflow_run_id || dayJob?.run_id?.toString() || null,
-            jobId: dayJob?.id?.toString() || null,
+            jobId: linkJobId(dayJob),
             duration: dayJob ? formatDuration(dayJob.started_at, dayJob.completed_at) : null,
             failureStep: failureStep
           });
@@ -1708,7 +1801,7 @@ try {
           failureCount: weatherHistory.filter(w => w.status === 'failed').length,
           retried: latestJob?.run_attempt > 1 ? latestJob.run_attempt - 1 : 0,
           runId: latestJob?.workflow_run_id || latestJob?.run_id?.toString() || null,
-          jobId: latestJob?.id?.toString() || null,
+          jobId: linkJobId(latestJob),
           sourceRepo: 'confidential-containers/cloud-api-adaptor',
           maintainers: [],
           error: errorDetails

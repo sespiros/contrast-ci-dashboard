@@ -221,10 +221,11 @@ function alignWeatherHistory(test, effDayMs) {
 function syncStatusToLastDay(test) {
   if (!test || !Array.isArray(test.weatherHistory) || test.weatherHistory.length === 0) return;
   const last = test.weatherHistory[test.weatherHistory.length - 1];
-  const map = { passed: 'passed', failed: 'failed', running: 'running', not_run: 'not_run', none: 'not_run' };
+  const map = { passed: 'passed', failed: 'failed', running: 'running', not_run: 'not_run', blocked: 'not_run', none: 'not_run' };
   const synced = map[last.status];
   if (!synced) return;
   test.status = synced;
+  test.blocked = last.status === 'blocked';
   if (last.synthetic) {
     test.duration = 'N/A';
     test.error = null;
@@ -237,10 +238,11 @@ function syncStatusToLatestRealDay(test) {
     return day && !day.synthetic && day.status && day.status !== 'none';
   });
   if (!latest) return;
-  const map = { passed: 'passed', failed: 'failed', running: 'running', not_run: 'not_run' };
+  const map = { passed: 'passed', failed: 'failed', running: 'running', not_run: 'not_run', blocked: 'not_run' };
   const synced = map[latest.status];
   if (!synced) return;
   test.status = synced;
+  test.blocked = latest.status === 'blocked';
   test.retried = latest.retried || test.retried || 0;
   test.retriedAndPassed = latest.retriedAndPassed || false;
   test.retriedSetupAndPassed = latest.retriedSetupAndPassed || false;
@@ -341,6 +343,9 @@ function getWeatherFromHistory(weatherHistory) {
 function getDisplayStatus(item) {
   if (!item) return 'none';
   if (item.status === 'passed' && (item.retriedAndPassed || item.retriedSetupAndPassed)) return 'flaky';
+  // A row whose latest slot was blocked keeps status 'not_run' for the
+  // counters but renders as blocked (weather slots carry 'blocked' directly).
+  if (item.status === 'not_run' && item.blocked) return 'blocked';
   return item.status;
 }
 
@@ -1114,6 +1119,7 @@ function renderTestRow(sectionId, test) {
     'flaky': '● Passed after retry',
     'failed': '○ Failed',
     'not_run': '⊘ Missing',
+    'blocked': '⊘ Blocked',
     'running': '◌ Running'
   };
   const rowStatus = getDisplayStatus(test);
@@ -1410,6 +1416,7 @@ function showWeatherModal(sectionId, testId) {
       failed: '○ Failed',
       not_run: '— No run',
       none: '— No run',
+      blocked: '⊘ Blocked',
       running: '◌ Running'
     }[displayStatus] || displayStatus;
     
@@ -1417,7 +1424,11 @@ function showWeatherModal(sectionId, testId) {
       ? `Completed in ${day.duration || 'N/A'}` 
       : day.status === 'failed' 
         ? (day.failureStep ? `Failed step: ${day.failureStep}` : null)
-        : 'No run recorded';
+        : day.status === 'blocked'
+          ? (day.blockedReason === 'cancelled'
+              ? 'Run cancelled before this job started'
+              : 'Never started: a job it depends on failed')
+          : 'No run recorded';
     const retryText = day.retried
       ? `${day.retried} ${day.retried === 1 ? 'retry' : 'retries'}${day.retriedAndPassed ? ' · failed first, later passed' : ''}${day.retriedSetupAndPassed ? ' · setup failed first, later passed' : ''}`
       : '';
