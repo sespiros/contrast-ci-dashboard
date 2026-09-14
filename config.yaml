@@ -163,5 +163,22 @@ sections:
       - name: "Metal-QEMU-TDX-GPU / volumestatefulset"
       - name: "Metal-QEMU-TDX-GPU / workloadsecret"
 
+# Fallback expansions for matrix placeholders (see expandPlaceholderJobs in
+# scripts/process-data.js). Normally the concrete names are learned from an
+# expanded run inside the scrape window; this list covers windows where the
+# matrix was skipped every night. Keep in sync with the `test` matrix in
+# release_nightly.yml.
+matrix_placeholders:
+  - prefix: "release-requirement: e2e release on"
+    jobs:
+      - "release-requirement: e2e release on Metal-QEMU-SNP (x86_64-linux)"
+      - "release-requirement: e2e release on Metal-QEMU-SNP (aarch64-darwin)"
+      - "release-requirement: e2e release on Metal-QEMU-TDX (x86_64-linux)"
+      - "release-requirement: e2e release on Metal-QEMU-TDX (aarch64-darwin)"
+      - "release-requirement: e2e release on Metal-QEMU-SNP-GPU (x86_64-linux)"
+      - "release-requirement: e2e release on Metal-QEMU-SNP-GPU (aarch64-darwin)"
+      - "release-requirement: e2e release on Metal-QEMU-TDX-GPU (x86_64-linux)"
+      - "release-requirement: e2e release on Metal-QEMU-TDX-GPU (aarch64-darwin)"
+
 fatal_steps:
   - pattern: "E2E Test.*"

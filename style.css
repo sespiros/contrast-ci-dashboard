@@ -1135,6 +1135,10 @@ body.flat-list-tier .test-row:hover { background: var(--bg-tertiary); }
 .test-status-dot.flaky { background: #f0883e; }
 .test-status-dot.failed { background: var(--color-failed); }
 .test-status-dot.not_run { background: var(--text-muted); }
+.test-status-dot.blocked {
+  background: repeating-linear-gradient(135deg, #d9a826 0 2px, var(--bg-tertiary) 2px 5px);
+  border: 1px solid #d9a826;
+}
 .test-status-dot.running { 
   background: var(--color-running);
   animation: pulse 1.5s ease-in-out infinite;
@@ -1260,6 +1264,13 @@ body.flat-list-tier .test-row:hover { background: var(--bg-tertiary); }
 
 .weather-dot.not_run {
   background: #d9a826;
+  border-color: #d9a826;
+}
+
+/* Blocked: the job never started because a dependency failed. Striped so
+   it reads as "gated", not as the yellow "missing" or the grey "no data". */
+.weather-dot.blocked {
+  background: repeating-linear-gradient(135deg, #d9a826 0 2px, var(--bg-tertiary) 2px 5px);
   border-color: #d9a826;
 }
 
@@ -2355,6 +2366,15 @@ body.flat-list-tier .test-row:hover { background: var(--bg-tertiary); }
 }
 
 .test-run-status.not_run {
+  color: #d9a826;
+}
+
+.test-row.blocked {
+  opacity: 0.85;
+}
+
+.test-run-status.blocked,
+.weather-day-status.blocked {
   color: #d9a826;
 }
 
