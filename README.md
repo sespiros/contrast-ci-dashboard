@@ -46,9 +46,10 @@ chmod 600 .env.local
 
 ## Deployment
 
-Lives on GitHub Pages, refreshed every 3 hours by `.github/workflows/refresh-data.yml`.
+Lives on GitHub Pages, refreshed by `.github/workflows/refresh-data.yml` on cron (hourly 00:23-09:23 UTC, then every 3 hours).
+GitHub drops many of those scheduled runs, so while the release nightly is in progress the workflow re-dispatches itself every ~20 minutes until it has scraped the finished run.
 The workflow uses the default `secrets.GITHUB_TOKEN` (no PAT required): the scraper only hits public endpoints on `edgelesssys/contrast`, which authenticated installation tokens can read regardless of org SAML enforcement.
-It runs the same scraper used locally, commits any updated `data-*.json` back to the active branch, and publishes the static site via the Pages deploy action.
+It runs the same scraper used locally, keeps the `data-*.json` files as a 90-day workflow artifact, and publishes the static site via the Pages deploy action.
 
 Pages source must be set to **GitHub Actions** in repo settings.
 
@@ -57,7 +58,8 @@ Pages source must be set to **GitHub Actions** in repo settings.
 `config.yaml` enumerates the four bare-metal nightly platforms and the test-name list per platform.
 Update it whenever a test-name lands or moves in `e2e_nightly.yml`'s matrix; then run `./contrast-local.sh process` (no scrape needed) to re-bake `data-e2e-nightly.json`.
 
-`fatal_steps` controls which step name counts as a "real test failure" vs an infrastructure flake (currently `E2E Test.*`, matching `e2e.yml`).
+`fatal_steps` controls which step name counts as a "real test failure" (currently `E2E Test.*`, matching `e2e.yml`).
+A job that fails at any other step is shown as "Infra failed": it ran, so it isn't missing, but it produced no test verdict.
 
 ## License
 
