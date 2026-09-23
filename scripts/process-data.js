@@ -1182,10 +1182,7 @@ const allJobsSection = {
           failureStep = getFailedStep(dayJob);
         } else if (dayRawStatus === 'failed') {
           dayStatus = 'failed';
-          const failedStep = dayJob.steps?.find(s => s.conclusion === 'failure');
-          if (failedStep) {
-            failureStep = failedStep.name;
-          }
+          failureStep = getFailedStep(dayJob);
           // For allJobsSection, only store failure step name (not full details)
           // to keep memory bounded. Full details live in the configured sections.
           const parsed = parsedJobResults[dayJob.id.toString()];
@@ -1226,9 +1223,8 @@ const allJobsSection = {
     // Get error details if failed
     let errorDetails = null;
     if ((status === 'failed' || status === 'infra_failed') && latestJob) {
-      const failedStep = latestJob.steps?.find(s => s.conclusion === 'failure');
       errorDetails = {
-        step: failedStep?.name || 'Unknown step'
+        step: getFailedStep(latestJob)
       };
     }
 
@@ -1877,6 +1873,12 @@ console.log('Data processing complete!');
 // Helper functions
 function getFailedStep(job) {
   if (!job || !job.steps) return 'Unknown step';
+  // The synthesized e2e nightly gate row has one pseudo step per red leaf;
+  // name all of them, not just the first.
+  if (job.synthetic) {
+    const names = job.steps.filter(s => s.conclusion === 'failure').map(s => s.name);
+    if (names.length > 0) return names.join(', ');
+  }
   const failedStep = job.steps.find(s => s.conclusion === 'failure');
   return failedStep?.name || 'Run tests';
 }
