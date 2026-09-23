@@ -27,8 +27,26 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      nightly-in-progress: ${{ steps.nightly.outputs.in-progress }}
     steps:
       - uses: actions/checkout@v4
+
+      # Checked before scraping: a nightly that finishes during the scrape
+      # was still captured half-done, so it needs a follow-up refresh too.
+      - name: Check whether the release nightly is still running
+        id: nightly
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          run=$(gh api 'repos/edgelesssys/contrast/actions/workflows/release_nightly.yml/runs?per_page=1' \
+            --jq '.workflow_runs[0] | "\(.status) \(.created_at)"')
+          read -r status created <<<"$run"
+          # Ignore runs older than a day, so a stuck run can't chain forever.
+          if [[ $status != completed ]] && (( $(date +%s) - $(date -d "$created" +%s) < 86400 )); then
+            echo "in-progress=true" >>"$GITHUB_OUTPUT"
+          fi
+          echo "release_nightly: $status (created $created)"
 
       - uses: actions/setup-node@v4
         with:
@@ -61,3 +79,25 @@ jobs:
 
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # GitHub drops most scheduled runs of this workflow, so a scrape that
+  # caught the nightly mid-flight could stay up for hours. Chain refreshes
+  # until one scrapes the finished run.
+  follow-up:
+    needs: build-and-deploy
+    if: needs.build-and-deploy.outputs.nightly-in-progress == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      actions: write
+    steps:
+      - name: Re-dispatch this workflow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          status=$(gh api 'repos/edgelesssys/contrast/actions/workflows/release_nightly.yml/runs?per_page=1' \
+            --jq '.workflow_runs[0].status')
+          if [[ $status != completed ]]; then
+            sleep 1200
+          fi
+          gh workflow run refresh-data.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME"
