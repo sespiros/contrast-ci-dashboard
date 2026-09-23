@@ -74,6 +74,10 @@
           <span class="stat-value" id="failed-tests">0</span>
           <span class="stat-label">Failed</span>
         </div>
+        <div class="stat stat-infra-failed">
+          <span class="stat-value" id="infra-failed-tests">0</span>
+          <span class="stat-label">Infra Failed</span>
+        </div>
         <div class="stat stat-missing">
           <span class="stat-value" id="not-run-tests">0</span>
           <span class="stat-label">Missing</span>
@@ -102,6 +106,9 @@
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="failed">
             <span class="dot dot-failed"></span> Failed (<span id="filter-failed-count">0</span>)
+          </button>
+          <button class="filter-btn" data-filter="infra_failed">
+            <span class="dot dot-infra-failed"></span> Infra failed (<span id="filter-infra-failed-count">0</span>)
           </button>
           <button class="filter-btn" data-filter="not_run">
             <span class="dot dot-missing"></span> Missing (<span id="filter-not-run-count">0</span>)

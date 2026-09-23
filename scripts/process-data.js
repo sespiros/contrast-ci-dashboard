@@ -560,9 +560,12 @@ function jobSortTime(job) {
 
 // Row-level status. 'blocked' folds into 'not_run' so the counters and
 // groupings keep working; the row keeps a `blocked` flag and the weather
-// slots keep the distinct 'blocked' state for rendering.
+// slots keep the distinct 'blocked' state for rendering. A job that failed
+// before its test step is 'infra_failed': it did run, so it isn't missing,
+// but no test verdict exists either.
 function displayStatus(rawStatus) {
-  return (rawStatus === 'not_run_setup_failed' || rawStatus === 'blocked') ? 'not_run' : rawStatus;
+  if (rawStatus === 'not_run_setup_failed') return 'infra_failed';
+  return rawStatus === 'blocked' ? 'not_run' : rawStatus;
 }
 
 function runAnchorTime(job) {
@@ -823,8 +826,8 @@ const sections = (config.sections || []).map(sectionConfig => {
             dayFailures.batsFiles = batsFiles;
           }
         } else if (dayRawStatus === 'not_run_setup_failed') {
-           // It failed, but not in a fatal step. Treat as not run/setup failed.
-           dayStatus = 'not_run';
+           dayStatus = 'infra_failed';
+           dayStepName = getFailedStep(dayJob);
         } else if (dayRawStatus === 'running') {
            dayStatus = 'running';
         } else if (dayRawStatus === 'not_run') {
@@ -852,6 +855,8 @@ const sections = (config.sections || []).map(sectionConfig => {
         } else {
           failureStepDisplay = dayStepName || 'Run tests';
         }
+      } else if (dayStatus === 'infra_failed') {
+        failureStepDisplay = dayStepName;
       }
       
       weatherHistory.push({
@@ -985,6 +990,11 @@ const sections = (config.sections || []).map(sectionConfig => {
           output: 'View full log on GitHub for details'
         };
       }
+    } else if (status === 'infra_failed' && latestJob) {
+      errorDetails = {
+        step: getFailedStep(latestJob),
+        output: 'Failed before the test step, view full log on GitHub for details'
+      };
     }
     
     // Today's weather slot is built from the day-job alone, so when a matrix
@@ -1135,6 +1145,8 @@ const allJobsSection = {
         status = 'failed';
       } else if (rawStatus === 'running') {
         status = 'running';
+      } else if (rawStatus === 'not_run_setup_failed') {
+        status = 'infra_failed';
       } else {
         status = 'not_run';
         blocked = rawStatus === 'blocked';
@@ -1165,6 +1177,9 @@ const allJobsSection = {
           dayStatus = 'passed';
         } else if (dayRawStatus === 'blocked') {
           dayStatus = 'blocked';
+        } else if (dayRawStatus === 'not_run_setup_failed') {
+          dayStatus = 'infra_failed';
+          failureStep = getFailedStep(dayJob);
         } else if (dayRawStatus === 'failed') {
           dayStatus = 'failed';
           const failedStep = dayJob.steps?.find(s => s.conclusion === 'failure');
@@ -1210,7 +1225,7 @@ const allJobsSection = {
 
     // Get error details if failed
     let errorDetails = null;
-    if (status === 'failed' && latestJob) {
+    if ((status === 'failed' || status === 'infra_failed') && latestJob) {
       const failedStep = latestJob.steps?.find(s => s.conclusion === 'failure');
       errorDetails = {
         step: failedStep?.name || 'Unknown step'
@@ -1845,7 +1860,8 @@ sections.forEach(section => {
   const failed = section.tests.filter(t => t.status === 'failed').length;
   const notRun = section.tests.filter(t => t.status === 'not_run').length;
   const running = section.tests.filter(t => t.status === 'running').length;
-  console.log(`Section "${section.name}": ${passed} passed, ${failed} failed, ${running} running, ${notRun} not run`);
+  const infraFailed = section.tests.filter(t => t.status === 'infra_failed').length;
+  console.log(`Section "${section.name}": ${passed} passed, ${failed} failed, ${infraFailed} infra failed, ${running} running, ${notRun} not run`);
   
   // Log failure details if any
   section.tests.filter(t => t.failedTestsInWeather?.length > 0).forEach(t => {

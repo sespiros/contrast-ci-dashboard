@@ -73,7 +73,7 @@ async function loadData() {
       allSections.forEach(section => {
         if (!section?.id) return;
         state.expandedSections.add(section.id);
-        ['failed', 'flaky', 'missing', 'running'].forEach(g => state.expandedGroups.add(`${section.id}-${g}`));
+        ['failed', 'flaky', 'infra', 'missing', 'running'].forEach(g => state.expandedGroups.add(`${section.id}-${g}`));
       });
     });
 
@@ -221,7 +221,7 @@ function alignWeatherHistory(test, effDayMs) {
 function syncStatusToLastDay(test) {
   if (!test || !Array.isArray(test.weatherHistory) || test.weatherHistory.length === 0) return;
   const last = test.weatherHistory[test.weatherHistory.length - 1];
-  const map = { passed: 'passed', failed: 'failed', running: 'running', not_run: 'not_run', blocked: 'not_run', none: 'not_run' };
+  const map = { passed: 'passed', failed: 'failed', infra_failed: 'infra_failed', running: 'running', not_run: 'not_run', blocked: 'not_run', none: 'not_run' };
   const synced = map[last.status];
   if (!synced) return;
   test.status = synced;
@@ -238,7 +238,7 @@ function syncStatusToLatestRealDay(test) {
     return day && !day.synthetic && day.status && day.status !== 'none';
   });
   if (!latest) return;
-  const map = { passed: 'passed', failed: 'failed', running: 'running', not_run: 'not_run', blocked: 'not_run' };
+  const map = { passed: 'passed', failed: 'failed', infra_failed: 'infra_failed', running: 'running', not_run: 'not_run', blocked: 'not_run' };
   const synced = map[latest.status];
   if (!synced) return;
   test.status = synced;
@@ -381,6 +381,7 @@ function getSectionStats(tests) {
   const failed = tests.filter(t => t.status === 'failed').length;
   const flaky = tests.filter(t => getDisplayStatus(t) === 'flaky').length;
   const passed = tests.filter(t => t.status === 'passed' && getDisplayStatus(t) !== 'flaky').length;
+  const infraFailed = tests.filter(t => t.status === 'infra_failed').length;
   const missing = tests.filter(t => t.status === 'not_run').length;
   const running = tests.filter(t => t.status === 'running').length;
   
@@ -395,7 +396,7 @@ function getSectionStats(tests) {
   const weatherPercent = getWeatherPercentage(allWeather);
   const weatherEmoji = getWeatherEmoji(allWeather);
   
-  return { failed, flaky, passed, missing, running, notRun: missing, total: tests.length, totalFailureDays, weatherPercent, weatherEmoji };
+  return { failed, flaky, passed, infraFailed, missing, running, notRun: missing, total: tests.length, totalFailureDays, weatherPercent, weatherEmoji };
 }
 
 function getTotalStats() {
@@ -429,6 +430,7 @@ function getTotalStats() {
     failed: filteredTests.filter(t => t.status === 'failed').length,
     flaky: filteredTests.filter(t => getDisplayStatus(t) === 'flaky').length,
     passed: filteredTests.filter(t => t.status === 'passed' && getDisplayStatus(t) !== 'flaky').length,
+    infraFailed: filteredTests.filter(t => t.status === 'infra_failed').length,
     notRun: filteredTests.filter(t => t.status === 'not_run').length,
     failureDays: failureDays
   };
@@ -561,9 +563,9 @@ function sortTests(tests, sortBy = state.sortBy) {
       break;
       
     case 'status':
-      // Failed first, then final-green retry recoveries, then not_run/running,
-      // then ordinary passed rows.
-      const statusOrder = { 'failed': 0, 'not_run': 2, 'running': 3, 'passed': 4 };
+      // Failed first, then final-green retry recoveries, then infra
+      // failures, not_run/running, then ordinary passed rows.
+      const statusOrder = { 'failed': 0, 'infra_failed': 1.5, 'not_run': 2, 'running': 3, 'passed': 4 };
       sorted.sort((a, b) => {
         const aOrder = a.status === 'passed' && (a.retriedAndPassed || a.retriedSetupAndPassed)
           ? 1
@@ -932,6 +934,9 @@ function renderSections() {
     if (stats.failed > 0) {
       statusBadges.push(`<span class="section-status has-failed">(${stats.failed} failed)</span>`);
     }
+    if (stats.infraFailed > 0) {
+      statusBadges.push(`<span class="section-status has-infra-failed">(${stats.infraFailed} infra failed)</span>`);
+    }
     if (stats.missing > 0) {
       statusBadges.push(`<span class="section-status has-missing">(${stats.missing} missing)</span>`);
     }
@@ -1022,6 +1027,7 @@ function renderSections() {
 
 function renderTestGroups(section, tests) {
   const failed = tests.filter(t => t.status === 'failed');
+  const infraFailed = tests.filter(t => t.status === 'infra_failed');
   const missing = tests.filter(t => t.status === 'not_run');
   const running = tests.filter(t => t.status === 'running');
   const flakyPassed = tests.filter(t => t.status === 'passed' && (t.retriedAndPassed || t.retriedSetupAndPassed));
@@ -1041,6 +1047,13 @@ function renderTestGroups(section, tests) {
     const groupId = `${section.id}-flaky`;
     const isExpanded = state.expandedGroups.has(groupId);
     html += renderTestGroup(section, flakyPassed, groupId, 'PASSED AFTER RETRY', 'flaky', isExpanded);
+  }
+
+  // Infra failed (job ran but failed before its test step)
+  if (infraFailed.length > 0) {
+    const groupId = `${section.id}-infra`;
+    const isExpanded = state.expandedGroups.has(groupId) || state.filter === 'infra_failed';
+    html += renderTestGroup(section, infraFailed, groupId, 'INFRA FAILED', 'infra-failed', isExpanded);
   }
 
   // Missing (no job created / cancelled / skipped)
@@ -1118,6 +1131,7 @@ function renderTestRow(sectionId, test) {
     'passed': '● Passed',
     'flaky': '● Passed after retry',
     'failed': '○ Failed',
+    'infra_failed': '△ Infra failed',
     'not_run': '⊘ Missing',
     'blocked': '⊘ Blocked',
     'running': '◌ Running'
@@ -1201,17 +1215,20 @@ function updateStats() {
   const failedCount = viewTests.filter(t => t.status === 'failed').length;
   const flakyCount = viewTests.filter(t => getDisplayStatus(t) === 'flaky').length;
   const passedCount = viewTests.filter(t => t.status === 'passed' && getDisplayStatus(t) !== 'flaky').length;
+  const infraFailedCount = viewTests.filter(t => t.status === 'infra_failed').length;
   const notRunCount = viewTests.filter(t => t.status === 'not_run').length;
   const runningCount = viewTests.filter(t => t.status === 'running').length;
 
   document.getElementById('total-tests').textContent = viewTests.length;
   document.getElementById('failed-tests').textContent = failedCount;
+  document.getElementById('infra-failed-tests').textContent = infraFailedCount;
   document.getElementById('not-run-tests').textContent = notRunCount;
   document.getElementById('running-tests').textContent = runningCount;
   document.getElementById('flaky-tests').textContent = flakyCount;
   document.getElementById('passed-tests').textContent = passedCount;
 
   document.getElementById('filter-failed-count').textContent = failedCount;
+  document.getElementById('filter-infra-failed-count').textContent = infraFailedCount;
   document.getElementById('filter-not-run-count').textContent = notRunCount;
   document.getElementById('filter-running-count').textContent = runningCount;
   document.getElementById('filter-flaky-count').textContent = flakyCount;
@@ -1414,6 +1431,7 @@ function showWeatherModal(sectionId, testId) {
       passed: '● Passed',
       flaky: '● Passed after retry',
       failed: '○ Failed',
+      infra_failed: '△ Infra failed',
       not_run: '— No run',
       none: '— No run',
       blocked: '⊘ Blocked',
@@ -1424,6 +1442,8 @@ function showWeatherModal(sectionId, testId) {
       ? `Completed in ${day.duration || 'N/A'}` 
       : day.status === 'failed' 
         ? (day.failureStep ? `Failed step: ${day.failureStep}` : null)
+        : day.status === 'infra_failed'
+          ? `Failed before the test step${day.failureStep ? `: ${day.failureStep}` : ''}`
         : day.status === 'blocked'
           ? (day.blockedReason === 'cancelled'
               ? 'Run cancelled before this job started'
