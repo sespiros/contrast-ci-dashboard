@@ -75,8 +75,14 @@ TIERS=(release-nightly e2e-nightly scheduled)
 #                     e2e_nightly prep jobs (maintenance + image build),
 #                     since their failures are what skip the whole pipeline.
 #
-# scheduled has no filter; all jobs flow through unchanged.
+#   scheduled     = jobs from several workflows side by side, so prefix
+#                   each with its workflow name ("os-matrix (...)" alone
+#                   doesn't say it's runtime reproducibility). Joined with
+#                   ": ", not " / ", since simplifyJobName keeps only the
+#                   last " / " segment. Skip the prefix when the job name
+#                   already is the workflow name.
 declare -A TIER_JOB_FILTER=(
+    [scheduled]='if (.name | ascii_downcase) == (.workflow_name | ascii_downcase) then . else .name = "\(.workflow_name): \(.name)" end'
     [e2e-nightly]='select(.name | startswith("release-requirement: e2e nightly / ")) | select((.name | startswith("release-requirement: e2e nightly / maintenance ")) | not) | select((.name | startswith("release-requirement: e2e nightly / Build cleanup-bare-metal image")) | not) | select((.name | startswith("release-requirement: e2e nightly / Notify teams channel")) | not) | .name |= ltrimstr("release-requirement: e2e nightly / ") | .name |= (split(" / ") | if (length >= 2 and .[-1] == .[-2]) then .[:-1] else . end | join(" / "))'
     [release-nightly]='select(((.name | startswith("release-requirement: e2e nightly / ")) | not) or (.name | startswith("release-requirement: e2e nightly / maintenance ")) or (.name | startswith("release-requirement: e2e nightly / Build cleanup-bare-metal image")))'
 )
