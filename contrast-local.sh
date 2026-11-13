@@ -213,47 +213,57 @@ fetch_workflow_runs() {
 # attempt from the leaves, mirroring how GitHub derives a called workflow's
 # conclusion: any failure -> failure, else any cancelled -> cancelled, else
 # success (skipped leaves don't fail the caller); in progress while any leaf
-# is still running. The row carries synthetic=true and a string id so log
-# fetching and job links skip it (the link goes to the run instead), and
-# one pseudo step per red leaf so the dashboard's "failed step" names the
-# jobs that actually blocked the release.
+# is still running. Attempt N judges each leaf by its latest result up to N,
+# so a re-run that turns the red leaves green yields a green row for N and
+# the dashboard shows the gate as passed after retry. The row carries
+# synthetic=true and a string id so log fetching and job links skip it (the
+# link goes to the run instead), and one pseudo step per red leaf so the
+# dashboard's "failed step" names the jobs that actually blocked the release.
 NIGHTLY_AGGREGATE_NAME="release-requirement: e2e nightly"
 synthesize_nightly_aggregate() {
     jq --arg name "$NIGHTLY_AGGREGATE_NAME" --arg repo "$REPO" '
-      (map(select(.name | startswith($name + " / ")))) as $leaves
-      | if ($leaves | length) == 0 then . else
-        $leaves[0] as $j
-        | (if any($leaves[]; .status != "completed") then "in_progress" else "completed" end) as $status
-        | (if $status != "completed" then null
-           elif any($leaves[]; .conclusion == "failure" or .conclusion == "timed_out") then "failure"
-           elif any($leaves[]; .conclusion == "cancelled") then "cancelled"
-           else "success" end) as $conclusion
-        | . + [{
-            id: ("synthetic-nightly-" + ($j.run_id | tostring) + "-" + (($j.run_attempt // 1) | tostring)),
-            synthetic: true,
-            name: $name,
-            status: $status,
-            conclusion: $conclusion,
-            run_id: $j.run_id,
-            run_attempt: $j.run_attempt,
-            run_url: $j.run_url,
-            workflow_name: $j.workflow_name,
-            head_branch: $j.head_branch,
-            head_sha: $j.head_sha,
-            html_url: ("https://github.com/" + $repo + "/actions/runs/" + ($j.run_id | tostring)),
-            created_at: ([$leaves[].created_at] | min),
-            started_at: ([$leaves[].started_at | select(. != null)] | min),
-            completed_at: (if $status == "completed" then ([$leaves[].completed_at | select(. != null)] | max) else null end),
-            steps: ([$leaves[] | select(.conclusion == "failure" or .conclusion == "timed_out" or .conclusion == "cancelled")
-                     | {name: (.name | ltrimstr($name + " / ") | split(" / ")
-                               | if (length >= 2 and .[-1] == .[-2]) then .[:-1] else . end | join(" / ")),
-                        status: "completed", conclusion: "failure"}]
-                    | unique_by(.name)),
-            labels: [],
-            workflow_run_id: $j.workflow_run_id,
-            source_workflow: $j.source_workflow,
-            tier: $j.tier
-          }]
+      (map(select(.name | startswith($name + " / ")))) as $all
+      | if ($all | length) == 0 then . else
+        . + [ $all | map(.run_attempt // 1) | unique | .[] as $a
+          | ($all | map(select((.run_attempt // 1) <= $a)) | group_by(.name)
+             | map((map(.run_attempt // 1) | max) as $m | map(select((.run_attempt // 1) == $m)))
+             | add) as $leaves
+          # Leaves a re-run carried over keep their first-attempt started_at
+          # (before their new created_at), so only time the ones that ran.
+          | ([$leaves[] | select((.run_attempt // 1) == $a and (.started_at == null or .started_at >= .created_at))]
+             | if length > 0 then . else $leaves end) as $timed
+          | $timed[0] as $j
+          | (if any($leaves[]; .status != "completed") then "in_progress" else "completed" end) as $status
+          | (if $status != "completed" then null
+             elif any($leaves[]; .conclusion == "failure" or .conclusion == "timed_out") then "failure"
+             elif any($leaves[]; .conclusion == "cancelled") then "cancelled"
+             else "success" end) as $conclusion
+          | {
+              id: ("synthetic-nightly-" + ($j.run_id | tostring) + "-" + ($a | tostring)),
+              synthetic: true,
+              name: $name,
+              status: $status,
+              conclusion: $conclusion,
+              run_id: $j.run_id,
+              run_attempt: $a,
+              run_url: $j.run_url,
+              workflow_name: $j.workflow_name,
+              head_branch: $j.head_branch,
+              head_sha: $j.head_sha,
+              html_url: ("https://github.com/" + $repo + "/actions/runs/" + ($j.run_id | tostring)),
+              created_at: ([$timed[].created_at] | min),
+              started_at: ([$timed[].started_at | select(. != null)] | min),
+              completed_at: (if $status == "completed" then ([$timed[].completed_at | select(. != null)] | max) else null end),
+              steps: ([$leaves[] | select(.conclusion == "failure" or .conclusion == "timed_out" or .conclusion == "cancelled")
+                       | {name: (.name | ltrimstr($name + " / ") | split(" / ")
+                                 | if (length >= 2 and .[-1] == .[-2]) then .[:-1] else . end | join(" / ")),
+                          status: "completed", conclusion: "failure"}]
+                      | unique_by(.name)),
+              labels: [],
+              workflow_run_id: $j.workflow_run_id,
+              source_workflow: $j.source_workflow,
+              tier: $j.tier
+            } ]
       end'
 }
 
